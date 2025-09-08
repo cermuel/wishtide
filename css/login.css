@@ -1,6 +1,9 @@
 * {
   color: #434343;
 }
+a {
+  text-decoration: none;
+}
 
 .custom-bg {
   background-color: #ffffff;
@@ -23,7 +26,7 @@
 }
 
 .login-form {
-  max-width: 490px;
+  width: 100%;
   background-color: #fbfbfb;
   border-radius: 1.5rem;
   padding: 40px 24px;
@@ -32,7 +35,13 @@
 @media (min-width: 768px) {
   .login-form {
     background-color: #ffffff;
+    width: 490px !important;
   }
+}
+
+.form-title,
+.form-subtitle {
+  margin: 0.5rem;
 }
 
 .form-title {
@@ -45,7 +54,7 @@
 .form-subtitle {
   font-size: 14px;
   margin-bottom: 2rem;
-  color: #434343;
+  color: #434343b2;
 }
 
 .form-group-custom {
@@ -109,6 +118,10 @@
   margin-top: 1rem;
   font-size: 0.875rem;
   cursor: pointer;
+}
+.btn-submit:hover {
+  background-color: #6d29d9;
+  color: white;
 }
 
 .signup-text {

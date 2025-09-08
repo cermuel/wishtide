@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wishtide</title>
+    <link rel="icon" type="image/svg+xml" href="assets/icons/logo-small.svg" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/signup.css" />
+    <link rel="stylesheet" href="css/login.css" />
+  </head>
+  <body class="bg-white text-dark">
+    <img
+      src="assets/icons/logo.svg"
+      alt="logo"
+      class="logo d-none d-md-block"
+    />
+
+    <div
+      class="container-fluid d-flex flex-column align-items-center justify-content-center min-vh-100 py-4 custom-bg"
+    >
+      <section id="step1">
+        <a href="index.html" class="btn-back d-md-none">
+          <img src="assets/icons/chevron-grey.svg" alt="" /> <span>Back</span>
+        </a>
+        <div class="login-form w-100">
+          <a href="index.html" class="btn-back d-none d-md-block">
+            <img src="assets/icons/chevron-grey.svg" alt="" /> <span>Back</span>
+          </a>
+          <h1 class="form-title">Create an account</h1>
+
+          <div class="form-group-custom mb-3">
+            <input
+              type="text"
+              class="form-control-custom"
+              id="username"
+              placeholder=" "
+              required
+            />
+            <label for="username" class="form-label-custom">Username</label>
+          </div>
+          <div class="form-group-custom mb-3">
+            <input
+              type="date"
+              class="form-control-custom"
+              id="dob"
+              placeholder=" "
+              required
+            />
+            <label for="dob" class="form-label-custom">Date of birth</label>
+          </div>
+          <div class="form-group-custom mb-3">
+            <input
+              type="email"
+              class="form-control-custom"
+              id="email"
+              placeholder=" "
+              required
+            />
+            <label for="email" class="form-label-custom">Email address</label>
+          </div>
+          <div class="form-group-custom mb-3 position-relative">
+            <input
+              type="password"
+              class="form-control-custom"
+              id="password"
+              placeholder=" "
+              required
+            />
+            <label for="password" class="form-label-custom">Password</label>
+            <button
+              type="button"
+              id="togglePassword"
+              class="toggle-btn"
+              aria-label="Show password"
+            >
+              <img
+                id="eyeIcon"
+                src="assets/icons/eye.svg"
+                alt="Show password"
+              />
+            </button>
+          </div>
+
+          <button id="createAccountBtn" class="btn btn-submit w-100">
+            Create account
+          </button>
+
+          <div class="d-flex align-items-center my-4">
+            <div class="flex-grow-1 border-bottom"></div>
+            <span class="mx-2 text-muted small">Or Sign in with</span>
+            <div class="flex-grow-1 border-bottom"></div>
+          </div>
+
+          <div class="d-flex gap-3">
+            <button class="btn-social flex-fill">
+              <img src="assets/icons/google.svg" />
+            </button>
+            <button class="btn-social flex-fill">
+              <img src="assets/icons/apple.svg" />
+            </button>
+            <button class="btn-social flex-fill">
+              <img src="assets/icons/facebook.svg" />
+            </button>
+          </div>
+
+          <p class="text-center text-muted small mt-3">
+            By clicking the button above, you agree to our
+            <a href="#" class="text-purple fw-bold">Terms of Services</a>
+          </p>
+
+          <div class="d-flex justify-content-between align-items-center mt-4">
+            <span class="small text-muted">Already have an account?</span>
+            <a href="index.html" class="btn-signin">
+              <span class="text-purple">Sign in</span>
+              <img src="assets/icons/chevron-purple.svg" alt="chevron" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="step2" class="d-none">
+        <button id="backToStep1" class="btn-back d-md-none">
+          <img src="assets/icons/chevron-grey.svg" alt="" /> <span>Back</span>
+        </button>
+        <div class="login-form w-100">
+          <a id="backToStep1" class="btn-back d-none d-md-block">
+            <img src="assets/icons/chevron-grey.svg" alt="" /> <span>Back</span>
+          </a>
+          <h1 class="form-title">Verify your email</h1>
+          <p class="small text-muted">
+            We sent a code to your email. Enter the 6-digit code to verify.
+          </p>
+
+          <div class="d-flex w-100 px-md-4 align-items-center otp-inputs mb-1">
+            <input type="number" maxlength="1" class="otp" />
+            <input type="number" maxlength="1" class="otp" />
+            <input type="number" maxlength="1" class="otp" />
+            <input type="number" maxlength="1" class="otp" />
+            <input type="number" maxlength="1" class="otp" />
+            <input type="number" maxlength="1" class="otp" />
+          </div>
+
+          <button id="resendBtn" class="btn btn-link p-0 text-purple small">
+            Resend code in 60s
+          </button>
+          <button id="verifyOtpBtn" class="btn btn-submit w-100 mt-3">
+            Verify my email
+          </button>
+        </div>
+      </section>
+
+      <section id="step3" class="text-center d-none login-form">
+        <img
+          src="assets/icons/welcome-check.svg"
+          alt=""
+          class="mb-3"
+          style="width: 80px"
+        />
+        <p class="text-muted small">Account verified</p>
+        <h1 class="form-title">
+          Welcome to Wishtide, <br />username! <br />
+          🤗
+        </h1>
+        <a href="dashboard.html" class="btn btn-submit w-100 mt-4"
+          >Go to dashboard</a
+        >
+      </section>
+    </div>
+
+    <div id="loaderOverlay" class="loader-overlay d-none">
+      <img src="assets/icons/loader.svg" class="spinner" alt="loading" />
+    </div>
+
+    <script src="js/signup.js"></script>
+  </body>
+</html>
