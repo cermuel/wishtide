@@ -5,11 +5,35 @@ document.getElementById("notificationPanel").style.display = "none";
 
 function toggleNotification(e) {
   if (e) e.stopPropagation();
-  notificationOpen = !notificationOpen;
-  document.getElementById("notificationPanel").style.display = notificationOpen
-    ? "block"
-    : "none";
-  setActiveNav();
+  if (!notificationOpen) {
+    fetch("notification.html")
+      .then((response) => response.text())
+      .then((notificationHtml) => {
+        const panel = document.getElementById("notificationPanel");
+        const script = document.createElement("script");
+        script.src = "js/notification.js";
+        script.id = "notificationScript";
+        document.body.appendChild(script);
+        panel.innerHTML = notificationHtml;
+        panel.style.display = "block";
+        notificationOpen = true;
+        setActiveNav();
+      })
+      .catch(() => {
+        const panel = document.getElementById("notificationPanel");
+        panel.innerHTML = `<div style="padding: 20px; background: white;">
+          <h3>Notifications</h3>
+          <p>Unable to load notifications</p>
+        </div>`;
+        panel.style.display = "block";
+        notificationOpen = true;
+        setActiveNav();
+      });
+  } else {
+    notificationOpen = false;
+    document.getElementById("notificationPanel").style.display = "none";
+    setActiveNav();
+  }
 }
 
 function hideNotification() {

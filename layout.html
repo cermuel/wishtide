@@ -11,6 +11,7 @@
     />
     <link rel="stylesheet" href="css/layout.css" />
     <link rel="stylesheet" href="css/wishlist-modal.css" />
+    <link rel="stylesheet" href="css/notification.css" />
   </head>
   <body class="bg-[#FBFBFB]">
     <div
@@ -46,7 +47,11 @@
       </ul>
 
       <div id="mainContent" class="flex-grow-1 h-100 d-flex position-relative">
-        <div id="notificationPanel" class="notification"></div>
+        <div
+          id="notificationPanel"
+          class="notification"
+          onclick="event.stopPropagation()"
+        ></div>
         <div id="pageContent" class="flex-grow-1"></div>
         <section id="wishlist-modal" class="modal hidden">
           <div class="modal-content">

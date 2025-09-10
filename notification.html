@@ -1,0 +1,28 @@
+<div class="notification-panel-content">
+  <div class="notification-header">
+    <button class="notification-back-btn">
+      <img src="/assets/icons/back.svg" />
+    </button>
+    <h2 class="notification-title">Notifications</h2>
+  </div>
+
+  <div class="notification-tabs">
+    <button class="notification-tab active" data-tab="all">All</button>
+    <button class="notification-tab" data-tab="rsvp">RSVP Updates</button>
+    <button class="notification-tab" data-tab="wishlist">Wishlist views</button>
+    <button class="notification-tab" data-tab="contribution">
+      Contribution alerts
+    </button>
+  </div>
+
+  <div id="notificationEmpty" class="notification-empty" style="display: none">
+    <div class="notification-empty-icon">
+      <img src="/assets/images/bell.svg" style="height: 4rem" />
+    </div>
+    <p class="notification-empty-text">No notifications</p>
+  </div>
+
+  <div id="notificationContent" class="notification-content"></div>
+</div>
+
+<script src="js/notification.js"></script>
