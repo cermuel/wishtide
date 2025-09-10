@@ -1,3 +1,16 @@
+@import url("https://fonts.cdnfonts.com/css/product-sans");
+
+:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+* {
+  font-family: "Product Sans", sans-serif;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
 :root {
   --muted: #4f485a;
   --primary: #6d28d9;
@@ -20,6 +33,7 @@ body {
   padding-left: 16px;
   padding-right: 16px;
   box-sizing: border-box;
+  border-right: 1px solid #12202324;
 }
 .logo {
   height: 32px;

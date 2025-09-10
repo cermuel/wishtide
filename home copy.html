@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wishtide</title>
+    <link rel="icon" type="image/svg+xml" href="assets/icons/logo-small.svg" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/home.css" />
+  </head>
+  <body>
+    <!-- home.html (fragment) -->
+    <div id="pageContent" class="home-root p-4">
+      <!-- Top (desktop) header -->
+      <section class="home-section d-flex flex-column border-end">
+        <div
+          class="d-flex align-items-center justify-content-between mb-3 desktop-header"
+        >
+          <h1 class="home-title">Home</h1>
+        </div>
+
+        <!-- Mobile small header -->
+        <div
+          class="mobile-header d-flex align-items-center gap-2 mb-3 d-md-none"
+        >
+          <img src="/assets/images/user.svg" alt="user" class="mobile-user" />
+          <p class="mobile-username text-muted mb-0">@Chuks</p>
+          <img
+            src="/assets/icons/bell.svg"
+            alt="bell"
+            class="ms-auto mobile-bell"
+          />
+        </div>
+
+        <!-- Search card -->
+        <div class="search-card rounded-3 p-3 mb-3">
+          <div class="d-flex align-items-center gap-2">
+            <img src="/assets/icons/spark.svg" class="spark-icon" alt="spark" />
+            <p class="mb-0 fw-bold text-white">
+              Search across Wishlists, Users, Events
+            </p>
+          </div>
+
+          <div
+            class="search-input d-flex align-items-center bg-white border rounded-2 mt-3 px-3 py-2"
+          >
+            <img
+              src="/assets/icons/explore.svg"
+              alt="search"
+              class="me-2 search-icon"
+            />
+            <input
+              id="homeSearch"
+              type="text"
+              class="form-control border-0 p-0"
+              placeholder="Enter item name, user or events"
+            />
+          </div>
+        </div>
+
+        <!-- action chips -->
+        <div class="mb-3 overflow-auto actions-row">
+          <button class="action-chip btn bg-white border btn-no-shrink">
+            <img
+              src="/assets/icons/logo-small.svg"
+              class="me-2"
+              alt="wishlist"
+            />
+            <span>Create wishlist</span>
+          </button>
+          <button class="action-chip btn bg-white border btn-no-shrink">
+            <img src="/assets/icons/event.svg" class="me-2" alt="event" />
+            <span>Start an event</span>
+          </button>
+          <button class="action-chip btn bg-white border btn-no-shrink">
+            <img src="/assets/icons/invite.svg" class="me-2" alt="invite" />
+            <span>Invite friends</span>
+          </button>
+        </div>
+
+        <!-- Trending wishlist header -->
+        <div class="d-flex align-items-center justify-content-between mb-2">
+          <h2 class="h5 mb-0">Trending Wishlist Now</h2>
+          <a href="#" class="see-more d-flex align-items-center gap-1">
+            <span class="text-primary">See more</span>
+            <img
+              src="/assets/icons/chevron-purple.svg"
+              alt="chevron"
+              class="chev"
+            />
+          </a>
+        </div>
+
+        <!-- Trending wishlist carousel container -->
+        <div class="trending-wrap mb-4">
+          <div
+            id="trendingCarousel"
+            class="trending-track d-flex gap-3 overflow-auto"
+          ></div>
+        </div>
+
+        <!-- Upcoming events header -->
+        <div class="d-flex align-items-center justify-content-between mb-2">
+          <h2 class="h5 mb-0">Upcoming events</h2>
+          <a href="#" class="see-more d-flex align-items-center gap-1">
+            <span class="text-primary">See more</span>
+            <img
+              src="/assets/icons/chevron-purple.svg"
+              alt="chevron"
+              class="chev"
+            />
+          </a>
+        </div>
+
+        <!-- Events carousel -->
+        <div class="events-wrap mb-4">
+          <div
+            id="eventsCarousel"
+            class="events-track d-flex gap-3 overflow-auto"
+          ></div>
+        </div>
+      </section>
+
+      <!-- Right column (desktop suggested users) -->
+      <aside class="suggested-col d-none d-md-block h-100">
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <img src="/assets/images/user.svg" class="suggest-user" alt="user" />
+          <div>
+            <div class="fw-semibold">Chukwuemeka</div>
+            <div class="text-muted">@Chuks</div>
+          </div>
+        </div>
+
+        <h3 class="h6 fw-semibold mb-3">Suggested for you</h3>
+        <ul id="suggestedList" class="list-unstyled p-0 m-0"></ul>
+      </aside>
+
+      <!-- Wishlist / Event modal placeholder -->
+      <div id="detailModal" class="detail-modal" aria-hidden="true"></div>
+    </div>
+
+    <!-- load the home JS to render lists + interactions -->
+  </body>
+  <script src="js/load-layout.js"></script>
+</html>

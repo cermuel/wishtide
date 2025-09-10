@@ -10,6 +10,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/wishlist-modal.css" />
   </head>
   <body class="bg-[#FBFBFB]">
     <div
@@ -44,9 +45,15 @@
         >
       </ul>
 
-      <div id="mainContent" class="flex-grow-1 h-100 border position-relative">
+      <div id="mainContent" class="flex-grow-1 h-100 d-flex position-relative">
         <div id="notificationPanel" class="notification"></div>
-        <div id="pageContent"></div>
+        <div id="pageContent" class="flex-grow-1"></div>
+        <section id="wishlist-modal" class="modal hidden">
+          <div class="modal-content">
+            <span class="close" onclick="closeWishlistModal()">&times;</span>
+            <div id="wishlist-details"></div>
+          </div>
+        </section>
       </div>
 
       <ul

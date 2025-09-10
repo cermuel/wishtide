@@ -16,13 +16,35 @@ fetch("layout.html")
         temp.innerHTML = contentHtml.trim();
 
         const content = temp.querySelector("#pageContent");
-        document.getElementById("pageContent").appendChild(content);
+
+        if (content) {
+          const layoutPageContent = document.getElementById("pageContent");
+          if (layoutPageContent) {
+            layoutPageContent.innerHTML = content.innerHTML;
+          }
+        }
 
         const pageName = page.replace(".html", "");
         const script = document.createElement("script");
         script.src = `js/${pageName}.js`;
-        script.onerror = () =>
-          console.warn(`No JS file found for ${pageName}.html`);
+        script.onload = () => {
+          console.log(`${pageName}.js loaded successfully`);
+
+          document.dispatchEvent(
+            new CustomEvent("pageLoaded", {
+              detail: { pageName },
+            })
+          );
+        };
+        script.onerror = () => {
+          console.warn(`No JS file found for ${pageName}.js`);
+        };
         document.body.appendChild(script);
+      })
+      .catch((err) => {
+        console.error(`Error loading page ${page}:`, err);
       });
+  })
+  .catch((err) => {
+    console.error("Error loading layout:", err);
   });
