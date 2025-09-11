@@ -34,14 +34,12 @@
   font-size: 20px;
 }
 
-/* Modal overlay */
 #wishlist-modal {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1050;
   padding: 2rem 1rem;
 }
 
-/* Close button */
 .wishlist-close-btn {
   top: 1.25rem;
   right: 1.25rem;
@@ -49,11 +47,10 @@
   cursor: pointer;
 }
 
-/* Modal content */
 .wishlist-content {
   max-width: 800px;
   width: 100%;
-  max-height: 70vh;
+  max-height: 70dvh;
 }
 
 .wishlist-image {
@@ -66,7 +63,6 @@
   width: 50%;
 }
 
-/* Header */
 .wishlist-header {
   border-color: #f2f2f2;
 }
@@ -81,7 +77,6 @@
   color: #434343;
 }
 
-/* Progress */
 .wishlist-progress-container {
   border-color: #d7d7d7;
   padding: 0.1rem;
@@ -102,12 +97,10 @@
   color: #151515;
 }
 
-/* Comments */
 .wishlist-comments {
   overflow-y: auto;
 }
 
-/* Actions */
 .wishlist-actions {
   border-left: 0;
   border-color: #12202314;
@@ -166,7 +159,6 @@
   height: 18px;
 }
 
-/* Comment box */
 .wishlist-comment-box {
   padding: 10px;
 }
@@ -198,8 +190,13 @@
   width: 12px;
   height: 12px;
 }
-
-/* ✅ Responsive adjustments */
+@media (max-height: 700px) {
+  .wishlist-content {
+    flex-direction: column !important;
+    max-height: 75dvh !important;
+    overflow-y: auto;
+  }
+}
 @media (max-width: 768px) {
   #wishlist-modal {
     padding: 1rem !important;
@@ -207,9 +204,11 @@
 
   .wishlist-content {
     flex-direction: column !important;
-    max-height: none !important;
+    max-height: 75dvh !important;
   }
-
+  .wishlist-actions {
+    border: 0 !important;
+  }
   .wishlist-image {
     display: block !important;
     width: 100% !important;
