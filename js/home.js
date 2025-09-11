@@ -1,4 +1,4 @@
-import { constants } from "./constants";
+import { constants } from "./constants.js";
 
 let wishlist = constants.wishlist;
 let events = constants.events;
