@@ -1,0 +1,302 @@
+.main-tabs-container {
+  background: rgba(118, 118, 128, 0.12);
+  padding: 0.25rem;
+  border-radius: 9999px;
+  width: fit-content;
+  overflow-x: auto;
+  max-width: calc(100vw - 48px);
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  padding: 0.375rem 3rem;
+  border-radius: 9999px;
+  color: black;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.tab-btn.active {
+  background: white;
+  font-weight: 600;
+}
+
+.sort-tab-btn {
+  background: white;
+  border: none;
+  padding: 0.625rem 1.25rem;
+  border-radius: 9999px;
+  color: #60696c;
+  font-size: 0.875rem;
+  font-weight: 300;
+  cursor: pointer;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.sort-tab-btn.active {
+  background: rgba(109, 41, 217, 0.1);
+  color: #6d29d9;
+}
+
+.wishlist-card,
+.event-card {
+  flex-shrink: 0;
+  width: 100%;
+}
+#contentContainer {
+  max-width: calc(100vw - 48px);
+}
+@media (min-width: 768px) {
+  .wishlist-card,
+  .event-card {
+    width: 85%;
+  }
+  #contentContainer {
+    max-width: calc(((100vw - 250px) * 2 / 3) - 48px);
+  }
+}
+
+@media (max-width: 767px) {
+  .wishlist-card,
+  .event-card {
+    width: 80%;
+  }
+}
+
+.wishlist-image-container {
+  aspect-ratio: 531/386;
+}
+
+.event-image-container {
+  aspect-ratio: 281/123;
+}
+
+@media (min-width: 768px) {
+  .event-image-container {
+    aspect-ratio: 531/151;
+  }
+}
+
+.account-avatar,
+.mobile-header img:first-child,
+.profile-section img:first-child {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid rgba(18, 32, 35, 0.14);
+}
+
+.user-avatar {
+  width: 2rem;
+  height: 2rem;
+}
+
+.suggested-user-avatar {
+  width: 2rem;
+  height: 2rem;
+}
+
+.like-avatar {
+  width: 1.125rem;
+}
+
+@media (min-width: 768px) {
+  .like-avatar {
+    width: 1.625rem;
+  }
+}
+
+.like-avatar-img {
+  width: 1rem;
+  height: 1rem;
+}
+
+@media (min-width: 768px) {
+  .like-avatar-img {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+.tagged-avatar {
+  width: 1.125rem;
+}
+
+@media (min-width: 768px) {
+  .tagged-avatar {
+    width: 1.625rem;
+  }
+}
+
+.tagged-avatar-img {
+  width: 1rem;
+  height: 1rem;
+}
+
+@media (min-width: 768px) {
+  .tagged-avatar-img {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+.action-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .action-icon {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+}
+
+.tag-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+@media (max-width: 767px) {
+  .tag-icon {
+    width: 0.625rem;
+    height: 0.625rem;
+  }
+}
+
+.clock-icon {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.calendar-icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.open-icon {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+@media (max-width: 767px) {
+  .open-icon {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+}
+
+.account-name,
+.account-username,
+.profile-name,
+.profile-username {
+  font-size: 0.8125rem;
+}
+
+.wishlist-name,
+.event-name,
+.tagged-text,
+.timer-text,
+.event-date,
+.event-status,
+.event-rsvp,
+.event-description,
+.progress-label,
+.progress-text,
+.comment-text,
+.btn-text,
+.suggested-user-name,
+.price-text,
+.wishlist-counter {
+  font-size: 0.875rem;
+}
+
+.like-text {
+  font-size: 0.625rem;
+}
+
+@media (min-width: 768px) {
+  .wishlist-name,
+  .event-name {
+    font-size: 1rem;
+  }
+
+  .like-text {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .price-text,
+  .wishlist-counter,
+  .tagged-text,
+  .timer-text,
+  .event-description,
+  .event-rsvp,
+  .btn-text {
+    font-size: 0.75rem;
+  }
+
+  .progress-label,
+  .progress-text {
+    font-size: 0.625rem;
+  }
+}
+
+.account-name,
+.profile-name {
+  color: #151515;
+}
+
+.account-username,
+.profile-username,
+.mobile-header p {
+  color: rgba(67, 67, 67, 0.8);
+}
+
+.progress-text,
+.comment-text {
+  color: rgba(67, 67, 67, 0.7);
+}
+
+.suggested-title,
+.text-gray {
+  color: #434343;
+}
+
+.suggested-user-name {
+  color: #242424;
+}
+
+.comment-input {
+  border: 1px solid rgba(18, 32, 35, 0.08);
+}
+
+.follow-btn {
+  background: rgba(109, 41, 217, 0.1);
+  font-size: 0.8125rem;
+  color: #6d29d9;
+  letter-spacing: -0.025em;
+}
+
+.wishlist-scroll,
+.events-scroll {
+  overflow-x: auto;
+  min-width: 0;
+}
+
+.bg-primary {
+  background-color: #6d29d9 !important;
+  border-color: #6d29d9 !important;
+}
+
+.border-primary {
+  border-color: #6d29d9 !important;
+}
+
+.bg-info {
+  background-color: #009fe2 !important;
+}

@@ -148,7 +148,6 @@ function initNotificationPanel() {
       {}
     );
 
-    // Generate HTML for each group
     const groupsHtml = Object.entries(groupedNotifications)
       .map(([timeGroup, notifications]) => {
         const notificationsHtml = notifications
@@ -220,7 +219,6 @@ function initNotificationPanel() {
       notificationEmpty.style.display = "none";
       notificationContent.style.display = "block";
 
-      // Render the filtered notifications
       notificationContent.innerHTML = renderNotifications(
         filteredNotifications
       );
