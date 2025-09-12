@@ -131,21 +131,17 @@ document.addEventListener("click", (event) => {
   ) {
     return;
   }
-
   event.preventDefault();
   const page = href.startsWith("/") ? href.substring(1) : href;
   navigateToPage(page);
 });
 
-// Handle browser back/forward buttons
 window.addEventListener("popstate", (event) => {
   if (isLayoutLoaded) {
     const page = window.location.pathname.split("/").pop() || "home.html";
     loadPageContent(page);
   }
 });
-
-window.navigateToPage = navigateToPage;
 
 if (document.getElementById("sidebar")) {
   isLayoutLoaded = true;
@@ -172,3 +168,5 @@ if (document.getElementById("sidebar")) {
       console.error("Error loading layout:", err);
     });
 }
+
+window.navigateToPage = navigateToPage;
