@@ -15,3 +15,12 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   });
 });
+
+function loginUser(e) {
+  if (e) e.preventDefault();
+  loaderOverlay.classList.remove("d-none");
+  setTimeout(() => {
+    loaderOverlay.classList.add("d-none");
+    window.location.href = "home.html";
+  }, 2000);
+}

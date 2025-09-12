@@ -69,6 +69,14 @@ fetch("layout.html")
         script.onload = async () => {
           await loadRightSection();
 
+          if (page === "profile.html") {
+            const userInfo = document.getElementById("right-user-details");
+
+            if (userInfo) {
+              userInfo.classList.add("d-none");
+            }
+          }
+
           document.dispatchEvent(
             new CustomEvent("pageLoaded", {
               detail: { pageName },
