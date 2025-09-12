@@ -1,6 +1,8 @@
 import { constants } from "./constants.js";
+import { home } from "./home.js";
 
 const homedata = { wishlist: constants.wishlist, events: constants.events };
+
 const accounts = constants.accounts;
 
 let query = "";
@@ -229,7 +231,9 @@ function renderWishlistCard(wish, index, total) {
                 <button class="btn p-0 border-0 bg-transparent">
                   <img src="/assets/icons/like.svg" alt="like" style="width: 1.75rem; height: 1.75rem;">
                 </button>
-                <button class="btn p-0 border-0 bg-transparent">
+                <button class="btn p-0 border-0 bg-transparent" onclick="openWishlistModal(${
+                  wish.id
+                })">
                   <img src="/assets/icons/comment.svg" alt="comment" style="width: 1.75rem; height: 1.75rem;">
                 </button>
                 <button class="btn p-0 border-0 bg-transparent">
@@ -239,36 +243,24 @@ function renderWishlistCard(wish, index, total) {
                   <img src="/assets/icons/save.svg" alt="save" style="width: 1.75rem; height: 1.75rem;">
                 </button>
               </div>
-              <div class="d-flex align-items-center gap-2">
-                <div class="d-flex align-items-center position-relative">
-                  ${wish.likes
-                    .map(
-                      (like, likeIndex) => `
-                    <div class="bg-white rounded-circle p-1" style="margin-left: ${
-                      likeIndex > 0 ? "-0.75rem" : "0"
-                    }; width: 1.625rem;">
-                      <img src="${like}" alt="like" class="rounded-circle" style="width: 1.5rem; height: 1.5rem;">
-                    </div>
-                  `
-                    )
-                    .join("")}
-                </div>
-                <p class="mb-0" style="font-size: 0.75rem;">
-                  Liked by <strong>Chuks</strong> & <strong>more</strong>
-                </p>
-              </div>
+                <div class="likes-section">
+                            ${home.createOverlappingAvatars(wish.likes)}
+                            <p class="likes-text mb-0">
+                                Liked by <strong>Chuks</strong> & <strong>more</strong>
+                            </p>
+                        </div>
             </div>
-            <div class="p-4 d-none d-md-flex align-items-center gap-3">
-              <img src="${
-                wish.user
-              }" alt="user" class="rounded-circle" style="width: 2rem; height: 2rem;">
-              <input type="text" class="form-control rounded-pill text-center" style="border: 1px solid rgba(18, 32, 35, 0.08);" placeholder="Add a comment">
+               <div class="comment-section d-none d-md-flex" onclick="openWishlistModal(${
+                 wish.id
+               })">
+                        <img src="${wish.user}" alt="user" class="user-avatar">
+                        <input type="text" class="comment-input" placeholder="Add a comment">
             </div>
           </div>
         `;
 }
 
-function renderEventCard(event, index) {
+function renderEventCard(event) {
   const progressPercentage = (event.gift.progress / event.gift.target) * 100;
   return `
           <div class="bg-white rounded-4 border border-light-subtle" style="flex-shrink: 0; width: 85%;">

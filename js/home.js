@@ -293,3 +293,8 @@ document.querySelectorAll(".action-btn").forEach((btn) => {
     const text = this.querySelector("span").textContent;
   });
 });
+
+window.openWishlistModal = openWishlistModal;
+window.closeWishlistModal = closeWishlistModal;
+
+export const home = { createOverlappingAvatars };
