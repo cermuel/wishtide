@@ -87,7 +87,7 @@ function initNotificationPanel() {
       isCircular: true,
     },
   ];
-  //   notifications = [];
+
   let activeTab = "all";
 
   function renderNotificationItem(notification) {
@@ -181,7 +181,7 @@ function initNotificationPanel() {
             <span>40% completed</span>
           </div>
           <div class="progress-bar-container">
-            <div class="progress-bar"></div>
+            <div class="progress-bar" style="width: 40%;"></div>
           </div>
         </div>
       </div>

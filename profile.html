@@ -3,20 +3,296 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wishtide</title>
+    <title>Wishtide - Profile</title>
     <link rel="icon" type="image/svg+xml" href="assets/icons/logo-small.svg" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="css/profile.css" />
+    <link rel="stylesheet" href="css/notification.css" />
     <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/explore.css" />
   </head>
   <body>
     <div id="pageContent">
-      <div class="main-container">
-        <section class="left-section">
+      <div class="main-container" id="profile-container">
+        <section class="left-section position-relative">
           <h1 class="h2 fw-bold text-gray desktop-title mb-4">Profile</h1>
+
+          <div class="profile-header">
+            <div class="profile-image-container">
+              <img
+                src="/assets/images/user-2.svg"
+                alt="user"
+                class="profile-image"
+              />
+              <label for="pfp" class="upload-btn">
+                <img
+                  src="/assets/icons/add.svg"
+                  alt="upload"
+                  class="upload-icon"
+                />
+              </label>
+              <input id="pfp" type="file" class="d-none" />
+            </div>
+            <div class="profile-info">
+              <p class="fw-bold d-none d-md-block m-0">Chukwuemeka Samuel</p>
+              <p class="username">@Chuks</p>
+              <p class="bio">Just a chilled guy😎!</p>
+            </div>
+
+            <button class="action-icon-btn" onclick="toggleQR()">
+              <img src="/assets/icons/qr.svg" alt="qr code" class="icon-sm" />
+            </button>
+            <button
+              class="action-btn"
+              onclick="window.location.href='settings.html'"
+            >
+              <img
+                src="/assets/icons/settings.svg"
+                alt="settings"
+                class="icon-xs"
+              />
+              <span class="btn-text">Settings</span>
+            </button>
+          </div>
+
+          <div class="stats-container">
+            <div class="stat-item">
+              <p class="stat-label">Wishlists</p>
+              <p class="stat-value">15</p>
+            </div>
+            <div class="stat-item stat-divider">
+              <p class="stat-label">Followers</p>
+              <p class="stat-value">2929</p>
+            </div>
+            <div class="stat-item">
+              <p class="stat-label">Following</p>
+              <p class="stat-value">45</p>
+            </div>
+          </div>
+
+          <div class="tabs-container">
+            <button class="tab-btn active" data-tab="wishlists">
+              Wishlists
+            </button>
+            <button class="tab-btn" data-tab="events">Events</button>
+            <button class="tab-btn" data-tab="contributions">
+              Contribution
+            </button>
+          </div>
+
+          <div class="content-area">
+            <div class="tab-content active" id="wishlists-content">
+              <div
+                class="d-flex flex-column align-items-center gap-4 gap-md-5 mt-4"
+                id="wishlistItems"
+              ></div>
+              <div class="empty-state" id="wishlistsEmpty">
+                <div class="empty-card">
+                  <div>
+                    <h2 class="empty-title">Create your Wishlist</h2>
+                    <p class="empty-description">
+                      Because the best gifts are the ones you choose, Make it
+                      easy for friends to gift what you love
+                    </p>
+                    <button class="create-btn">
+                      <img
+                        src="/assets/icons/plus.svg"
+                        alt="plus"
+                        class="plus-icon"
+                      />
+                      <span class="create-text">Create wishlist</span>
+                    </button>
+                  </div>
+                  <img src="/assets/images/logo-xl.svg" alt="wishtide" />
+                </div>
+                <div class="action-card">
+                  <button class="action-item">
+                    <img
+                      src="/assets/icons/plus.svg"
+                      alt="plus"
+                      class="action-icon"
+                    />
+                    <span class="action-text">Create wishlist</span>
+                    <img
+                      src="/assets/icons/chevron.svg"
+                      alt="chevron"
+                      class="chevron-icon"
+                    />
+                  </button>
+                  <button class="action-item border-top">
+                    <img
+                      src="/assets/icons/manage.svg"
+                      alt="manage"
+                      class="action-icon"
+                    />
+                    <span class="action-text">Manage wishlists</span>
+                    <img
+                      src="/assets/icons/chevron.svg"
+                      alt="chevron"
+                      class="chevron-icon"
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content" id="events-content">
+              <div class="events-items" id="eventsItems"></div>
+              <div class="empty-state" id="eventsEmpty">
+                <div class="empty-card">
+                  <div>
+                    <h2 class="empty-title">Create your Events</h2>
+                    <p class="empty-description">
+                      Because the best gifts are the ones you choose, Make it
+                      easy for friends to gift what you love
+                    </p>
+                    <button class="create-btn">
+                      <img
+                        src="/assets/icons/plus.svg"
+                        alt="plus"
+                        class="plus-icon"
+                      />
+                      <span class="create-text">Create event</span>
+                    </button>
+                  </div>
+                  <img
+                    src="/assets/images/no-event.svg"
+                    alt="no events"
+                    class="no-event-img"
+                  />
+                </div>
+                <div class="action-card">
+                  <button class="action-item">
+                    <img
+                      src="/assets/icons/plus.svg"
+                      alt="plus"
+                      class="action-icon"
+                    />
+                    <span class="action-text">Create your event</span>
+                    <img
+                      src="/assets/icons/chevron.svg"
+                      alt="chevron"
+                      class="chevron-icon"
+                    />
+                  </button>
+                  <button class="action-item border-top">
+                    <img
+                      src="/assets/icons/manage.svg"
+                      alt="manage"
+                      class="action-icon"
+                    />
+                    <span class="action-text">Manage events</span>
+                    <img
+                      src="/assets/icons/chevron.svg"
+                      alt="chevron"
+                      class="chevron-icon"
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content" id="contributions-content">
+              <div class="contributions-items" id="contributionsItems"></div>
+              <div class="empty-state" id="contributionsEmpty">
+                <div class="action-card">
+                  <button class="action-item">
+                    <img
+                      src="/assets/icons/plus.svg"
+                      alt="plus"
+                      class="action-icon"
+                    />
+                    <span class="action-text">Add stripe/PayPal account</span>
+                    <img
+                      src="/assets/icons/chevron.svg"
+                      alt="chevron"
+                      class="chevron-icon"
+                    />
+                  </button>
+                  <button class="action-item border-top">
+                    <img
+                      src="/assets/icons/manage.svg"
+                      alt="manage"
+                      class="action-icon"
+                    />
+                    <span class="action-text">Manage contributions</span>
+                    <img
+                      src="/assets/icons/chevron.svg"
+                      alt="chevron"
+                      class="chevron-icon"
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="divider"></div>
+            <div class="action-card bottom-actions">
+              <button class="action-item">
+                <img
+                  src="/assets/icons/logout.svg"
+                  alt="logout"
+                  class="action-icon-lg"
+                />
+                <span class="action-text">Log out</span>
+                <img
+                  src="/assets/icons/chevron.svg"
+                  alt="chevron"
+                  class="chevron-icon"
+                />
+              </button>
+              <button class="action-item border-top">
+                <img
+                  src="/assets/icons/delete.svg"
+                  alt="delete"
+                  class="action-icon-lg"
+                />
+                <span class="action-text">Delete account</span>
+                <img
+                  src="/assets/icons/chevron.svg"
+                  alt="chevron"
+                  class="chevron-icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div class="qr-modal" id="qrModal">
+            <div class="notification-header">
+              <button
+                onclick="toggleQR()"
+                class="notification-back-btn d-block"
+              >
+                <img src="/assets/icons/back.svg" alt="back" />
+              </button>
+              <h2 class="qr-title">Share</h2>
+            </div>
+            <div class="qr-content">
+              <img
+                src="/assets/images/user-2.svg"
+                alt="user"
+                class="qr-profile-img"
+              />
+              <img src="/assets/images/qr-code.svg" alt="qr code" />
+            </div>
+            <div class="qr-actions">
+              <button class="btn-primary w-100 mb-3 mb-md-0">
+                Share QR code
+              </button>
+              <button class="btn-secondary w-100">
+                <img
+                  src="/assets/icons/qr.svg"
+                  alt="qr code"
+                  class="icon-sm me-2"
+                />
+                Scan QR code
+              </button>
+            </div>
+          </div>
         </section>
+
         <section
           id="right-section"
           class="right-section d-none d-md-block"
@@ -24,6 +300,5 @@
       </div>
     </div>
   </body>
-
   <script src="js/load-layout.js"></script>
 </html>

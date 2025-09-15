@@ -306,7 +306,7 @@ body {
 }
 
 .progress-bar {
-  height: 1.625rem;
+  height: 0.5rem;
   background-color: #009fe2 !important;
   transition: width 0.3s ease;
 }

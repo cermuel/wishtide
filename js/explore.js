@@ -332,7 +332,7 @@ function renderEventCard(event) {
               <img src="${
                 event.user
               }" alt="user" class="rounded-circle" style="width: 2rem; height: 2rem;">
-              <input type="text" class="form-control rounded-pill text-center" placeholder="Add a comment">
+              <input type="text" class="form-control rounded-pill" placeholder="Add a comment">
             </div>
             <div class="p-4 d-flex align-items-center gap-3">
               <button class="btn flex-fill border border-light-subtle d-flex align-items-center justify-content-center gap-1 py-2 py-md-3">

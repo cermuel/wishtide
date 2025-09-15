@@ -251,17 +251,3 @@
   color: #4b5563;
   margin-bottom: 0.25rem;
 }
-
-.progress-bar-container {
-  width: 100%;
-  background-color: #e5e7eb;
-  border-radius: 9999px;
-  height: 0.5rem;
-}
-
-.progress-bar {
-  background-color: #3b82f6;
-  height: 0.5rem;
-  border-radius: 9999px;
-  width: 40%;
-}
