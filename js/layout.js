@@ -3,6 +3,32 @@ let notificationOpen = false;
 document.getElementById("createPopup").style.display = "none";
 document.getElementById("notificationPanel").style.display = "none";
 
+function loadCreateEvent() {
+  fetch("create-event.html")
+    .then((response) => response.text())
+    .then((html) => {
+      document.getElementById("wishlist-modal").innerHTML = html;
+      const script = document.createElement("script");
+      script.src = "js/create-event.js";
+      document.body.appendChild(script);
+      document.getElementById("wishlist-modal").classList.remove("hidden");
+    });
+}
+
+function unloadCreateEvent() {
+  const modal = document.getElementById("wishlist-modal");
+  modal.classList.add("hidden");
+  modal.innerHTML = `<div class="modal-content">
+            <span class="close" onclick="closeWishlistModal()">×</span>
+            <div id="wishlist-details"></div>
+          </div>`;
+  const scripts = document.querySelectorAll('script[src="js/create-event.js"]');
+  scripts.forEach((script) => {
+    document.body.removeChild(script);
+    script.remove();
+  });
+}
+
 function toggleNotification(e) {
   if (e) e.stopPropagation();
   if (!notificationOpen) {
@@ -134,3 +160,5 @@ if (document.readyState === "loading") {
 } else {
   initLayout();
 }
+
+window.unloadCreateEvent = unloadCreateEvent;

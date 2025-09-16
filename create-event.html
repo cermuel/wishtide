@@ -1,0 +1,281 @@
+<div
+  id="create-event-modal"
+  class="w-100 h-100 justify-content-center align-items-md-center align-items-end create-event-container"
+>
+  <div
+    id="create-event-content"
+    class="bg-white d-flex flex-column create-event-content"
+    onclick="event.stopPropagation()"
+  >
+    <div id="success-state" class="d-none">
+      <div
+        class="d-flex flex-column flex-fill justify-content-center align-items-center create-event-success"
+      >
+        <img
+          src="/assets/images/logo-xl.svg"
+          alt="logo"
+          class="create-event-logo mt-auto"
+        />
+        <p class="create-event-success-title">Event created</p>
+        <p class="create-event-success-subtitle">
+          You have successfully created your event
+        </p>
+        <div class="create-event-link-container">
+          <p class="create-event-link-text">
+            wishtide.com
+            <span class="create-event-link-highlight">/chuks-event-01</span>
+          </p>
+          <img
+            src="/assets/icons/copy.svg"
+            alt="copy"
+            class="create-event-copy-icon"
+          />
+        </div>
+        <div class="create-event-success-buttons">
+          <button class="create-event-share-btn d-md-none">Share</button>
+          <button class="create-event-home-btn" onclick="closeCreateEvent()">
+            Return home
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="form-state">
+      <div class="create-event-header">
+        <button onclick="handleBack()">
+          <img
+            src="/assets/icons/back-dark.svg"
+            alt="back"
+            class="create-event-nav-icon"
+          />
+        </button>
+        <div class="create-event-progress-container">
+          <div id="progress-1" class="create-event-progress-bar active"></div>
+          <div id="progress-2" class="create-event-progress-bar"></div>
+          <div id="progress-3" class="create-event-progress-bar"></div>
+        </div>
+        <button onclick="closeCreateEvent()">
+          <img
+            src="/assets/icons/close-dark.svg"
+            alt="close"
+            class="create-event-nav-icon"
+          />
+        </button>
+      </div>
+
+      <div class="create-event-content-scroll">
+        <div id="step-1" class="create-event-step">
+          <p class="create-event-section-title">Pre information</p>
+
+          <input
+            type="file"
+            class="d-none"
+            id="cover-input"
+            accept="image/*"
+            onchange="handleCoverChange(event)"
+          />
+          <label for="cover-input" class="create-event-cover-label">
+            <img
+              id="cover-preview"
+              src="/assets/images/upload-image.svg"
+              class="create-event-cover-image"
+              alt="cover"
+            />
+          </label>
+
+          <div class="create-event-input-group">
+            <input
+              type="text"
+              class="create-event-floating-input"
+              placeholder=" "
+              id="event-name"
+              required
+            />
+            <label for="event-name" class="create-event-floating-label">
+              Event name
+            </label>
+          </div>
+
+          <div class="create-event-input-group">
+            <textarea
+              class="create-event-floating-input create-event-textarea"
+              placeholder=" "
+              id="event-description"
+              required
+            ></textarea>
+            <label for="event-description" class="create-event-floating-label">
+              Description
+            </label>
+          </div>
+
+          <div class="create-event-input-group">
+            <input
+              type="text"
+              class="create-event-floating-input"
+              placeholder=" "
+              id="event-location"
+            />
+            <label for="event-location" class="create-event-floating-label">
+              Location
+            </label>
+          </div>
+
+          <p class="create-event-visibility-title">Visibility</p>
+          <div class="create-event-radio-group">
+            <div class="create-event-radio-item">
+              <p class="create-event-radio-label">Public</p>
+              <input
+                type="radio"
+                name="visibility"
+                value="public"
+                id="public"
+              />
+            </div>
+            <div class="create-event-radio-item">
+              <p class="create-event-radio-label">Friends</p>
+              <input
+                type="radio"
+                name="visibility"
+                value="friends"
+                id="friends"
+              />
+            </div>
+            <div class="create-event-radio-item">
+              <p class="create-event-radio-label">Invite-only</p>
+              <input
+                type="radio"
+                name="visibility"
+                value="invite-only"
+                id="invite-only"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div id="step-2" class="create-event-step d-none">
+          <p class="create-event-section-title mb-2">Date & Time</p>
+
+          <div class="create-event-input-group">
+            <input
+              type="date"
+              class="create-event-floating-input"
+              placeholder=" "
+              id="event-date"
+              required
+            />
+            <label for="event-date" class="create-event-floating-label">
+              Date
+            </label>
+          </div>
+
+          <div class="create-event-input-group">
+            <input
+              type="time"
+              class="create-event-floating-input"
+              placeholder=" "
+              id="event-time"
+              required
+            />
+            <label for="event-time" class="create-event-floating-label">
+              Time
+            </label>
+          </div>
+
+          <p class="create-event-section-title mb-2 mt-2">RSVP deadline</p>
+
+          <div class="create-event-input-group">
+            <input
+              type="date"
+              class="create-event-floating-input"
+              placeholder=" "
+              id="deadline-date"
+              required
+            />
+            <label for="deadline-date" class="create-event-floating-label">
+              Deadline
+            </label>
+          </div>
+
+          <div class="create-event-input-group">
+            <input
+              type="time"
+              class="create-event-floating-input"
+              placeholder=" "
+              id="deadline-time"
+              required
+            />
+            <label for="deadline-time" class="create-event-floating-label">
+              Time
+            </label>
+          </div>
+
+          <div class="create-event-comments-toggle">
+            <div>
+              <p class="create-event-toggle-title">Comments</p>
+              <p class="create-event-toggle-subtitle">Allow others comment</p>
+            </div>
+            <img
+              id="comments-toggle"
+              src="/assets/icons/toggle-off.svg"
+              alt="toggle"
+              class="create-event-toggle-icon"
+              onclick="toggleComments()"
+            />
+          </div>
+
+          <p class="create-event-wishlist-title">
+            Assign a wishlist to your event
+          </p>
+          <select class="create-event-select">
+            <option value="">-Select from existing wishlists-</option>
+          </select>
+
+          <div class="create-event-info-box">
+            You can come back to assign an existing wishlist to your event.
+            Also, it's optional and can be skipped
+          </div>
+        </div>
+
+        <div id="step-3" class="create-event-step d-none">
+          <p class="create-event-section-title mb-2">
+            Tag friends <span class="create-event-optional">(optional)</span>
+          </p>
+
+          <div class="create-event-search-container">
+            <input
+              type="text"
+              id="friend-search"
+              placeholder="Search for friends"
+              class="create-event-search-input"
+              oninput="handleFriendSearch(event)"
+            />
+            <div id="friend-dropdown" class="create-event-dropdown d-none">
+              <div class="create-event-friend-item"></div>
+            </div>
+          </div>
+
+          <div id="selected-friends"></div>
+        </div>
+      </div>
+
+      <div class="create-event-footer">
+        <button
+          id="cancel-btn"
+          class="create-event-cancel-btn"
+          onclick="handleBack()"
+        >
+          Cancel
+        </button>
+        <button
+          id="next-btn"
+          class="create-event-next-btn"
+          onclick="handleNext()"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<link rel="stylesheet" href="css/create-event.css" />
