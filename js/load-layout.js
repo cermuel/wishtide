@@ -64,22 +64,24 @@ function loadPageContent(page) {
       script.setAttribute("data-page-script", pageName);
 
       script.onload = async () => {
-        await loadRightSection();
-        if (page === "profile.html") {
-          const userInfo = document.getElementById("right-user-details");
-          if (userInfo) {
-            userInfo.classList.add("d-none");
+        if (page !== "settings.html") {
+          await loadRightSection();
+          if (page === "profile.html") {
+            const userInfo = document.getElementById("right-user-details");
+            if (userInfo) {
+              userInfo.classList.add("d-none");
+            }
           }
-        }
-        document.dispatchEvent(
-          new CustomEvent("pageLoaded", {
-            detail: { pageName },
-          })
-        );
-        renderSuggestedUsers();
+          document.dispatchEvent(
+            new CustomEvent("pageLoaded", {
+              detail: { pageName },
+            })
+          );
+          renderSuggestedUsers();
 
-        if (window.setActiveNav) {
-          window.setActiveNav();
+          if (window.setActiveNav) {
+            window.setActiveNav();
+          }
         }
       };
 

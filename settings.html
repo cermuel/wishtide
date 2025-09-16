@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wishtide</title>
+    <link rel="icon" type="image/svg+xml" href="assets/icons/logo-small.svg" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/settings.css" />
+    <link rel="stylesheet" href="css/notification.css" />
+  </head>
+  <body>
+    <div id="pageContent">
+      <div id="supportModal" class="modal-overlay d-none">
+        <button class="close-btn" onclick="closeSupportForm()">
+          <img src="/assets/icons/close.svg" alt="close" class="close-icon" />
+        </button>
+        <div class="modal-content">
+          <h1 class="modal-title">Support form</h1>
+          <div class="form-container">
+            <div class="floating-input-container">
+              <input
+                type="text"
+                class="floating-input"
+                placeholder=" "
+                id="name"
+                required
+              />
+              <label for="name" class="floating-label">Your name</label>
+            </div>
+            <div class="floating-input-container">
+              <input
+                type="email"
+                class="floating-input"
+                placeholder=" "
+                id="email"
+                required
+              />
+              <label for="email" class="floating-label">Email Address</label>
+            </div>
+            <div class="floating-input-container">
+              <input
+                type="text"
+                class="floating-input"
+                placeholder=" "
+                id="subject"
+                required
+              />
+              <label for="subject" class="floating-label">Subject</label>
+            </div>
+            <div class="floating-input-container">
+              <textarea
+                class="floating-input"
+                placeholder=" "
+                id="message"
+                required
+              ></textarea>
+              <label for="message" class="floating-label">Message</label>
+            </div>
+            <button class="btn btn-primary submit-btn">Send message</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="accountModal" class="modal-overlay d-none">
+        <div class="account-modal-content">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <img id="accountIcon" src="" class="account-icon" alt="" />
+            <span id="accountName" class="account-name"></span>
+          </div>
+          <p id="accountText" class="account-text"></p>
+          <div class="mb-3">
+            <p class="link-label">Link</p>
+            <input type="text" class="form-control link-input" />
+          </div>
+          <div class="d-flex gap-3">
+            <button
+              class="btn btn-outline-secondary flex-fill"
+              onclick="closeAccountModal()"
+            >
+              Cancel
+            </button>
+            <button class="btn btn-primary flex-fill submit-btn">Save</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="notification-header d-md-none">
+        <button
+          class="notification-back-btn"
+          id="back-btn"
+          onclick="backToSettings()"
+        >
+          <img src="/assets/icons/back.svg" alt="back" />
+        </button>
+        <h2 class="notification-title">Settings</h2>
+      </div>
+
+      <main class="main-content">
+        <section class="settings-list" id="settingsList">
+          <h2 class="settings-title d-none d-md-block">Settings</h2>
+          <div class="settings-card">
+            <button
+              class="setting-item"
+              onclick="selectSetting('edit-personal', 'Edit personal info')"
+            >
+              <img
+                src="/assets/icons/edit-personal.svg"
+                alt="edit-personal"
+                class="setting-icon"
+              />
+              <span class="setting-text">Edit personal info</span>
+              <img
+                src="/assets/icons/chevron.svg"
+                alt="chevron"
+                class="chevron-icon"
+              />
+            </button>
+            <button
+              class="setting-item"
+              onclick="selectSetting('edit-privacy', 'Privacy preferences')"
+            >
+              <img
+                src="/assets/icons/edit-privacy.svg"
+                alt="edit-privacy"
+                class="setting-icon"
+              />
+              <span class="setting-text">Privacy preferences</span>
+              <img
+                src="/assets/icons/chevron.svg"
+                alt="chevron"
+                class="chevron-icon"
+              />
+            </button>
+            <button
+              class="setting-item"
+              onclick="selectSetting('edit-password', 'Password setting')"
+            >
+              <img
+                src="/assets/icons/edit-password.svg"
+                alt="edit-password"
+                class="setting-icon"
+              />
+              <span class="setting-text">Password setting</span>
+              <img
+                src="/assets/icons/chevron.svg"
+                alt="chevron"
+                class="chevron-icon"
+              />
+            </button>
+            <button class="setting-item" onclick="toggleWishlistVisibility()">
+              <img
+                src="/assets/icons/edit-wishlist.svg"
+                alt="edit-wishlist"
+                class="setting-icon"
+              />
+              <span class="setting-text">Wishlist visibility</span>
+              <img
+                id="wishlistToggle"
+                src="/assets/icons/toggle-off.svg"
+                alt="toggle"
+                class="toggle-icon"
+              />
+            </button>
+            <button
+              class="setting-item"
+              onclick="selectSetting('edit-connected', 'Connected accounts')"
+            >
+              <img
+                src="/assets/icons/edit-connected.svg"
+                alt="edit-connected"
+                class="setting-icon"
+              />
+              <span class="setting-text">Connected accounts</span>
+              <img
+                src="/assets/icons/chevron.svg"
+                alt="chevron"
+                class="chevron-icon"
+              />
+            </button>
+            <button
+              class="setting-item"
+              onclick="selectSetting('edit-transaction', 'Transaction history')"
+            >
+              <img
+                src="/assets/icons/edit-transaction.svg"
+                alt="edit-transaction"
+                class="setting-icon"
+              />
+              <span class="setting-text">Transaction history</span>
+              <img
+                src="/assets/icons/chevron.svg"
+                alt="chevron"
+                class="chevron-icon"
+              />
+            </button>
+            <button
+              class="setting-item"
+              onclick="selectSetting('edit-faq', 'Help/FAQs')"
+            >
+              <img
+                src="/assets/icons/edit-faq.svg"
+                alt="edit-faq"
+                class="setting-icon"
+              />
+              <span class="setting-text">Help/FAQs</span>
+              <img
+                src="/assets/icons/chevron.svg"
+                alt="chevron"
+                class="chevron-icon"
+              />
+            </button>
+          </div>
+        </section>
+
+        <section
+          class="settings-content d-none d-md-block"
+          id="settingsContent"
+        >
+          <h2 class="content-title d-none d-md-block" id="contentTitle">
+            Settings
+          </h2>
+
+          <div id="edit-personal" class="content-section d-none">
+            <div class="form-container">
+              <div class="floating-input-container">
+                <input
+                  type="text"
+                  class="floating-input"
+                  placeholder=" "
+                  id="username"
+                  required
+                />
+                <label for="username" class="floating-label">Username</label>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="floating-input-container">
+                    <input
+                      type="text"
+                      class="floating-input"
+                      placeholder=" "
+                      id="firstname"
+                      required
+                    />
+                    <label for="firstname" class="floating-label"
+                      >Firstname</label
+                    >
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="floating-input-container">
+                    <input
+                      type="text"
+                      class="floating-input"
+                      placeholder=" "
+                      id="lastname"
+                      required
+                    />
+                    <label for="lastname" class="floating-label"
+                      >Lastname</label
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="floating-input-container">
+                <input
+                  type="date"
+                  class="floating-input"
+                  placeholder=" "
+                  id="dob"
+                  required
+                />
+                <label for="dob" class="floating-label">Date of birth</label>
+              </div>
+              <div class="floating-input-container">
+                <input
+                  type="email"
+                  class="floating-input"
+                  placeholder=" "
+                  id="emailEdit"
+                  required
+                />
+                <label for="emailEdit" class="floating-label"
+                  >Email Address</label
+                >
+              </div>
+              <div class="floating-input-container">
+                <textarea
+                  class="floating-input"
+                  placeholder=" "
+                  id="bio"
+                  required
+                ></textarea>
+                <label for="bio" class="floating-label">Bio</label>
+              </div>
+              <button class="btn btn-primary submit-btn">Update</button>
+            </div>
+          </div>
+
+          <div id="edit-password" class="content-section d-none">
+            <div class="form-container">
+              <div class="floating-input-container">
+                <input
+                  type="password"
+                  class="floating-input"
+                  placeholder=" "
+                  id="oldPassword"
+                  required
+                />
+                <label for="oldPassword" class="floating-label"
+                  >Old Password</label
+                >
+                <button
+                  type="button"
+                  class="password-toggle"
+                  onclick="togglePassword('oldPassword')"
+                >
+                  <img
+                    src="/assets/icons/eye.svg"
+                    alt="toggle password"
+                    class="eye-icon"
+                  />
+                </button>
+              </div>
+              <div class="floating-input-container">
+                <input
+                  type="password"
+                  class="floating-input"
+                  placeholder=" "
+                  id="newPassword"
+                  required
+                />
+                <label for="newPassword" class="floating-label"
+                  >New Password</label
+                >
+                <button
+                  type="button"
+                  class="password-toggle"
+                  onclick="togglePassword('newPassword')"
+                >
+                  <img
+                    src="/assets/icons/eye.svg"
+                    alt="toggle password"
+                    class="eye-icon"
+                  />
+                </button>
+              </div>
+              <div class="floating-input-container">
+                <input
+                  type="password"
+                  class="floating-input"
+                  placeholder=" "
+                  id="confirmPassword"
+                  required
+                />
+                <label for="confirmPassword" class="floating-label"
+                  >Re-enter New Password</label
+                >
+                <button
+                  type="button"
+                  class="password-toggle"
+                  onclick="togglePassword('confirmPassword')"
+                >
+                  <img
+                    src="/assets/icons/eye.svg"
+                    alt="toggle password"
+                    class="eye-icon"
+                  />
+                </button>
+              </div>
+              <button class="btn btn-primary submit-btn">
+                Change password
+              </button>
+            </div>
+          </div>
+
+          <div id="edit-privacy" class="content-section d-none">
+            <div class="form-container">
+              <div
+                class="preference-item"
+                onclick="togglePreference('contribution')"
+              >
+                <div>
+                  <p class="preference-title">Contribution history</p>
+                  <p class="preference-text">
+                    Allow others see what was you donated.
+                  </p>
+                </div>
+                <img
+                  id="contributionToggle"
+                  src="/assets/icons/toggle-off.svg"
+                  alt="toggle"
+                  class="toggle-icon"
+                />
+              </div>
+              <div
+                class="preference-item"
+                onclick="togglePreference('visibility')"
+              >
+                <div>
+                  <p class="preference-title">Birthday visibility</p>
+                  <p class="preference-text">
+                    Allow others see your birth date
+                  </p>
+                </div>
+                <img
+                  id="visibilityToggle"
+                  src="/assets/icons/toggle-off.svg"
+                  alt="toggle"
+                  class="toggle-icon"
+                />
+              </div>
+              <div
+                class="preference-item"
+                onclick="togglePreference('wishlistTagging')"
+              >
+                <div>
+                  <p class="preference-title">Wishlist tagging</p>
+                  <p class="preference-text">
+                    Allow others tag you to their wishlist
+                  </p>
+                </div>
+                <img
+                  id="wishlistTaggingToggle"
+                  src="/assets/icons/toggle-off.svg"
+                  alt="toggle"
+                  class="toggle-icon"
+                />
+              </div>
+              <div
+                class="preference-item"
+                onclick="togglePreference('eventTagging')"
+              >
+                <div>
+                  <p class="preference-title">Event tagging</p>
+                  <p class="preference-text">
+                    Allow others tag you to their event
+                  </p>
+                </div>
+                <img
+                  id="eventTaggingToggle"
+                  src="/assets/icons/toggle-off.svg"
+                  alt="toggle"
+                  class="toggle-icon"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div id="edit-connected" class="content-section d-none">
+            <div class="form-container">
+              <div
+                class="account-card"
+                onclick="editAccount('Stripe', '/assets/icons/stripe.svg', 'Securely connect your Stripe account to Wishtide to receive contributions directly to your wallet.')"
+              >
+                <img
+                  src="/assets/icons/stripe.svg"
+                  alt="Stripe"
+                  class="account-card-icon"
+                />
+                <p class="account-card-text">
+                  Securely connect your Stripe account to Wishtide to receive
+                  contributions directly to your wallet.
+                </p>
+                <button class="btn btn-outline-secondary edit-account-btn">
+                  <img
+                    src="/assets/icons/pencil.svg"
+                    class="pencil-icon"
+                    alt="pencil"
+                  />
+                  <span>Edit</span>
+                </button>
+              </div>
+              <div
+                class="account-card"
+                onclick="editAccount('Paypal', '/assets/icons/paypal.svg', 'Securely connect your PayPal account to Wishtide to receive contributions directly to your wallet.')"
+              >
+                <img
+                  src="/assets/icons/paypal.svg"
+                  alt="Paypal"
+                  class="account-card-icon"
+                />
+                <p class="account-card-text">
+                  Securely connect your PayPal account to Wishtide to receive
+                  contributions directly to your wallet.
+                </p>
+                <button class="btn btn-outline-secondary edit-account-btn">
+                  <img
+                    src="/assets/icons/pencil.svg"
+                    class="pencil-icon"
+                    alt="pencil"
+                  />
+                  <span>Edit</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div id="edit-transaction" class="content-section d-none">
+            <div class="form-container">
+              <div class="search-container">
+                <img
+                  src="/assets/icons/explore.svg"
+                  class="search-icon"
+                  alt="search"
+                />
+                <input
+                  type="text"
+                  class="form-control search-input"
+                  placeholder="Enter item name, user or events"
+                  onkeyup="filterTransactions(this.value)"
+                />
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="stat-card received-card">
+                    <h2 class="stat-amount received">$1500</h2>
+                    <p class="stat-label">Total contribution received</p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="stat-card made-card">
+                    <h2 class="stat-amount made">$1500</h2>
+                    <p class="stat-label">Total contribution made</p>
+                  </div>
+                </div>
+              </div>
+              <div id="transactionList">
+                <div
+                  class="transaction-card"
+                  data-wishlist="chuks birthday wishlist"
+                >
+                  <div class="transaction-header">
+                    <div class="transaction-icon received-bg">
+                      <img
+                        src="/assets/icons/arrow-received.svg"
+                        alt="received"
+                      />
+                    </div>
+                    <div class="transaction-info">
+                      <p class="transaction-type">Contribution received</p>
+                      <p class="transaction-wishlist">
+                        Chuks birthday wishlist
+                      </p>
+                    </div>
+                    <h2 class="transaction-amount received">$1500</h2>
+                  </div>
+                  <hr class="transaction-divider" />
+                  <div class="transaction-footer">
+                    <div>
+                      <p class="transaction-bank">Withdrawn HSBC Bank</p>
+                      <p class="transaction-id">ID: 16564894</p>
+                    </div>
+                    <div class="text-end">
+                      <p class="transaction-date-label">Date:</p>
+                      <p class="transaction-date">Feb 1, 2025</p>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="transaction-card"
+                  data-wishlist="sarah birthday wishlist"
+                >
+                  <div class="transaction-header">
+                    <div class="transaction-icon made-bg">
+                      <img src="/assets/icons/arrow-sent.svg" alt="sent" />
+                    </div>
+                    <div class="transaction-info">
+                      <p class="transaction-type">Contribution made</p>
+                      <p class="transaction-wishlist">
+                        Sarah birthday wishlist
+                      </p>
+                    </div>
+                    <h2 class="transaction-amount made">$1500</h2>
+                  </div>
+                  <hr class="transaction-divider" />
+                  <div class="transaction-footer">
+                    <div>
+                      <p class="transaction-bank">Withdrawn HSBC Bank</p>
+                      <p class="transaction-id">ID: 16548945</p>
+                    </div>
+                    <div class="text-end">
+                      <p class="transaction-date-label">Date:</p>
+                      <p class="transaction-date">Feb 1, 2025</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="edit-faq" class="content-section d-none">
+            <div class="form-container">
+              <div class="settings-card mb-4">
+                <button class="setting-item" onclick="showSupportFormFunc()">
+                  <img
+                    src="/assets/icons/edit-faq.svg"
+                    alt="support"
+                    class="setting-icon"
+                  />
+                  <span class="setting-text">Support form</span>
+                  <img
+                    src="/assets/icons/chevron.svg"
+                    alt="chevron"
+                    class="chevron-icon"
+                  />
+                </button>
+              </div>
+              <div class="settings-card">
+                <div class="faq-item">
+                  <p class="faq-question">❓What is Wishtide?</p>
+                  <p class="faq-answer">
+                    Wishtide is a social wishlist and gifting app that makes
+                    celebrations easier. You can create wishlists for birthdays,
+                    events, or causes, share them with friends, and contribute
+                    to others' wishes—all in one place.
+                  </p>
+                </div>
+                <div class="faq-item">
+                  <p class="faq-question">🎁 How do I create a wishlist?</p>
+                  <p class="faq-answer">
+                    Creating a wishlist is simple! Just tap "Create Wishlist",
+                    add the items or experiences you'd like, set privacy
+                    preferences (public, friends, or private), and share it with
+                    your circle.
+                  </p>
+                </div>
+                <div class="faq-item">
+                  <p class="faq-question">💸 How do contributions work?</p>
+                  <p class="faq-answer">
+                    Friends and supporters can contribute directly to your
+                    wishlist items or event fund using secure payment options
+                    like Stripe or PayPal. You'll be able to track contributions
+                    in real time, and contributors can choose to stay anonymous
+                    or be recognized.
+                  </p>
+                </div>
+                <div class="faq-item">
+                  <p class="faq-question">🔒 Can I trust the platform?</p>
+                  <p class="faq-answer">
+                    Absolutely. Wishtide uses trusted payment providers (Stripe
+                    and PayPal) to handle all transactions securely. You're
+                    always in control of your privacy settings, and you can
+                    decide who sees your wishlists and activities.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+  <script src="js/load-layout.js"></script>
+</html>

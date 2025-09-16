@@ -50,7 +50,7 @@ function renderWishlists() {
   const container = document.getElementById("wishlistItems");
   const emptyState = document.getElementById("wishlistsEmpty");
 
-  if (constants.wishlist.length > 0) {
+  if (constants?.wishlist?.length > 0) {
     emptyState.style.display = "none";
     container.innerHTML = constants.wishlist
       .map(
