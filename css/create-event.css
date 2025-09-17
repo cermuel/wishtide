@@ -40,7 +40,7 @@
 
 @media (max-width: 767.98px) {
   .create-event-content {
-    height: 100vh;
+    height: 100dvh;
     margin-bottom: 5rem;
   }
 }
