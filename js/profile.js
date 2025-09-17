@@ -1,21 +1,6 @@
 import { constants } from "./constants.js";
 import { home } from "./home.js";
-const contributions = [
-  {
-    name: "Tjaay Birthday wishlist",
-    gift: {
-      progress: 400,
-      target: 1000,
-    },
-  },
-  {
-    name: "Sandra Birthday wishlist",
-    gift: {
-      progress: 700,
-      target: 900,
-    },
-  },
-];
+const contributions = constants.contributions;
 
 function initializeTabs() {
   const tabs = document.querySelectorAll(".tab-btn");

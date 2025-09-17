@@ -1,0 +1,338 @@
+<div
+  id="create-wishlist-modal"
+  class="w-100 h-100 justify-content-center align-items-md-center align-items-end create-event-container"
+>
+  <div
+    id="create-wishlist-content"
+    class="bg-white d-flex flex-column create-event-content"
+    onclick="event.stopPropagation()"
+  >
+    <div id="success-state" class="d-none">
+      <div
+        class="d-flex flex-column flex-fill justify-content-center align-items-center create-event-success"
+      >
+        <img
+          src="/assets/images/logo-xl.svg"
+          alt="logo"
+          class="create-event-logo mt-auto"
+        />
+        <p class="create-event-success-title">Wishlist created</p>
+        <p class="create-event-success-subtitle">
+          You have successfully created your wishlist
+        </p>
+        <div class="create-event-link-container">
+          <p class="create-event-link-text">
+            wishtide.com
+            <span class="create-event-link-highlight">/chuks-wishlist-01</span>
+          </p>
+          <img
+            src="/assets/icons/copy.svg"
+            alt="copy"
+            class="create-event-copy-icon"
+          />
+        </div>
+        <div class="create-event-success-buttons">
+          <button class="create-event-share-btn d-md-none">Share</button>
+          <button class="create-event-home-btn" onclick="closeCreateWishlist()">
+            Return home
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="form-state">
+      <div class="create-event-header">
+        <button onclick="handleWishlistBack()">
+          <img
+            src="/assets/icons/back-dark.svg"
+            alt="back"
+            class="create-event-nav-icon"
+          />
+        </button>
+        <div class="create-event-progress-container">
+          <div id="progress-1" class="create-event-progress-bar active"></div>
+          <div id="progress-2" class="create-event-progress-bar"></div>
+          <div id="progress-3" class="create-event-progress-bar"></div>
+        </div>
+        <button onclick="closeCreateWishlist()">
+          <img
+            src="/assets/icons/close-dark.svg"
+            alt="close"
+            class="create-event-nav-icon"
+          />
+        </button>
+      </div>
+      <div class="create-event-content-scroll">
+        <div id="step-1" class="create-event-step">
+          <p class="create-event-section-title">Pre information</p>
+          <input
+            type="file"
+            class="d-none"
+            id="cover-input"
+            accept="image/*"
+            onchange="handleWishlistCoverChange(event)"
+          />
+          <label for="cover-input" class="create-event-cover-label">
+            <img
+              id="cover-preview"
+              src="/assets/images/upload-image.svg"
+              class="create-event-cover-image"
+              alt="cover"
+            />
+          </label>
+          <div class="create-event-input-group">
+            <input
+              type="text"
+              class="create-event-floating-input"
+              placeholder=" "
+              id="wishlist-title"
+              required
+            />
+            <label for="wishlist-title" class="create-event-floating-label">
+              Wishlist title
+            </label>
+          </div>
+          <div class="create-event-input-group">
+            <textarea
+              class="create-event-floating-input create-event-textarea"
+              placeholder=" "
+              id="wishlist-description"
+              required
+            ></textarea>
+            <label
+              for="wishlist-description"
+              class="create-event-floating-label"
+            >
+              Description
+            </label>
+          </div>
+          <p class="create-event-visibility-title">Visibility</p>
+          <div class="create-event-radio-group">
+            <div class="create-event-radio-item">
+              <p class="create-event-radio-label">Public</p>
+              <input
+                type="radio"
+                name="visibility"
+                value="public"
+                id="public"
+              />
+            </div>
+            <div class="create-event-radio-item">
+              <p class="create-event-radio-label">Private</p>
+              <input
+                type="radio"
+                name="visibility"
+                value="private"
+                id="private"
+              />
+            </div>
+          </div>
+          <p class="create-event-visibility-title">Contribution</p>
+          <div class="create-event-comments-toggle">
+            <div>
+              <p class="create-event-toggle-title">Enable/disable</p>
+            </div>
+            <img
+              id="contributions-toggle"
+              src="/assets/icons/toggle-off.svg"
+              alt="toggle"
+              class="create-event-toggle-icon"
+              onclick="toggleContributions()"
+            />
+          </div>
+        </div>
+        <div id="step-2" class="create-event-step d-none">
+          <div id="add-item-view">
+            <p class="create-event-section-title">Add Items</p>
+            <input
+              type="file"
+              class="d-none"
+              id="item-image-input"
+              accept="image/*"
+              onchange="handleItemImageChange(event)"
+            />
+            <label for="item-image-input" class="create-event-cover-label">
+              <img
+                id="item-image-preview"
+                src="/assets/images/upload-image.svg"
+                class="create-event-cover-image"
+                alt="item image"
+              />
+            </label>
+            <div class="create-event-input-group">
+              <input
+                type="text"
+                class="create-event-floating-input"
+                placeholder=" "
+                id="item-name"
+                required
+              />
+              <label for="item-name" class="create-event-floating-label">
+                Item name
+              </label>
+            </div>
+            <div class="create-event-input-group">
+              <input
+                type="url"
+                class="create-event-floating-input"
+                placeholder=" "
+                id="item-url"
+                required
+              />
+              <label for="item-url" class="create-event-floating-label">
+                Item URL
+              </label>
+            </div>
+            <div class="create-event-input-group">
+              <input
+                type="number"
+                class="create-event-floating-input"
+                placeholder=" "
+                id="item-price"
+                required
+              />
+              <label for="item-price" class="create-event-floating-label">
+                Price
+              </label>
+            </div>
+            <div class="create-event-input-group">
+              <textarea
+                class="create-event-floating-input create-event-textarea"
+                placeholder=" "
+                id="item-note"
+                required
+              ></textarea>
+              <label for="item-note" class="create-event-floating-label">
+                Additional note
+              </label>
+            </div>
+          </div>
+          <div id="items-list-view" class="d-none">
+            <div class="wishlist-header">
+              <h2
+                id="wishlist-title-display"
+                class="wishlist-title-display"
+              ></h2>
+              <p
+                id="wishlist-description-display"
+                class="wishlist-description-display"
+              ></p>
+            </div>
+            <div id="items-container" class="items-container"></div>
+            <div class="d-flex justify-content-center mt-auto">
+              <button class="add-new-item-btn" onclick="showAddItemView()">
+                Add new item
+              </button>
+            </div>
+          </div>
+        </div>
+        <div id="step-3" class="create-event-step d-none">
+          <p class="create-event-section-title mb-2">
+            Tag friends <span class="create-event-optional">(optional)</span>
+          </p>
+          <div class="create-event-search-container">
+            <input
+              type="text"
+              id="friend-search"
+              placeholder="Search for friends"
+              class="create-event-search-input"
+              oninput="handleWishlistFriendSearch(event)"
+            />
+            <div id="friend-dropdown" class="create-event-dropdown d-none">
+              <div class="create-event-friend-item"></div>
+            </div>
+          </div>
+          <div id="selected-friends"></div>
+        </div>
+      </div>
+      <div class="create-event-footer">
+        <button
+          id="cancel-btn"
+          class="create-event-cancel-btn"
+          onclick="handleWishlistBack()"
+        >
+          Cancel
+        </button>
+        <button
+          id="next-btn"
+          class="create-event-next-btn"
+          onclick="handleWishlistNext()"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+
+    <div id="item-edit-modal" class="item-edit-modal d-none">
+      <div class="item-edit-content">
+        <div class="item-edit-header">
+          <p class="item-edit-title">More Information</p>
+          <img
+            src="/assets/icons/close-dark.svg"
+            alt="close"
+            class="item-edit-close"
+            onclick="closeItemEditModal()"
+          />
+        </div>
+        <div class="item-edit-body">
+          <div class="create-event-input-group">
+            <input
+              type="text"
+              class="create-event-floating-input"
+              placeholder=" "
+              id="edit-item-name"
+              required
+            />
+            <label for="edit-item-name" class="create-event-floating-label">
+              Item name
+            </label>
+          </div>
+          <div class="create-event-input-group">
+            <input
+              type="url"
+              class="create-event-floating-input"
+              placeholder=" "
+              id="edit-item-url"
+              required
+            />
+            <label for="edit-item-url" class="create-event-floating-label">
+              Item URL
+            </label>
+          </div>
+          <div class="create-event-input-group">
+            <input
+              type="number"
+              class="create-event-floating-input"
+              placeholder=" "
+              id="edit-item-price"
+              required
+            />
+            <label for="edit-item-price" class="create-event-floating-label">
+              Price
+            </label>
+          </div>
+          <div class="create-event-input-group">
+            <textarea
+              class="create-event-floating-input create-event-textarea"
+              placeholder=" "
+              id="edit-item-note"
+              required
+            ></textarea>
+            <label for="edit-item-note" class="create-event-floating-label">
+              Additional note
+            </label>
+          </div>
+        </div>
+        <div class="create-event-footer">
+          <button class="create-event-cancel-btn" onclick="removeCurrentItem()">
+            Remove
+          </button>
+          <button class="create-event-next-btn" onclick="updateCurrentItem()">
+            Update
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<link rel="stylesheet" href="css/create-event.css" />
+<link rel="stylesheet" href="css/create-wishlist.css" />

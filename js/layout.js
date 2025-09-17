@@ -15,6 +15,18 @@ function loadCreateEvent() {
     });
 }
 
+function loadCreateWishlist() {
+  fetch("create-wishlist.html")
+    .then((response) => response.text())
+    .then((html) => {
+      document.getElementById("wishlist-modal").innerHTML = html;
+      const script = document.createElement("script");
+      script.src = "js/create-wishlist.js";
+      document.body.appendChild(script);
+      document.getElementById("wishlist-modal").classList.remove("hidden");
+    });
+}
+
 function unloadCreateEvent() {
   const modal = document.getElementById("wishlist-modal");
   modal.classList.add("hidden");
@@ -23,6 +35,22 @@ function unloadCreateEvent() {
             <div id="wishlist-details"></div>
           </div>`;
   const scripts = document.querySelectorAll('script[src="js/create-event.js"]');
+  scripts.forEach((script) => {
+    document.body.removeChild(script);
+    script.remove();
+  });
+}
+
+function unloadCreateWishlist() {
+  const modal = document.getElementById("wishlist-modal");
+  modal.classList.add("hidden");
+  modal.innerHTML = `<div class="modal-content">
+            <span class="close" onclick="closeWishlistModal()">×</span>
+            <div id="wishlist-details"></div>
+          </div>`;
+  const scripts = document.querySelectorAll(
+    'script[src="js/create-wishlist.js"]'
+  );
   scripts.forEach((script) => {
     document.body.removeChild(script);
     script.remove();
@@ -162,3 +190,5 @@ if (document.readyState === "loading") {
 }
 
 window.unloadCreateEvent = unloadCreateEvent;
+
+window.unloadCreateWishlist = unloadCreateWishlist;

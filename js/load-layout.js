@@ -39,7 +39,7 @@ function renderSuggestedUsers() {
 }
 
 function loadPageContent(page) {
-  const pageName = page.replace(".html", "");
+  const pageName = page.split("#")[0].replace(".html", "");
 
   document.querySelectorAll("script[data-page-script]").forEach((script) => {
     script.remove();

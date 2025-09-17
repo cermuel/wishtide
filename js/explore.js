@@ -152,7 +152,7 @@ function renderAccountsSection(filteredAccounts) {
                   ? filteredAccounts
                       .map(
                         (account) => `
-                  <a href="/account/${account.username}" class="d-flex align-items-center gap-2 text-decoration-none">
+                  <a href="/user.html#${account.username}" class="d-flex align-items-center gap-2 text-decoration-none">
                     <img src="${account.avatar}" class="rounded-circle" style="width: 2.5rem; height: 2.5rem; border: 1px solid rgba(18, 32, 35, 0.14);" alt="user">
                     <div>
                       <p class="mb-0" style="font-size: 0.8125rem; color: #151515;">${account.name}</p>

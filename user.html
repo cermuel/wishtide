@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wishtide - User Profile</title>
+    <link rel="icon" type="image/svg+xml" href="assets/icons/logo-small.svg" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/user.css" />
+    <link rel="stylesheet" href="css/notification.css" />
+    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/explore.css" />
+  </head>
+  <body>
+    <div id="pageContent">
+      <div class="modal-overlay" style="display: none" id="unfollowModal">
+        <div class="unfollow-modal">
+          <img
+            src="/assets/icons/warning.svg"
+            alt="warning"
+            class="warning-icon"
+          />
+          <p class="unfollow-text">
+            Are you sure you want to unfollow @<span id="usernameSpan"
+              >Chuks</span
+            >
+          </p>
+          <div class="modal-buttons">
+            <button class="modal-btn btn-cancel" onclick="closeUnfollowModal()">
+              No
+            </button>
+            <button class="modal-btn btn-confirm" onclick="confirmUnfollow()">
+              Yes
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-container" id="user-container">
+        <section class="left-section position-relative">
+          <h1 class="h2 fw-bold text-gray desktop-title mb-4">Profile</h1>
+
+          <div class="profile-header">
+            <div class="profile-image-container">
+              <img
+                src="/assets/images/user-2.svg"
+                alt="user"
+                class="profile-image"
+              />
+            </div>
+            <div class="profile-info">
+              <p class="fw-bold d-none d-md-block m-0" id="fullName">
+                Chukwuemeka Samuel
+              </p>
+              <p class="username" id="username">@Chuks</p>
+              <p class="bio">Just a chilled guy😎!</p>
+            </div>
+            <button class="follow-btn" id="followBtn" onclick="toggleFollow()">
+              <span id="followText">Follow Chuks</span>
+            </button>
+          </div>
+
+          <div class="stats-container">
+            <div class="stat-item">
+              <p class="stat-label">Wishlists</p>
+              <p class="stat-value">15</p>
+            </div>
+            <div class="stat-item stat-divider">
+              <p class="stat-label">Followers</p>
+              <p class="stat-value">2929</p>
+            </div>
+            <div class="stat-item">
+              <p class="stat-label">Following</p>
+              <p class="stat-value">45</p>
+            </div>
+          </div>
+
+          <div class="tabs-container-wrapper">
+            <div class="tabs-container">
+              <button class="tab-btn active" data-tab="wishlists">
+                Wishlists
+              </button>
+              <button class="tab-btn" data-tab="events">Events</button>
+              <button class="tab-btn" data-tab="contributions">
+                Contribution
+              </button>
+            </div>
+          </div>
+
+          <div class="content-area">
+            <div class="tab-content active" id="wishlists-content">
+              <div
+                class="d-flex flex-column align-items-center gap-4 gap-md-5 mt-4"
+                id="wishlistItems"
+              ></div>
+              <div class="empty-state" id="wishlistsEmpty">
+                <div class="empty-content">
+                  <img
+                    src="/assets/images/no-event.svg"
+                    alt="no wishlists"
+                    class="empty-image"
+                  />
+                  <h2 class="empty-title">No wishlists</h2>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content" id="events-content">
+              <div class="events-items" id="eventsItems"></div>
+              <div class="empty-state" id="eventsEmpty">
+                <div class="empty-content">
+                  <img
+                    src="/assets/images/no-event.svg"
+                    alt="no events"
+                    class="empty-image"
+                  />
+                  <h2 class="empty-title">No events</h2>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content" id="contributions-content">
+              <div class="contributions-grid" id="contributionsItems"></div>
+              <div class="empty-state" id="contributionsEmpty">
+                <div class="action-card">
+                  <button class="action-item">
+                    <img
+                      src="/assets/icons/plus.svg"
+                      alt="plus"
+                      class="action-icon-profile"
+                    />
+                    <span class="action-text">Add stripe/PayPal account</span>
+                    <img
+                      src="/assets/icons/chevron.svg"
+                      alt="chevron"
+                      class="chevron-icon"
+                    />
+                  </button>
+                  <button class="action-item border-top">
+                    <img
+                      src="/assets/icons/manage.svg"
+                      alt="manage"
+                      class="action-icon-profile"
+                    />
+                    <span class="action-text">Manage contributions</span>
+                    <img
+                      src="/assets/icons/chevron.svg"
+                      alt="chevron"
+                      class="chevron-icon"
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="right-section" class="right-section d-none d-md-block">
+          <div class="current-user">
+            <img
+              src="/assets/images/user.svg"
+              class="current-user-avatar"
+              alt="user"
+            />
+            <div>
+              <p class="current-user-name">Chukwuemeka</p>
+              <p class="current-user-username">@Chuks</p>
+            </div>
+          </div>
+          <h2 class="suggestions-title">Suggested for you</h2>
+          <ul class="suggestions-list" id="suggestionsList"></ul>
+        </section>
+      </div>
+    </div>
+
+    <script src="js/load-layout.js"></script>
+  </body>
+</html>

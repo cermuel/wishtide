@@ -90,8 +90,26 @@ const accounts = [
   },
 ];
 
+const contributions = [
+  {
+    name: "Tjaay Birthday wishlist",
+    gift: {
+      progress: 400,
+      target: 1000,
+    },
+  },
+  {
+    name: "Sandra Birthday wishlist",
+    gift: {
+      progress: 700,
+      target: 900,
+    },
+  },
+];
+
 export const constants = {
   wishlist,
   events,
   accounts,
+  contributions,
 };
