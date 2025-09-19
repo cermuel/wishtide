@@ -415,7 +415,7 @@
   line-height: 1.4;
 }
 
-.modal-overlay {
+.modal-overlay-settings {
   position: fixed;
   top: 0;
   left: 0;
@@ -535,7 +535,7 @@
     padding-bottom: 100px;
   }
 
-  .modal-overlay {
+  .modal-overlay-settings {
     padding: 16px;
   }
 }

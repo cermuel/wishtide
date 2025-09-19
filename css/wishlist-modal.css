@@ -50,7 +50,7 @@
 .wishlist-content {
   max-width: 800px;
   width: 100%;
-  max-height: 70dvh;
+  max-height: 70vh;
   overflow-y: scroll;
 }
 
@@ -194,7 +194,7 @@
 @media (max-height: 700px) {
   .wishlist-content {
     flex-direction: column !important;
-    max-height: 75dvh !important;
+    max-height: 75vh !important;
     overflow-y: auto;
   }
 }
@@ -205,7 +205,7 @@
 
   .wishlist-content {
     flex-direction: column !important;
-    max-height: 75dvh !important;
+    max-height: 75vh !important;
   }
   .wishlist-actions {
     border: 0 !important;
