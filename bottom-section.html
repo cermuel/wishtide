@@ -1,0 +1,79 @@
+<style>
+  .suggested-section {
+    overflow: hidden;
+    width: calc(100vw - 48px);
+  }
+
+  .suggested-title {
+    font-weight: bold;
+    color: #434343;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 18px;
+  }
+
+  .user-list {
+    display: flex;
+    align-items: flex-start;
+    overflow-x: scroll;
+    min-width: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .user-item {
+    flex-shrink: 0;
+    width: 33.333333%;
+    padding: 0 0.5rem;
+  }
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .user-avatar {
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    aspect-ratio: 1;
+  }
+
+  .user-name {
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: #242424;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .follow-btn-mobile {
+    background-color: rgba(109, 41, 217, 0.1);
+    border-radius: 0.25rem;
+    width: 100%;
+
+    border: none;
+    cursor: pointer;
+  }
+
+  .follow-text {
+    font-size: 0.6875rem;
+    color: #6d29d9;
+    letter-spacing: -0.025em;
+  }
+
+  @media (min-width: 768px) {
+    .suggested-section {
+      display: none !important;
+    }
+  }
+</style>
+
+<section class="suggested-section">
+  <h2 class="suggested-title">Suggested for you</h2>
+  <ul class="user-list" id="user-list"></ul>
+</section>

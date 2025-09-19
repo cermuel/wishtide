@@ -25,6 +25,11 @@
   padding: 0.375rem 3rem;
 }
 
+@media (max-width: 767px) {
+  .main-tabs-container {
+    width: 100%;
+  }
+}
 .sort-tab-btn {
   background: white;
   border: none;

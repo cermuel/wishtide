@@ -17,6 +17,48 @@ async function loadRightSection() {
   }
 }
 
+async function loadBottomSection() {
+  try {
+    const response = await fetch("bottom-section.html");
+    const html = await response.text();
+    const bottomSection = document.getElementById("bottom-section");
+    if (bottomSection) {
+      bottomSection.innerHTML = html;
+      return true;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    console.error("Error loading bottom section", error);
+    return false;
+  }
+}
+function renderSuggestedUsersMobile() {
+  const users = Array.from({ length: 8 }, (_, i) => ({
+    name: "Bintu Gbadamosi",
+    avatar: "/assets/images/friend.svg",
+  }));
+
+  const userList = document.getElementById("user-list");
+
+  users.forEach((user) => {
+    const listItem = document.createElement("li");
+    listItem.className = "user-item";
+
+    listItem.innerHTML = `
+            <div class="user-info">
+                <img src="${user.avatar}" 
+                     alt="friend" class="user-avatar">
+                <span class="user-name">${user.name}</span>
+            </div>
+            <button class="follow-btn-mobile">
+                <span class="follow-text">Follow</span>
+            </button>
+        `;
+
+    userList.appendChild(listItem);
+  });
+}
 function renderSuggestedUsers() {
   const container = document.getElementById("suggestedUsers");
   if (!container) return;
@@ -66,6 +108,10 @@ function loadPageContent(page) {
       script.onload = async () => {
         if (page !== "settings.html") {
           await loadRightSection();
+          if (page == "home.html") {
+            await loadBottomSection();
+            renderSuggestedUsersMobile();
+          }
           if (page === "profile.html") {
             const userInfo = document.getElementById("right-user-details");
             if (userInfo) {
@@ -77,6 +123,7 @@ function loadPageContent(page) {
               detail: { pageName },
             })
           );
+
           renderSuggestedUsers();
 
           if (window.setActiveNav) {
