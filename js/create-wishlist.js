@@ -9,9 +9,8 @@ let wishlistItems = [];
 let currentNewItem = {};
 let addItemView = true;
 let currentEditingItem = null;
-
-const modal = document.getElementById("create-wishlist-modal");
-const dummyFriends = [
+const wishlistModal = document.getElementById("create-wishlist-modal");
+const wishlistDummyFriends = [
   {
     id: 1,
     name: "Hammed Jude",
@@ -43,7 +42,6 @@ const dummyFriends = [
     image: "/assets/images/user-2.svg",
   },
 ];
-
 function initCreateWishlist() {
   currentWishlistStep = 1;
   wishlistCoverImage = null;
@@ -60,7 +58,6 @@ function initCreateWishlist() {
   updateWishlistProgressBar();
   updateWishlistButtonText();
 }
-
 function handleWishlistCoverChange(event) {
   const file = event.target.files[0];
   if (file) {
@@ -72,7 +69,6 @@ function handleWishlistCoverChange(event) {
     reader.readAsDataURL(file);
   }
 }
-
 function handleItemImageChange(event) {
   const file = event.target.files[0];
   if (file) {
@@ -84,7 +80,6 @@ function handleItemImageChange(event) {
     reader.readAsDataURL(file);
   }
 }
-
 function handleWishlistBack() {
   if (currentWishlistStep === 1) {
     closeCreateWishlist();
@@ -97,19 +92,15 @@ function handleWishlistBack() {
     updateWishlistButtonText();
   }
 }
-
 function handleWishlistNext() {
   if (currentWishlistStep === 1) {
     const titleInput = document.getElementById("wishlist-title");
     const descriptionInput = document.getElementById("wishlist-description");
-
     wishlistTitle = titleInput.value.trim();
     wishlistDescription = descriptionInput.value.trim();
-
     if (!wishlistTitle || !wishlistDescription) {
       return;
     }
-
     currentWishlistStep++;
     updateWishlistStepDisplay();
     updateWishlistProgressBar();
@@ -127,15 +118,12 @@ function handleWishlistNext() {
     submitWishlist();
   }
 }
-
 function handleAddWishlistItem() {
   const name = document.getElementById("item-name").value.trim();
   const url = document.getElementById("item-url").value.trim();
   const price = document.getElementById("item-price").value.trim();
   const note = document.getElementById("item-note").value.trim();
-
   if (!name) return;
-
   const newItem = {
     id: wishlistItems.length,
     name: name,
@@ -144,9 +132,7 @@ function handleAddWishlistItem() {
     note: note,
     img: currentNewItem.img || "/assets/images/upload-image.svg",
   };
-
   wishlistItems.push(newItem);
-
   document.getElementById("item-name").value = "";
   document.getElementById("item-url").value = "";
   document.getElementById("item-price").value = "";
@@ -154,34 +140,27 @@ function handleAddWishlistItem() {
   document.getElementById("item-image-preview").src =
     "/assets/images/upload-image.svg";
   currentNewItem = {};
-
   showItemsListView();
 }
-
 function showAddItemView() {
   addItemView = true;
   document.getElementById("add-item-view").classList.remove("d-none");
   document.getElementById("items-list-view").classList.add("d-none");
   updateWishlistButtonText();
 }
-
 function showItemsListView() {
   addItemView = false;
   document.getElementById("add-item-view").classList.add("d-none");
   document.getElementById("items-list-view").classList.remove("d-none");
-
   document.getElementById("wishlist-title-display").textContent = wishlistTitle;
   document.getElementById("wishlist-description-display").textContent =
     wishlistDescription;
-
   renderWishlistItems();
   updateWishlistButtonText();
 }
-
 function renderWishlistItems() {
   const container = document.getElementById("items-container");
   container.innerHTML = "";
-
   wishlistItems.forEach((item) => {
     const itemElement = document.createElement("div");
     itemElement.className = "wishlist-item";
@@ -219,33 +198,26 @@ function renderWishlistItems() {
     container.appendChild(itemElement);
   });
 }
-
 function toggleItemEdit(itemId) {
   const item = wishlistItems.find((i) => i.id === itemId);
   if (!item) return;
-
   currentEditingItem = { ...item };
-
   document.getElementById("edit-item-name").value = item.name;
   document.getElementById("edit-item-url").value = item.url;
   document.getElementById("edit-item-price").value = item.price;
   document.getElementById("edit-item-note").value = item.note;
   document.getElementById("item-edit-modal").classList.remove("d-none");
 }
-
 function closeItemEditModal() {
   document.getElementById("item-edit-modal").classList.add("d-none");
   currentEditingItem = null;
 }
-
 function updateCurrentItem() {
   if (!currentEditingItem) return;
-
   const name = document.getElementById("edit-item-name").value.trim();
   const url = document.getElementById("edit-item-url").value.trim();
   const price = document.getElementById("edit-item-price").value.trim();
   const note = document.getElementById("edit-item-note").value.trim();
-
   const itemIndex = wishlistItems.findIndex(
     (item) => item.id === currentEditingItem.id
   );
@@ -258,35 +230,29 @@ function updateCurrentItem() {
       note: note,
     };
   }
-
   renderWishlistItems();
   closeItemEditModal();
 }
-
 function removeCurrentItem() {
   if (!currentEditingItem) return;
-
   wishlistItems = wishlistItems.filter(
     (item) => item.id !== currentEditingItem.id
   );
   renderWishlistItems();
   closeItemEditModal();
 }
-
 function closeCreateWishlist() {
   currentWishlistStep = 1;
-  modal.style.display = "none";
+  wishlistModal.style.display = "none";
   toggleCreatePopup(false);
   unloadCreateWishlist();
 }
-
 function submitWishlist() {
   document.getElementById("form-state").classList.add("d-none");
   document.getElementById("success-state").classList.remove("d-none");
   const content = document.querySelector(".create-event-content");
   content.classList.add("success-mode");
 }
-
 function updateWishlistStepDisplay() {
   document.getElementById("step-1").classList.add("d-none");
   document.getElementById("step-2").classList.add("d-none");
@@ -294,12 +260,10 @@ function updateWishlistStepDisplay() {
   document
     .getElementById(`step-${currentWishlistStep}`)
     .classList.remove("d-none");
-
   if (currentWishlistStep === 2) {
     showAddItemView();
   }
 }
-
 function updateWishlistProgressBar() {
   for (let i = 1; i <= 3; i++) {
     const progressBar = document.getElementById(`progress-${i}`);
@@ -310,11 +274,9 @@ function updateWishlistProgressBar() {
     }
   }
 }
-
 function updateWishlistButtonText() {
   const nextBtn = document.getElementById("next-btn");
   const cancelBtn = document.getElementById("cancel-btn");
-
   if (currentWishlistStep === 2) {
     if (addItemView) {
       nextBtn.textContent = "Add Item";
@@ -330,7 +292,6 @@ function updateWishlistButtonText() {
     cancelBtn.style.display = "block";
   }
 }
-
 function toggleContributions() {
   enableContributions = !enableContributions;
   const toggleIcon = document.getElementById("contributions-toggle");
@@ -338,27 +299,22 @@ function toggleContributions() {
     ? "/assets/icons/toggle-on.svg"
     : "/assets/icons/toggle-off.svg";
 }
-
 function handleWishlistFriendSearch(event) {
   friendSearchTerm = event.target.value.toLowerCase();
   const dropdown = document.getElementById("friend-dropdown");
-
   if (friendSearchTerm === "") {
     dropdown.classList.add("d-none");
     return;
   }
-
-  const filteredFriends = dummyFriends.filter(
+  const filteredFriends = wishlistDummyFriends.filter(
     (friend) =>
       friend.name.toLowerCase().includes(friendSearchTerm) ||
       friend.username.toLowerCase().includes(friendSearchTerm)
   );
-
   if (filteredFriends.length === 0) {
     dropdown.classList.add("d-none");
     return;
   }
-
   dropdown.innerHTML = "";
   filteredFriends.forEach((friend) => {
     const friendItem = document.createElement("div");
@@ -384,7 +340,6 @@ function handleWishlistFriendSearch(event) {
   });
   dropdown.classList.remove("d-none");
 }
-
 function handleAddWishlistFriend(friend) {
   if (!selectedWishlistFriends.some((f) => f.id === friend.id)) {
     selectedWishlistFriends.push(friend);
@@ -394,14 +349,12 @@ function handleAddWishlistFriend(friend) {
     friendSearchTerm = "";
   }
 }
-
 function handleRemoveWishlistFriend(friendId) {
   selectedWishlistFriends = selectedWishlistFriends.filter(
     (friend) => friend.id !== friendId
   );
   updateSelectedWishlistFriends();
 }
-
 function updateSelectedWishlistFriends() {
   const container = document.getElementById("selected-friends");
   container.innerHTML = "";
@@ -428,7 +381,6 @@ function updateSelectedWishlistFriends() {
     container.appendChild(friendItem);
   });
 }
-
 document.addEventListener("click", function (event) {
   const searchContainer = document.querySelector(
     ".create-event-search-container"
@@ -438,7 +390,6 @@ document.addEventListener("click", function (event) {
     dropdown.classList.add("d-none");
   }
 });
-
 document.addEventListener("click", function (event) {
   const modal = document.getElementById("item-edit-modal");
   const content = document.querySelector(".item-edit-content");
@@ -450,13 +401,11 @@ document.addEventListener("click", function (event) {
     closeItemEditModal();
   }
 });
-
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", initCreateWishlist);
 } else {
   initCreateWishlist();
 }
-
 window.handleWishlistFriendSearch = handleWishlistFriendSearch;
 window.handleWishlistNext = handleWishlistNext;
 window.handleWishlistBack = handleWishlistBack;
