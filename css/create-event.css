@@ -26,7 +26,7 @@
   flex-direction: column;
   flex: 1;
 }
-@media (min-width: 768px) {
+@media (min-width: 770px) {
   .create-event-content {
     height: 85vh;
     border-radius: 1.5rem;

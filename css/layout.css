@@ -147,7 +147,7 @@ body {
   align-items: flex-end;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 770px) {
   .create-popup {
     align-items: center;
   }
@@ -181,7 +181,7 @@ body {
   margin-bottom: 5rem;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 770px) {
   .popup-inner {
     flex-direction: row;
     padding: 2.5rem;
@@ -203,7 +203,7 @@ body {
   border: none;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 770px) {
   .popup-btn {
     flex-direction: column;
     align-items: flex-start;
@@ -218,7 +218,7 @@ body {
   width: 18px;
   aspect-ratio: 1 / 1;
 }
-@media (min-width: 768px) {
+@media (min-width: 770px) {
   .wishlist-icon {
     width: 28px;
   }
@@ -228,7 +228,7 @@ body {
   width: 14px;
   aspect-ratio: 1 / 1;
 }
-@media (min-width: 768px) {
+@media (min-width: 770px) {
   .event-icon {
     width: 24px;
   }
@@ -239,7 +239,7 @@ body {
   font-weight: 700;
   font-size: 1rem;
 }
-@media (min-width: 768px) {
+@media (min-width: 770px) {
   .popup-label {
     font-size: 1.125rem;
   }
@@ -252,7 +252,7 @@ body {
   border-top: 0.5px solid rgba(18, 32, 35, 0.14);
   margin: 0.5rem 0;
 }
-@media (min-width: 768px) {
+@media (min-width: 770px) {
   .popup-divider {
     display: none;
   }
@@ -275,7 +275,7 @@ body {
   font-weight: 700;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 770px) {
   .create-popup {
     align-items: center;
   }

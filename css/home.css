@@ -404,7 +404,7 @@ body {
   margin-bottom: 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 770px) {
   .main-container {
     flex-direction: column;
   }

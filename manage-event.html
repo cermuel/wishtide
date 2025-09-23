@@ -1,0 +1,258 @@
+<div id="manage-event-modal" class="manage-event-overlay">
+  <div id="untag-friend-modal" class="confirmation-modal d-none">
+    <div class="confirmation-content">
+      <img src="/assets/icons/warning.svg" alt="warning" class="warning-icon" />
+      <p class="confirmation-text">
+        Are you sure you want to untag @<span id="untag-username">cermuel</span>
+      </p>
+      <div class="confirmation-buttons">
+        <button
+          onclick="cancelUntagFriend()"
+          class="confirmation-btn-secondary"
+        >
+          No
+        </button>
+        <button onclick="confirmUntagFriend()" class="confirmation-btn-primary">
+          Yes
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="delete-event-modal" class="confirmation-modal d-none">
+    <div class="confirmation-content">
+      <img src="/assets/icons/warning.svg" alt="warning" class="warning-icon" />
+      <p class="confirmation-text">
+        Are you sure you want to delete this event
+      </p>
+      <div class="confirmation-buttons">
+        <button
+          onclick="cancelDeleteEvent()"
+          class="confirmation-btn-secondary"
+        >
+          No
+        </button>
+        <button onclick="confirmDeleteEvent()" class="confirmation-btn-primary">
+          Yes
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <button class="modal-close-btn" onclick="closeManageEvent()">
+    <img
+      src="/assets/icons/close.svg"
+      alt="close"
+      class="close-icon-event d-none d-md-block"
+    />
+    <img
+      src="/assets/icons/close-dark.svg"
+      alt="close"
+      class="close-icon-event d-block d-md-none"
+    />
+  </button>
+
+  <div onclick="event.stopPropagation()" class="manage-event-content">
+    <div class="manage-event-header">
+      <button id="back-btn" class="d-none" onclick="handleBack()">
+        <img src="/assets/icons/back-dark.svg" alt="back" />
+      </button>
+      <p id="modal-title" class="manage-event-title">Manage events</p>
+      <div class="ml-auto d-none" id="spacer"></div>
+    </div>
+
+    <div class="manage-event-scroll">
+      <div id="no-events-state" class="no-events-container d-none">
+        <img
+          src="/assets/images/no-event.svg"
+          alt="no event"
+          class="no-event-icon"
+        />
+        <p class="no-event-text">No new event</p>
+      </div>
+
+      <div id="events-content" class="events-content">
+        <div id="events-list-view" class="events-list-container">
+          <div class="tabs-container-event">
+            <p
+              class="tab-item active"
+              data-tab="upcoming"
+              onclick="switchTab('upcoming')"
+            >
+              Upcoming events
+            </p>
+            <p class="tab-item" data-tab="past" onclick="switchTab('past')">
+              Past events
+            </p>
+          </div>
+
+          <div id="events-list" class="events-list"></div>
+        </div>
+
+        <div id="event-detail-view" class="event-detail-container d-none">
+          <div id="tagged-view" class="tagged-container d-none">
+            <div id="no-tagged-friends" class="no-content-message d-none">
+              <p class="no-content-text">No tagged friends</p>
+            </div>
+            <div id="tagged-friends-list" class="d-none">
+              <h2 class="section-title">Tagged friends list</h2>
+              <div id="tagged-friends-container"></div>
+            </div>
+          </div>
+
+          <div id="rsvp-view" class="rsvp-container d-none">
+            <div id="no-rsvp-participants" class="no-content-message d-none">
+              <p class="no-content-text">No participants</p>
+            </div>
+            <div id="rsvp-participants-list" class="d-none">
+              <h2 class="section-title">
+                RSVP list : <span id="rsvp-count">0</span> persons
+              </h2>
+              <div id="rsvp-participants-container"></div>
+            </div>
+          </div>
+
+          <div id="event-main-view">
+            <div class="event-card">
+              <section class="event-image-section">
+                <img
+                  id="event-detail-image"
+                  src=""
+                  alt="event image"
+                  class="event-detail-image"
+                />
+                <div class="event-days-badge">
+                  <img src="/assets/icons/clock.svg" class="clock-icon" />
+                  <span id="event-days">0 days</span>
+                </div>
+              </section>
+              <section class="event-info-section">
+                <div class="event-header-info">
+                  <img
+                    id="event-user-image"
+                    src=""
+                    alt="user"
+                    class="event-user-image"
+                  />
+                  <span id="event-name" class="event-name-title"></span>
+                  <div class="tagged-info">
+                    <span class="tagged-text">Tagged</span>
+                    <div
+                      id="tagged-avatars"
+                      class="tagged-avatars-container"
+                    ></div>
+                  </div>
+                </div>
+                <div class="event-meta-info">
+                  <img
+                    src="/assets/icons/calendar.svg"
+                    alt="calendar"
+                    class="calendar-icon"
+                  />
+                  <p id="event-date" class="event-meta-badge"></p>
+                  <p
+                    id="event-status"
+                    class="event-meta-badge event-status-desktop"
+                  ></p>
+                  <p id="event-rsvp-count" class="event-meta-badge"></p>
+                </div>
+                <p id="event-description" class="event-description"></p>
+              </section>
+            </div>
+
+            <div class="action-card mt-4" onclick="viewTaggedUsers()">
+              <div class="action-icon-container tag-icon-bg">
+                <img
+                  src="/assets/icons/tag.svg"
+                  alt="tag"
+                  class="action-icon tag-icon"
+                />
+              </div>
+              <p class="action-text">View tagged users</p>
+              <img
+                src="/assets/icons/chevron.svg"
+                class="chevron-icon"
+                alt="chevron"
+              />
+            </div>
+
+            <div class="action-card" onclick="viewRSVPList()">
+              <div class="action-icon-container rsvp-icon-bg">
+                <img
+                  src="/assets/icons/calendar-blue.svg"
+                  alt="calendar"
+                  class="action-icon rsvp-icon"
+                />
+              </div>
+              <div class="action-content">
+                <p class="action-text">
+                  RSVP Count:
+                  <span id="rsvp-count-text" class="rsvp-count-highlight"
+                    >20</span
+                  >
+                </p>
+                <p class="action-subtitle">Tap to view guest list</p>
+              </div>
+              <img
+                src="/assets/icons/chevron.svg"
+                class="chevron-icon"
+                alt="chevron"
+              />
+            </div>
+
+            <div class="gift-progress-card">
+              <div class="gift-progress-header">
+                <div class="action-icon-container gift-icon-bg">
+                  <img
+                    src="/assets/images/logo-xl.svg"
+                    alt="logo"
+                    class="action-icon"
+                  />
+                </div>
+                <p class="gift-progress-title">Gift progress</p>
+              </div>
+              <div class="gift-progress-content">
+                <div class="progress-bar-container">
+                  <div id="progress-bar" class="progress-bar"></div>
+                </div>
+                <div class="progress-info">
+                  <p class="progress-text">
+                    Contributed:
+                    <span id="contributed-amount" class="progress-amount"
+                      >$0</span
+                    >
+                  </p>
+                  <p class="progress-text">
+                    Goal:
+                    <span id="goal-amount" class="progress-amount">$0</span>
+                  </p>
+                </div>
+              </div>
+              <div class="wishlist-link">
+                <p class="wishlist-text">View linked wishlist</p>
+                <img
+                  src="/assets/icons/arrow-sent.svg"
+                  class="wishlist-arrow"
+                  alt="arrow"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="manage-event-footer">
+      <div id="single-event-footer" class="single-event-buttons d-none">
+        <button class="footer-btn-secondary">Edit/Update</button>
+      </div>
+      <div id="manage-event-footer" class="manage-event-buttons d-none">
+        <button onclick="showDeleteConfirmation()" class="footer-btn-danger">
+          Delete
+        </button>
+        <button class="footer-btn-primary">Edit</button>
+      </div>
+    </div>
+  </div>
+</div>
+<link id="manage-event-css" rel="stylesheet" href="css/manage-event.css" />

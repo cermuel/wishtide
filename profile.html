@@ -18,6 +18,8 @@
     <div id="pageContent">
       <div class="main-container" id="profile-container">
         <section class="left-section position-relative">
+          <div id="manage-event"></div>
+          <div id="manage-wishlist"></div>
           <h1 class="h2 fw-bold text-gray desktop-title mb-4">Profile</h1>
 
           <div class="profile-header">
@@ -47,7 +49,7 @@
             </button>
             <button
               class="action-btn"
-              onclick="window.location.href='settings.html'"
+              onclick="navigateToPage('settings.html')"
             >
               <img
                 src="/assets/icons/settings.svg"
@@ -86,7 +88,7 @@
           <div class="content-area">
             <div class="tab-content active" id="wishlists-content">
               <div
-                class="d-flex flex-column align-items-center gap-4 gap-md-5 mt-4"
+                class="d-flex flex-column align-items-center gap-4 gap-md-5 mt-4 mb-4"
                 id="wishlistItems"
               ></div>
               <div class="empty-state" id="wishlistsEmpty">
@@ -108,34 +110,37 @@
                   </div>
                   <img src="/assets/images/logo-xl.svg" alt="wishtide" />
                 </div>
-                <div class="action-card">
-                  <button class="action-item">
-                    <img
-                      src="/assets/icons/plus.svg"
-                      alt="plus"
-                      class="action-icon-profile"
-                    />
-                    <span class="action-text">Create wishlist</span>
-                    <img
-                      src="/assets/icons/chevron.svg"
-                      alt="chevron"
-                      class="chevron-icon"
-                    />
-                  </button>
-                  <button class="action-item border-top">
-                    <img
-                      src="/assets/icons/manage.svg"
-                      alt="manage"
-                      class="action-icon-profile"
-                    />
-                    <span class="action-text">Manage wishlists</span>
-                    <img
-                      src="/assets/icons/chevron.svg"
-                      alt="chevron"
-                      class="chevron-icon"
-                    />
-                  </button>
-                </div>
+              </div>
+              <div class="action-card">
+                <button class="action-item">
+                  <img
+                    src="/assets/icons/plus.svg"
+                    alt="plus"
+                    class="action-icon-profile"
+                  />
+                  <span class="action-text">Create wishlist</span>
+                  <img
+                    src="/assets/icons/chevron.svg"
+                    alt="chevron"
+                    class="chevron-icon"
+                  />
+                </button>
+                <button
+                  class="action-item border-top"
+                  onclick="loadManageWishlist()"
+                >
+                  <img
+                    src="/assets/icons/manage.svg"
+                    alt="manage"
+                    class="action-icon-profile"
+                  />
+                  <span class="action-text">Manage wishlists</span>
+                  <img
+                    src="/assets/icons/chevron.svg"
+                    alt="chevron"
+                    class="chevron-icon"
+                  />
+                </button>
               </div>
             </div>
 
@@ -164,34 +169,37 @@
                     class="no-event-img"
                   />
                 </div>
-                <div class="action-card">
-                  <button class="action-item">
-                    <img
-                      src="/assets/icons/plus.svg"
-                      alt="plus"
-                      class="action-icon-profile"
-                    />
-                    <span class="action-text">Create your event</span>
-                    <img
-                      src="/assets/icons/chevron.svg"
-                      alt="chevron"
-                      class="chevron-icon"
-                    />
-                  </button>
-                  <button class="action-item border-top">
-                    <img
-                      src="/assets/icons/manage.svg"
-                      alt="manage"
-                      class="action-icon-profile"
-                    />
-                    <span class="action-text">Manage events</span>
-                    <img
-                      src="/assets/icons/chevron.svg"
-                      alt="chevron"
-                      class="chevron-icon"
-                    />
-                  </button>
-                </div>
+              </div>
+              <div class="action-card">
+                <button class="action-item">
+                  <img
+                    src="/assets/icons/plus.svg"
+                    alt="plus"
+                    class="action-icon-profile"
+                  />
+                  <span class="action-text">Create your event</span>
+                  <img
+                    src="/assets/icons/chevron.svg"
+                    alt="chevron"
+                    class="chevron-icon"
+                  />
+                </button>
+                <button
+                  class="action-item border-top"
+                  onclick="loadManageEvent()"
+                >
+                  <img
+                    src="/assets/icons/manage.svg"
+                    alt="manage"
+                    class="action-icon-profile"
+                  />
+                  <span class="action-text">Manage events</span>
+                  <img
+                    src="/assets/icons/chevron.svg"
+                    alt="chevron"
+                    class="chevron-icon"
+                  />
+                </button>
               </div>
             </div>
 

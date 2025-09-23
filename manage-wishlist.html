@@ -1,0 +1,261 @@
+<div
+  id="manage-wishlist-modal"
+  class="w-100 h-100 justify-content-center align-items-md-center align-items-end manage-wishlist-container"
+>
+  <button
+    class="position-absolute manage-wishlist-close-btn"
+    onclick="closeManageWishlist()"
+  >
+    <img
+      src="/assets/icons/close.svg"
+      alt="close"
+      class="close-icon-event d-none d-md-block"
+    />
+    <img
+      src="/assets/icons/close-dark.svg"
+      alt="close"
+      class="close-icon-event d-block d-md-none"
+    />
+  </button>
+  <div
+    id="manage-wishlist-content"
+    class="bg-white d-flex flex-column manage-wishlist-content"
+    onclick="event.stopPropagation()"
+  >
+    <div class="manage-wishlist-header">
+      <button
+        id="back-btn"
+        class="manage-wishlist-back-btn d-none"
+        onclick="handleBackNavigation()"
+      >
+        <img src="/assets/icons/back-dark.svg" alt="back" />
+      </button>
+      <p id="header-title" class="manage-wishlist-title">Manage Wishlist</p>
+    </div>
+
+    <div class="manage-wishlist-scroll-container">
+      <div id="no-wishlist-state" class="manage-wishlist-no-content d-none">
+        <div class="manage-wishlist-search-container">
+          <img
+            src="/assets/icons/explore.svg"
+            class="manage-wishlist-search-icon"
+            alt="search"
+          />
+          <input
+            type="text"
+            class="manage-wishlist-search-input"
+            placeholder="Enter wishlist name"
+            id="wishlist-search-empty"
+          />
+        </div>
+        <img
+          src="/assets/images/logo-xl.svg"
+          alt="no wishlist"
+          class="manage-wishlist-empty-logo"
+        />
+        <p class="manage-wishlist-empty-text">No wishlist</p>
+      </div>
+
+      <div id="wishlist-list-state" class="manage-wishlist-list-content">
+        <div class="manage-wishlist-search-container">
+          <img
+            src="/assets/icons/explore.svg"
+            class="manage-wishlist-search-icon"
+            alt="search"
+          />
+          <input
+            type="text"
+            class="manage-wishlist-search-input"
+            placeholder="Enter wishlist name"
+            id="wishlist-search"
+            oninput="handleWishlistSearch(event)"
+          />
+        </div>
+        <div id="wishlist-items-container" class="manage-wishlist-items"></div>
+      </div>
+
+      <div id="selected-wishlist-state" class="manage-wishlist-selected d-none">
+        <div class="manage-wishlist-header-card">
+          <div class="manage-wishlist-header-image-container">
+            <img
+              id="selected-wishlist-image"
+              src=""
+              alt="wishlist image"
+              class="manage-wishlist-header-image"
+            />
+          </div>
+          <div class="manage-wishlist-header-info">
+            <div class="manage-wishlist-user-info">
+              <img
+                id="selected-wishlist-user-avatar"
+                src=""
+                alt="user"
+                class="manage-wishlist-user-avatar"
+              />
+              <span
+                id="selected-wishlist-name"
+                class="manage-wishlist-user-name"
+              ></span>
+            </div>
+            <p
+              id="selected-wishlist-description"
+              class="manage-wishlist-description"
+            ></p>
+          </div>
+        </div>
+
+        <div class="manage-wishlist-item-card">
+          <div class="manage-wishlist-item-image-container">
+            <img
+              id="current-item-image"
+              src=""
+              alt="item image"
+              class="manage-wishlist-item-image"
+            />
+            <button
+              id="prev-item-btn"
+              class="manage-wishlist-nav-btn manage-wishlist-nav-prev d-none"
+              onclick="navigateItem(-1)"
+            >
+              <img
+                src="/assets/icons/chevron-grey.svg"
+                alt="previous"
+                class="manage-wishlist-nav-icon"
+              />
+            </button>
+            <button
+              id="next-item-btn"
+              class="manage-wishlist-nav-btn manage-wishlist-nav-next d-none"
+              onclick="navigateItem(1)"
+            >
+              <img
+                src="/assets/icons/chevron-grey.svg"
+                alt="next"
+                class="manage-wishlist-nav-icon manage-wishlist-nav-next-icon"
+              />
+            </button>
+          </div>
+
+          <div class="manage-wishlist-item-details">
+            <p id="current-item-name" class="manage-wishlist-item-name"></p>
+
+            <div class="manage-wishlist-progress-container">
+              <div id="progress-bar" class="manage-wishlist-progress-bar"></div>
+            </div>
+
+            <div class="manage-wishlist-progress-text">
+              <p class="manage-wishlist-progress-label">
+                Contributed:
+                <span
+                  id="contributed-amount"
+                  class="manage-wishlist-progress-value"
+                ></span>
+              </p>
+              <p class="manage-wishlist-progress-label">
+                Goal:
+                <span
+                  id="goal-amount"
+                  class="manage-wishlist-progress-value"
+                ></span>
+              </p>
+            </div>
+
+            <div class="manage-wishlist-actions">
+              <button class="manage-wishlist-action-btn">
+                <img
+                  src="/assets/icons/like.svg"
+                  alt="like"
+                  class="manage-wishlist-action-icon"
+                />
+              </button>
+              <button class="manage-wishlist-action-btn">
+                <img
+                  src="/assets/icons/comment.svg"
+                  alt="comment"
+                  class="manage-wishlist-action-icon"
+                />
+              </button>
+              <button class="manage-wishlist-action-btn">
+                <img
+                  src="/assets/icons/share.svg"
+                  alt="share"
+                  class="manage-wishlist-action-icon"
+                />
+              </button>
+            </div>
+
+            <div class="manage-wishlist-likes-section">
+              <div
+                id="likes-avatars"
+                class="manage-wishlist-likes-avatars"
+              ></div>
+              <p class="manage-wishlist-likes-text" onclick="showLikes()">
+                Liked by <strong>Chuks</strong> & <strong>more</strong>
+              </p>
+            </div>
+
+            <div class="manage-wishlist-divider"></div>
+
+            <div
+              class="manage-wishlist-contributors-btn"
+              onclick="showContributors()"
+            >
+              <p class="manage-wishlist-contributors-text">
+                View contributors list
+              </p>
+              <img
+                src="/assets/icons/arrow-sent.svg"
+                class="manage-wishlist-contributors-icon"
+                alt="arrow"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="contributors-state" class="manage-wishlist-contributors d-none">
+        <div
+          id="contributors-content"
+          class="manage-wishlist-contributors-content"
+        >
+          <div class="manage-wishlist-no-content">
+            <p class="manage-wishlist-empty-text">No contributions</p>
+          </div>
+        </div>
+        <div
+          id="contributors-list"
+          class="manage-wishlist-contributors-list d-none"
+        >
+          <h2 class="manage-wishlist-contributors-title">Contributors</h2>
+          <div
+            id="contributors-items"
+            class="manage-wishlist-contributors-items"
+          ></div>
+        </div>
+      </div>
+
+      <div id="likes-state" class="manage-wishlist-likes d-none">
+        <div id="likes-content" class="manage-wishlist-likes-content">
+          <div class="manage-wishlist-no-content">
+            <p class="manage-wishlist-empty-text">No likes yet</p>
+          </div>
+        </div>
+        <div id="likes-list" class="manage-wishlist-likes-list d-none">
+          <div id="likes-items" class="manage-wishlist-likes-items"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="manage-wishlist-footer">
+      <button id="edit-btn" class="manage-wishlist-edit-btn d-none">
+        Edit/Update
+      </button>
+    </div>
+  </div>
+</div>
+
+<link
+  id="manage-wishlist-css"
+  rel="stylesheet"
+  href="css/manage-wishlist.css"
+/>

@@ -232,6 +232,41 @@ function renderContributions() {
   }
 }
 
+function loadManageEvent() {
+  fetch("manage-event.html")
+    .then((response) => response.text())
+    .then((html) => {
+      document.getElementById("manage-event").innerHTML = html;
+      const existingScript = document.getElementById("manage-event-script");
+      if (!existingScript) {
+        const script = document.createElement("script");
+        script.id = "manage-event-script";
+        script.src = "js/manage-event.js";
+        script.onload = () => {
+          window.initializeManageEvent();
+        };
+        document.body.appendChild(script);
+      } else {
+        window.initializeManageEvent();
+      }
+    });
+}
+
+function loadManageWishlist() {
+  fetch("manage-wishlist.html")
+    .then((response) => response.text())
+    .then((html) => {
+      document.getElementById("manage-wishlist").innerHTML = html;
+      const script = document.createElement("script");
+      script.id = "manage-wishlist-script";
+      script.src = "js/manage-wishlist.js";
+      script.onload = function () {
+        initializeManageWishlist();
+      };
+      document.body.appendChild(script);
+    });
+}
+
 document.addEventListener("pageLoaded", function () {
   initializeTabs();
   renderWishlists();
@@ -247,3 +282,5 @@ document.addEventListener("click", function (e) {
 });
 
 window.toggleQR = toggleQR;
+window.loadManageEvent = loadManageEvent;
+window.loadManageWishlist = loadManageWishlist;
