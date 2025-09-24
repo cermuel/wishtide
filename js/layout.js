@@ -39,9 +39,19 @@ function loadContribute() {
       const script = document.createElement("script");
       script.src = "js/contribute.js";
       script.id = "contribute-script";
-      script.onload = function () {
-        initializeContribute();
-      };
+
+      document.body.appendChild(script);
+    });
+}
+function loadRSVP() {
+  fetch("rsvp.html")
+    .then((response) => response.text())
+    .then((html) => {
+      document.getElementById("rsvp-modal").innerHTML = html;
+      const script = document.createElement("script");
+      script.src = "js/rsvp.js";
+      script.id = "rsvp-script";
+
       document.body.appendChild(script);
     });
 }
@@ -213,3 +223,4 @@ if (document.readyState === "loading") {
 window.unloadCreateEvent = unloadCreateEvent;
 window.unloadCreateWishlist = unloadCreateWishlist;
 window.loadContribute = loadContribute;
+window.loadRSVP = loadRSVP;

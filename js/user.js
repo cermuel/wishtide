@@ -229,7 +229,7 @@ function renderEvents() {
               <span>View wishlist</span>
               <img src="/assets/icons/open.svg" style="width: 1.125rem;" alt="open">
             </button>
-            <button class="event-btn btn-primary">
+            <button onclick="loadRSVP()" class="event-btn btn-primary">
               <span>RSVP Now</span>
               <img src="/assets/icons/open-white.svg" style="width: 1.125rem;" alt="open">
             </button>

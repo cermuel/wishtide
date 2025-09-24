@@ -1,0 +1,254 @@
+<div
+  id="rsvp-modal-main"
+  class="w-100 h-100 justify-content-center align-items-md-center align-items-end rsvp-container"
+>
+  <div id="add-to-calendar-modal" class="d-none">
+    <div
+      class="position-fixed w-100 h-100 top-0 start-0 d-flex align-items-center justify-content-center bg-black bg-opacity-10"
+      style="z-index: 20"
+    >
+      <div
+        class="bg-white border rounded-4 p-5 d-flex flex-column gap-3 align-items-center"
+        style="border-color: #d7d7d7"
+      >
+        <img
+          src="/assets/icons/warning.svg"
+          alt=""
+          style="width: 80px; height: 80px"
+        />
+        <p class="text-center" style="color: #151515">
+          Do you want to add this event to your calendar
+        </p>
+        <div class="d-flex w-100 align-items-center gap-3">
+          <button
+            onclick="closeAddToCalendar()"
+            class="btn flex-fill py-2 border rounded-2 text-sm"
+            style="border-color: #d7d7d7; color: #242424"
+          >
+            No
+          </button>
+          <button
+            onclick="confirmAddToCalendar()"
+            class="btn flex-fill py-2 border rounded-2 text-white text-sm"
+            style="background-color: #6d29d9; border-color: #6d29d9"
+          >
+            Yes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button
+    class="position-absolute d-sm-block d-none rsvp-close-btn"
+    onclick="closeRSVP()"
+    style="
+      top: 2rem;
+      right: 2.5rem;
+      z-index: 10;
+      background: none;
+      border: none;
+    "
+  >
+    <img src="/assets/icons/close.svg" alt="close" style="height: 18px" />
+  </button>
+  <button
+    class="position-absolute d-sm-none d-block rsvp-close-btn-mobile"
+    onclick="closeRSVP()"
+    style="
+      top: 1.25rem;
+      right: 1rem;
+      z-index: 10;
+      background: none;
+      border: none;
+    "
+  >
+    <img src="/assets/icons/close-dark.svg" alt="close" style="height: 20px" />
+  </button>
+
+  <div
+    id="rsvp-content"
+    class="w-100 bg-light d-flex flex-column rsvp-content"
+    onclick="event.stopPropagation()"
+    style="background-color: #fbfbfb !important"
+  >
+    <div class="w-100 bg-white p-3 d-flex justify-content-center">
+      <p
+        class="mb-0 fw-bold rsvp-header-title"
+        style="font-size: 20px; color: #243134"
+      >
+        RSVP
+      </p>
+    </div>
+
+    <div class="p-4 w-100 h-100 rsvp-scroll-content">
+      <div class="w-100 bg-white rounded-4 mb-3 rsvp-event-card">
+        <section
+          class="position-relative w-100 overflow-hidden rsvp-event-image-container"
+        >
+          <img
+            id="event-image"
+            src="/assets/images/event.svg"
+            alt="event image"
+            class="w-100 h-100 object-fit-cover"
+          />
+          <div
+            class="position-absolute text-white d-flex align-items-center gap-1 border border-white border-opacity-50 rounded-pill rsvp-countdown-badge"
+          >
+            <img
+              src="/assets/icons/clock.svg"
+              class="rsvp-clock-icon"
+              alt="clock"
+            />
+            <span id="event-countdown" class="rsvp-countdown-text">5 days</span>
+          </div>
+        </section>
+
+        <section class="w-100 p-3 d-flex flex-column rounded-bottom-4">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <img
+              id="event-user-avatar"
+              src="/assets/images/user-2.svg"
+              alt="user"
+              class="rounded-circle rsvp-user-avatar"
+            />
+            <span id="event-user-name" class="fw-bold rsvp-user-name"
+              >Sarah Johnson</span
+            >
+            <div class="d-flex align-items-center gap-1 ms-auto">
+              <span class="rsvp-tagged-text">Tagged</span>
+              <div
+                id="tagged-users"
+                class="d-flex align-items-center position-relative"
+              ></div>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <img
+              src="/assets/icons/calendar.svg"
+              alt="calendar"
+              class="rsvp-calendar-icon"
+            />
+            <span
+              id="event-date"
+              class="bg-light py-1 px-2 rounded-2 rsvp-meta-badge"
+            >
+              Dec 25, 2024 • 7:00 PM
+            </span>
+            <span
+              id="event-status"
+              class="bg-light py-1 px-2 rounded-2 rsvp-meta-badge d-md-inline d-none"
+            >
+              Upcoming
+            </span>
+            <span
+              id="event-rsvp-count"
+              class="bg-light py-1 px-2 rounded-2 rsvp-meta-badge"
+            >
+              RSVP count: 15
+            </span>
+          </div>
+
+          <p id="event-description" class="rsvp-event-description">
+            Join us for an amazing celebration! It's going to be a wonderful
+            evening filled with joy, laughter, and great memories.
+          </p>
+        </section>
+      </div>
+
+      <div
+        class="bg-white rounded-4 d-flex align-items-start gap-2 w-100 p-3 mb-3"
+      >
+        <div class="p-2 rounded-circle rsvp-icon-container">
+          <img
+            src="/assets/icons/calendar-blue.svg"
+            alt="calendar"
+            class="rsvp-section-icon"
+          />
+        </div>
+        <div class="flex-fill">
+          <p class="mb-0 rsvp-section-title">RSVP</p>
+          <div
+            class="rounded-4 border my-3 d-flex rsvp-options-container"
+            style="border-color: #d7d7d7"
+          >
+            <button
+              class="rsvp-option rsvp-option-yes"
+              onclick="selectRSVP('Yes')"
+              data-action="Yes"
+            >
+              Yes
+            </button>
+            <button
+              class="rsvp-option rsvp-option-no"
+              onclick="selectRSVP('No')"
+              data-action="No"
+            >
+              No
+            </button>
+            <button
+              class="rsvp-option rsvp-option-maybe"
+              onclick="selectRSVP('Maybe')"
+              data-action="Maybe"
+            >
+              Maybe
+            </button>
+          </div>
+          <div class="d-flex align-items-center gap-2">
+            <img
+              id="plus-one-checkbox"
+              src="/assets/icons/unchecked.svg"
+              alt="checkbox"
+              onclick="togglePlusOne()"
+              class="rsvp-checkbox"
+            />
+            <p class="mb-0 rsvp-plus-one-text">I'm bringing +1</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-4 w-100 p-3">
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <div class="p-2 rounded-circle rsvp-contribute-icon-container">
+            <img
+              src="/assets/images/logo-xl.svg"
+              alt="logo"
+              class="rsvp-contribute-icon"
+            />
+          </div>
+          <p class="mb-0 fw-bold rsvp-contribute-title">Want to contribute</p>
+        </div>
+        <p class="mb-3 rsvp-contribute-description">
+          Help make Sarah's day special by contributing to her wishlist or
+          bringing a gift.
+        </p>
+        <div class="d-flex align-items-center gap-3">
+          <button
+            class="btn flex-fill d-flex align-items-center justify-content-center gap-2 p-2 rsvp-details-btn"
+          >
+            <span class="rsvp-btn-text">View more details</span>
+            <img
+              src="/assets/icons/arrow-sent.svg"
+              class="rsvp-arrow-icon"
+              alt="arrow"
+            />
+          </button>
+          <button
+            onclick="loadContribute()"
+            class="btn flex-fill d-flex align-items-center justify-content-center gap-2 p-2 rsvp-contribute-btn"
+          >
+            <span class="text-white rsvp-btn-text">Contribute Now</span>
+            <img
+              src="/assets/icons/arrow-sent.svg"
+              class="rsvp-arrow-icon"
+              alt="arrow"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<link id="rsvp-css" rel="stylesheet" href="css/rsvp.css" />

@@ -339,7 +339,7 @@ function renderEventCard(event) {
                 <span>View wishlist</span>
                 <img src="/assets/icons/open.svg" style="width: 1.125rem; height: 1.125rem;" alt="open">
               </button>
-              <button class="btn flex-fill text-white d-flex align-items-center justify-content-center gap-1 py-2 py-md-3" style="background-color: #6D29D9; border-color: #6D29D9;">
+              <button onclick="loadRSVP()" class="btn flex-fill text-white d-flex align-items-center justify-content-center gap-1 py-2 py-md-3" style="background-color: #6D29D9; border-color: #6D29D9;">
                 <span>RSVP Now</span>
                 <img src="/assets/icons/open-white.svg" style="width: 1.125rem; height: 1.125rem;" alt="open">
               </button>
