@@ -12,6 +12,10 @@ function loadCreateEvent() {
       script.src = "js/create-event.js";
       document.body.appendChild(script);
       document.getElementById("wishlist-modal").classList.remove("hidden");
+      const stylesheet = document.getElementById("create-wishlist-css");
+      if (stylesheet) {
+        stylesheet.remove();
+      }
     });
 }
 
@@ -27,6 +31,21 @@ function loadCreateWishlist() {
     });
 }
 
+function loadContribute() {
+  fetch("contribute.html")
+    .then((response) => response.text())
+    .then((html) => {
+      document.getElementById("contribute-modal").innerHTML = html;
+      const script = document.createElement("script");
+      script.src = "js/contribute.js";
+      script.id = "contribute-script";
+      script.onload = function () {
+        initializeContribute();
+      };
+      document.body.appendChild(script);
+    });
+}
+
 function unloadCreateEvent() {
   const modal = document.getElementById("wishlist-modal");
   modal.classList.add("hidden");
@@ -34,6 +53,7 @@ function unloadCreateEvent() {
             <span class="close" onclick="closeWishlistModal()">×</span>
             <div id="wishlist-details"></div>
           </div>`;
+
   const scripts = document.querySelectorAll('script[src="js/create-event.js"]');
   scripts.forEach((script) => {
     document.body.removeChild(script);
@@ -51,6 +71,7 @@ function unloadCreateWishlist() {
   const scripts = document.querySelectorAll(
     'script[src="js/create-wishlist.js"]'
   );
+
   scripts.forEach((script) => {
     document.body.removeChild(script);
     script.remove();
@@ -190,5 +211,5 @@ if (document.readyState === "loading") {
 }
 
 window.unloadCreateEvent = unloadCreateEvent;
-
 window.unloadCreateWishlist = unloadCreateWishlist;
+window.loadContribute = loadContribute;

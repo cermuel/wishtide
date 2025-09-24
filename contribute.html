@@ -1,0 +1,201 @@
+<div
+  id="contribute-modal-main"
+  class="d-flex position-fixed top-0 start-0 w-100 h-100 justify-content-center align-items-md-center align-items-end contribute-container"
+  style="z-index: 10000000; background-color: rgba(0, 0, 0, 0.5)"
+>
+  <button
+    class="position-absolute contribute-close-btn d-none d-sm-block"
+    onclick="closeContribute()"
+    style="top: 2rem; right: 2.5rem"
+  >
+    <img
+      src="/assets/icons/close.svg"
+      alt="close"
+      class="contribute-close-icon"
+    />
+  </button>
+  <div
+    id="contribute-content"
+    class="w-100 bg-light d-flex flex-column contribute-content"
+    onclick="event.stopPropagation()"
+  >
+    <div id="success-state" class="d-none">
+      <div
+        class="d-flex w-100 h-100 flex-column flex-fill justify-content-center align-items-center contribute-success"
+      >
+        <img
+          src="/assets/images/paid.svg"
+          alt="logo"
+          class="contribute-success-image mt-auto"
+        />
+        <p class="contribute-success-title">Payment successful</p>
+        <p class="contribute-success-subtitle">
+          You have successfully made a payment of $<span id="payment-amount"
+            >0</span
+          >
+        </p>
+        <div
+          class="d-flex align-items-center justify-content-between mt-auto w-100 contribute-success-buttons"
+        >
+          <button onclick="closeContribute()" class="contribute-receipt-btn">
+            View receipt
+          </button>
+          <button onclick="closeContribute()" class="contribute-home-btn">
+            Return home
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="form-state">
+      <div
+        class="w-100 bg-white p-4 d-flex justify-content-center contribute-header"
+      >
+        <p class="contribute-modal-title">Contribution</p>
+      </div>
+      <div class="p-4 contribute-body">
+        <div class="w-100 d-flex flex-column align-items-center">
+          <h2 class="contribute-wishlist-name">Birthday Wishlist</h2>
+
+          <div class="contribute-carousel-container">
+            <div class="d-flex overflow-auto contribute-carousel">
+              <button
+                id="prev-btn"
+                onclick="previousItem()"
+                class="contribute-nav-btn contribute-prev-btn d-none"
+              >
+                <img
+                  src="/assets/icons/chevron-grey.svg"
+                  alt="Prev"
+                  class="contribute-nav-icon"
+                />
+              </button>
+              <button
+                id="next-btn"
+                onclick="nextItem()"
+                class="contribute-nav-btn contribute-next-btn"
+              >
+                <img
+                  src="/assets/icons/chevron-grey.svg"
+                  alt="Next"
+                  class="contribute-nav-icon contribute-next-icon"
+                />
+              </button>
+              <div
+                class="d-flex justify-content-center w-100 contribute-image-wrapper"
+              >
+                <div class="contribute-image-container">
+                  <img
+                    id="current-item-image"
+                    src="/assets/images/wishlist-1.svg"
+                    alt="Wishlist item"
+                    class="contribute-item-image"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="w-100 contribute-item-details">
+            <div class="d-flex align-items-center contribute-item-row">
+              <div class="contribute-item-icon">
+                <img src="/assets/icons/arrow-sent.svg" alt="" />
+              </div>
+              <p id="current-item-name" class="contribute-item-name">
+                iPhone 15 Pro Max
+              </p>
+              <p class="contribute-item-price ms-auto">$150</p>
+            </div>
+          </div>
+
+          <div class="w-100 contribute-anonymous-section">
+            <div class="d-flex align-items-center">
+              <p class="contribute-anonymous-text">
+                Anonymous
+                <span class="contribute-optional-text">(optional)</span>
+              </p>
+              <img
+                id="anonymous-toggle"
+                src="/assets/icons/unradio.svg"
+                alt="check"
+                onclick="toggleAnonymous()"
+                class="contribute-toggle-icon ms-auto"
+              />
+            </div>
+          </div>
+
+          <div class="contribute-input-container">
+            <div class="contribute-input-group">
+              <input
+                type="number"
+                class="contribute-floating-input"
+                placeholder=" "
+                id="amount-input"
+                required
+                oninput="handleAmountChange(event)"
+              />
+              <label for="amount-input" class="contribute-floating-label">
+                Enter amount
+              </label>
+            </div>
+          </div>
+
+          <div class="w-100 contribute-payment-methods">
+            <div class="d-flex contribute-payment-options">
+              <div
+                class="contribute-payment-option"
+                onclick="selectPaymentMethod('Stripe')"
+              >
+                <img
+                  id="stripe-radio"
+                  src="/assets/icons/unradio.svg"
+                  alt="check"
+                  class="contribute-payment-radio"
+                />
+                <img
+                  src="/assets/icons/stripe.svg"
+                  alt="Stripe"
+                  class="contribute-payment-icon"
+                />
+                <p class="contribute-payment-text">Add funds via Stripe</p>
+              </div>
+              <div
+                class="contribute-payment-option"
+                onclick="selectPaymentMethod('Paypal')"
+              >
+                <img
+                  id="paypal-radio"
+                  src="/assets/icons/unradio.svg"
+                  alt="check"
+                  class="contribute-payment-radio"
+                />
+                <img
+                  src="/assets/icons/paypal.svg"
+                  alt="Paypal"
+                  class="contribute-payment-icon"
+                />
+                <p class="contribute-payment-text">Add funds via Paypal</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex align-items-center contribute-footer">
+        <button onclick="closeContribute()" class="contribute-cancel-btn">
+          Cancel
+        </button>
+        <button
+          id="proceed-btn"
+          onclick="proceedPayment()"
+          class="contribute-proceed-btn"
+          disabled
+        >
+          Proceed to add funds
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<link id="contribute-css" rel="stylesheet" href="css/contribute.css" />

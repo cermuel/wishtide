@@ -141,6 +141,10 @@
   gap: 2px;
   font-size: 10px;
 }
+.wishlist-rsvp-btn:hover {
+  background-color: #6d29d9;
+  border: 1px solid #6d29d9;
+}
 
 .wishlist-rsvp-text-md {
   font-size: 14px;
