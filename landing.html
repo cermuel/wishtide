@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wishtide - Social Gifting Platform</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="css/landing.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main
+      class="min-vh-100 bg-light-custom d-flex flex-column align-items-center"
+    >
+      <nav
+        class="w-100 d-flex bg-nav justify-content-center border-bottom border-nav"
+      >
+        <div
+          class="container-xxl p-4 d-flex align-items-center justify-content-between"
+        >
+          <img
+            src="/assets/icons/logo.svg"
+            class="logo-height"
+            alt="Wishtide"
+          />
+          <div class="d-flex align-items-center gap-4 d-none d-md-flex">
+            <p class="text-dark-custom mb-0">Features</p>
+            <p class="text-dark-custom mb-0">Privacy</p>
+          </div>
+          <div class="d-flex align-items-center gap-3 d-none d-sm-flex">
+            <button
+              class="btn btn-outline-secondary rounded-lg py-2 px-4 text-sm custom-btn-login"
+            >
+              Login
+            </button>
+            <button class="btn btn-purple rounded-lg py-2 px-4 text-sm">
+              Sign up
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      <section class="container-xxl px-4 py-5">
+        <div
+          class="hero-container position-relative rounded-hero overflow-hidden bg-hero"
+        >
+          <div class="hero-overlay position-absolute w-100 h-100"></div>
+          <div
+            class="w-100 position-relative hero-content h-100 d-flex flex-column flex-sm-row justify-content-between align-items-center"
+          >
+            <div class="hero-text order-last order-sm-first">
+              <h1 class="text-white fw-bold hero-title">
+                Social Gifting. Thoughtful. <br />
+                Easy. Together.
+              </h1>
+              <p class="text-white hero-description">
+                Create wishlists for birthdays, milestones, and causes. Invite
+                friends, track contributions, and celebrate with zero guesswork.
+              </p>
+              <button class="btn btn-purple rounded-lg py-2 px-4 text-sm">
+                Create a wishlist
+              </button>
+            </div>
+            <div
+              class="hero-images h-100 flex-fill d-flex flex-column align-items-start p-4"
+            >
+              <div
+                class="w-100 d-flex justify-content-center justify-content-sm-start"
+              >
+                <img src="/assets/images/hero.svg" alt="Hero image 1" />
+              </div>
+              <div class="w-100 d-flex justify-content-end d-none d-sm-flex">
+                <img src="/assets/images/hero-2.svg" alt="Hero image 2" />
+              </div>
+              <div
+                class="w-100 d-flex justify-content-end mt-3 d-none d-sm-flex"
+              >
+                <img src="/assets/images/hero-3.svg" alt="Hero image 3" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="w-100 px-3 bg-dark d-flex flex-column align-items-center share-section"
+      >
+        <h1 class="text-white text-center share-title mb-4">
+          Start in minutes. Share a link. <br class="d-sm-none" />
+          Watch the love roll in.
+        </h1>
+        <img
+          src="/assets/images/share.svg"
+          alt="Share"
+          class="d-none d-sm-block"
+        />
+        <img
+          src="/assets/images/share-mobile.svg"
+          alt="Share mobile"
+          class="d-sm-none"
+        />
+      </section>
+
+      <section
+        class="w-100 py-5 d-flex flex-column flex-md-row gap-md-5 gap-2 features-section"
+      >
+        <div class="features-header">
+          <h1 class="text-dark-custom features-title">Feature Highlights</h1>
+          <p class="text-muted-custom features-subtitle">
+            Everything You Need for Thoughtful Gifting
+          </p>
+        </div>
+        <div style="flex: 1" class="row g-4" id="features-grid">
+          I take up remaining space
+        </div>
+      </section>
+
+      <div class="w-100 overflow-hidden bg-white">
+        <section
+          class="bg-white d-flex scrolling-section"
+          id="scrolling-features"
+        ></section>
+      </div>
+
+      <section class="how-to-section">
+        <h1>How To Highlights</h1>
+        <div class="how-to-grid" id="how-to-grid"></div>
+      </section>
+
+      <section class="w-100 py-5 px-3 bg-white">
+        <div class="container">
+          <h2
+            class="text-center text-dark-custom mb-5 testimonials-title fw-bold"
+          >
+            Testimonials
+          </h2>
+          <div class="position-relative">
+            <div
+              class="d-flex align-items-center justify-content-center overflow-hidden"
+              id="testimonials-container"
+            ></div>
+          </div>
+          <div
+            class="d-flex justify-content-center mt-4"
+            id="testimonial-indicators"
+          ></div>
+        </div>
+      </section>
+
+      <section class="w-100 py-5 px-3 d-flex flex-column align-items-center">
+        <h2 class="text-center text-dark-custom mb-1 faq-title">
+          Frequently asked questions
+        </h2>
+        <p class="text-center text-muted-custom faq-subtitle">
+          Everything you need to know about the product.
+        </p>
+        <div class="mt-5 faq-container" id="faq-container"></div>
+      </section>
+
+      <footer
+        class="bg-white border-top border-nav w-100 d-flex flex-column align-items-center"
+      >
+        <div
+          class="container-xxl p-4 py-4 d-flex flex-column flex-sm-row align-items-start align-items-sm-center justify-content-between footer-content"
+        >
+          <div class="footer-brand">
+            <img
+              src="/assets/icons/logo.svg"
+              class="footer-logo"
+              alt="Wishtide"
+            />
+            <p class="text-muted-custom mt-2 mb-0">
+              Social Gifting. Thoughtful. <br />
+              Easy. Together.
+            </p>
+          </div>
+          <div
+            class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-3 footer-links"
+          >
+            <div class="d-flex align-items-center footer-link">
+              <p class="text-dark-custom mb-0 footer-link-text">ABOUT US</p>
+              <img src="/assets/icons/arrow-open.svg" class="me-3" alt="" />
+            </div>
+            <div class="d-flex align-items-center footer-link">
+              <p class="text-dark-custom mb-0 footer-link-text">BLOG</p>
+              <img src="/assets/icons/arrow-open.svg" class="me-3" alt="" />
+            </div>
+            <div class="d-flex align-items-center footer-link">
+              <p class="text-dark-custom mb-0 footer-link-text">CONTACT US</p>
+              <img src="/assets/icons/arrow-open.svg" class="me-3" alt="" />
+            </div>
+          </div>
+          <div class="d-flex align-items-center gap-3 footer-social">
+            <a href="#" class="social-link">
+              <img
+                src="/assets/icons/linkedin.svg"
+                class="social-icon"
+                alt="LinkedIn"
+              />
+            </a>
+            <a href="#" class="social-link">
+              <img
+                src="/assets/icons/twitter.svg"
+                class="social-icon"
+                alt="Twitter"
+              />
+            </a>
+            <a href="#" class="social-link">
+              <img
+                src="/assets/icons/instagram.svg"
+                class="social-icon"
+                alt="Instagram"
+              />
+            </a>
+          </div>
+        </div>
+        <div
+          class="container-xxl text-dark-custom py-3 fw-medium border-top border-nav p-4 d-flex flex-column flex-sm-row align-items-start align-items-sm-center justify-content-between footer-bottom"
+        >
+          <p class="mb-2 mb-sm-0 footer-copyright">
+            &copy; <span id="current-year"></span> Wishtide. All Rights Reserved
+          </p>
+          <div
+            class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-2 gap-sm-4"
+          >
+            <p class="mb-0 text-decoration-underline footer-policy">
+              Privacy Policy
+            </p>
+            <p class="mb-0 text-decoration-underline footer-terms">
+              Terms and Conditions
+            </p>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="js/landing.js"></script>
+  </body>
+</html>
