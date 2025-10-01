@@ -3,240 +3,394 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wishtide - Social Gifting Platform</title>
+    <title>Wishtide - Social Gifting</title>
     <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link href="css/landing.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/landing.css" />
   </head>
   <body>
-    <main
-      class="min-vh-100 bg-light-custom d-flex flex-column align-items-center"
-    >
-      <nav
-        class="w-100 d-flex bg-nav justify-content-center border-bottom border-nav"
-      >
-        <div
-          class="container-xxl p-4 d-flex align-items-center justify-content-between"
-        >
-          <img
-            src="/assets/icons/logo.svg"
-            class="logo-height"
-            alt="Wishtide"
-          />
-          <div class="d-flex align-items-center gap-4 d-none d-md-flex">
-            <p class="text-dark-custom mb-0">Features</p>
-            <p class="text-dark-custom mb-0">Privacy</p>
+    <main class="main-container">
+      <nav class="navbar-custom">
+        <div class="nav-inner">
+          <img src="/assets/icons/logo.svg" class="logo" alt="Wishtide Logo" />
+          <div class="nav-links">
+            <p class="nav-link">Features</p>
+            <p class="nav-link">Privacy</p>
           </div>
-          <div class="d-flex align-items-center gap-3 d-none d-sm-flex">
-            <button
-              class="btn btn-outline-secondary rounded-lg py-2 px-4 text-sm custom-btn-login"
-            >
-              Login
-            </button>
-            <button class="btn btn-purple rounded-lg py-2 px-4 text-sm">
-              Sign up
-            </button>
+          <div class="nav-buttons">
+            <a href="index.html" class="btn-login"> Login </a>
+            <a href="signup.html" class="btn-signup"> Sign up </a>
           </div>
         </div>
       </nav>
 
-      <section class="container-xxl px-4 py-5">
-        <div
-          class="hero-container position-relative rounded-hero overflow-hidden bg-hero"
-        >
-          <div class="hero-overlay position-absolute w-100 h-100"></div>
-          <div
-            class="w-100 position-relative hero-content h-100 d-flex flex-column flex-sm-row justify-content-between align-items-center"
-          >
-            <div class="hero-text order-last order-sm-first">
-              <h1 class="text-white fw-bold hero-title">
-                Social Gifting. Thoughtful. <br />
-                Easy. Together.
+      <section class="hero-section">
+        <div class="hero-container">
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <div class="hero-left">
+              <h1 class="hero-title">
+                Social Gifting. Thoughtful. <br />Easy. Together.
               </h1>
-              <p class="text-white hero-description">
+              <p class="hero-text">
                 Create wishlists for birthdays, milestones, and causes. Invite
                 friends, track contributions, and celebrate with zero guesswork.
               </p>
-              <button class="btn btn-purple rounded-lg py-2 px-4 text-sm">
-                Create a wishlist
-              </button>
+              <button class="btn-primary">Create a wishlist</button>
             </div>
-            <div
-              class="hero-images h-100 flex-fill d-flex flex-column align-items-start p-4"
-            >
-              <div
-                class="w-100 d-flex justify-content-center justify-content-sm-start"
-              >
-                <img src="/assets/images/hero.svg" alt="Hero image 1" />
+            <div class="hero-right">
+              <div class="hero-images-top">
+                <img
+                  src="/assets/images/hero.svg"
+                  alt="Hero Image 1"
+                  class="hero-img-1"
+                />
               </div>
-              <div class="w-100 d-flex justify-content-end d-none d-sm-flex">
-                <img src="/assets/images/hero-2.svg" alt="Hero image 2" />
+              <div class="hero-images-middle">
+                <img
+                  src="/assets/images/hero-2.svg"
+                  alt="Hero Image 2"
+                  class="hero-img-2"
+                />
               </div>
-              <div
-                class="w-100 d-flex justify-content-end mt-3 d-none d-sm-flex"
-              >
-                <img src="/assets/images/hero-3.svg" alt="Hero image 3" />
+              <div class="hero-images-bottom">
+                <img src="/assets/images/hero-3.svg" alt="Hero Image 3" />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section
-        class="w-100 px-3 bg-dark d-flex flex-column align-items-center share-section"
-      >
-        <h1 class="text-white text-center share-title mb-4">
-          Start in minutes. Share a link. <br class="d-sm-none" />
-          Watch the love roll in.
+      <section class="hero2-section">
+        <h1 class="hero2-title">
+          With Wishtide, every gift becomes meaningful. <br />Create, share,
+          andcontribute with ease— <br />bringing you closer to the ones you
+          love
+        </h1>
+        <div class="hero2-mobile-images">
+          <div class="mobile-img-start">
+            <img src="/assets/images/hero.svg" alt="" class="hero-img-1" />
+          </div>
+          <div class="mobile-img-end">
+            <img src="/assets/images/hero-2.svg" alt="" class="hero-img-2" />
+          </div>
+        </div>
+        <div class="hero2-img-1 hero-2">
+          <img src="/assets/images/hero.svg" alt="" />
+        </div>
+        <div class="hero2-img-2 hero-2">
+          <img src="/assets/images/hero-4.svg" alt="" />
+        </div>
+        <div class="hero2-img-3 hero-2">
+          <img src="/assets/images/hero-5.svg" alt="" />
+          <img
+            src="/assets/images/hero-7.svg"
+            alt=""
+            class="hero2-img-floating"
+          />
+        </div>
+        <div class="hero2-img-4 hero-2">
+          <img src="/assets/images/hero-6.svg" alt="" />
+        </div>
+      </section>
+
+      <section class="share-section">
+        <h1 class="share-title">
+          Start in minutes. Share a link. <br class="mobile-break" />Watch the
+          love roll in.
         </h1>
         <img
           src="/assets/images/share.svg"
           alt="Share"
-          class="d-none d-sm-block"
+          class="share-img-desktop"
         />
         <img
           src="/assets/images/share-mobile.svg"
-          alt="Share mobile"
-          class="d-sm-none"
+          alt="Share"
+          class="share-img-mobile"
         />
       </section>
 
-      <section
-        class="w-100 py-5 d-flex flex-column flex-md-row gap-md-5 gap-2 features-section"
-      >
+      <section class="features-section">
         <div class="features-header">
-          <h1 class="text-dark-custom features-title">Feature Highlights</h1>
-          <p class="text-muted-custom features-subtitle">
+          <h1 class="features-title">Feature Highlights</h1>
+          <p class="features-subtitle">
             Everything You Need for Thoughtful Gifting
           </p>
         </div>
-        <div style="flex: 1" class="row g-4" id="features-grid">
-          I take up remaining space
+        <div class="feature-container">
+          <div class="feature">
+            <img
+              src="/assets/icons/logo-small.svg"
+              class="feature-icon"
+              alt=""
+            />
+            <h1 class="feature-title">Wishlist</h1>
+            <p class="feature-text">
+              Add products, experiences, or cash funds. Set privacy from Public
+              to Friends to Private. Share once—no more guesswork.
+            </p>
+          </div>
+          <div class="feature">
+            <img
+              src="/assets/icons/logo-small.svg"
+              class="feature-icon"
+              alt=""
+            />
+            <h1 class="feature-title">Contributions</h1>
+            <p class="feature-text">
+              Secure payment options. Real-time tracking. Choose to show
+              name/amount, or give anonymously.
+            </p>
+          </div>
+          <div class="feature">
+            <img
+              src="/assets/icons/logo-small.svg"
+              class="feature-icon"
+              alt=""
+            />
+            <h1 class="feature-title">Events</h1>
+            <p class="feature-text">
+              Attach a wishlist to birthdays, showers, weddings, graduations,
+              and more. Manage RSVPs and send updates in one place.
+            </p>
+          </div>
+          <div class="feature">
+            <img
+              src="/assets/icons/logo-small.svg"
+              class="feature-icon"
+              alt=""
+            />
+            <h1 class="feature-title">Handles</h1>
+            <p class="feature-text">
+              Claim a @handle so friends can always find your latest wishlist
+              and events.
+            </p>
+          </div>
         </div>
       </section>
 
-      <div class="w-100 overflow-hidden bg-white">
-        <section
-          class="bg-white d-flex scrolling-section"
-          id="scrolling-features"
-        ></section>
+      <div class="banner-wrapper">
+        <section class="scrolling-banner">
+          <img
+            src="/assets/icons/spark-colored.svg"
+            alt=""
+            class="banner-icon"
+          />
+          <p class="banner-text">No hidden fees for users</p>
+          <img
+            src="/assets/icons/spark-colored.svg"
+            alt=""
+            class="banner-icon"
+          />
+          <p class="banner-text">Link sharing</p>
+          <img
+            src="/assets/icons/spark-colored.svg"
+            alt=""
+            class="banner-icon"
+          />
+          <p class="banner-text">Contribution receipts</p>
+          <img
+            src="/assets/icons/spark-colored.svg"
+            alt=""
+            class="banner-icon"
+          />
+          <img
+            src="/assets/icons/spark-colored.svg"
+            alt=""
+            class="banner-icon"
+          />
+          <p class="banner-text">No hidden fees for users</p>
+          <img
+            src="/assets/icons/spark-colored.svg"
+            alt=""
+            class="banner-icon"
+          />
+          <p class="banner-text">Link sharing</p>
+          <img
+            src="/assets/icons/spark-colored.svg"
+            alt=""
+            class="banner-icon"
+          />
+          <p class="banner-text">Contribution receipts</p>
+          <img
+            src="/assets/icons/spark-colored.svg"
+            alt=""
+            class="banner-icon"
+          />
+        </section>
       </div>
 
       <section class="how-to-section">
-        <h1>How To Highlights</h1>
-        <div class="how-to-grid" id="how-to-grid"></div>
-      </section>
-
-      <section class="w-100 py-5 px-3 bg-white">
-        <div class="container">
-          <h2
-            class="text-center text-dark-custom mb-5 testimonials-title fw-bold"
-          >
-            Testimonials
-          </h2>
-          <div class="position-relative">
-            <div
-              class="d-flex align-items-center justify-content-center overflow-hidden"
-              id="testimonials-container"
-            ></div>
+        <div class="how-to-inner">
+          <h1 class="how-to-title">HOW IT WORKS</h1>
+          <div class="how-to-item">
+            <img src="/assets/images/create.svg" class="how-to-img" alt="" />
+            <div class="how-to-content">
+              <h1 class="how-to-item-title">Create</h1>
+              <p class="how-to-text">
+                Pick wishlist or event, add items, set a goal, and choose your
+                privacy.
+              </p>
+            </div>
           </div>
-          <div
-            class="d-flex justify-content-center mt-4"
-            id="testimonial-indicators"
-          ></div>
+          <div class="how-to-item">
+            <img src="/assets/images/add-items.svg" class="how-to-img" alt="" />
+            <div class="how-to-content">
+              <h1 class="how-to-item-title">Add Items</h1>
+              <p class="how-to-text">
+                Tag and or share publicly, privately or invite friends. Also,
+                share link to friends or post it to your social—done.
+              </p>
+            </div>
+          </div>
+          <div class="how-to-item">
+            <img src="/assets/images/tag.svg" class="how-to-img" alt="" />
+            <div class="how-to-content">
+              <h1 class="how-to-item-title">Tag & share</h1>
+              <p class="how-to-text">
+                Tag and or share publicly, privately or invite friends. Also,
+                share link to friends or post it to your social—done.
+              </p>
+            </div>
+          </div>
+          <div class="how-to-item">
+            <img src="/assets/images/tag.svg" class="how-to-img" alt="" />
+            <div class="how-to-content">
+              <h1 class="how-to-item-title">Celebrate</h1>
+              <p class="how-to-text">
+                Watch contributions arrive, track progress, and say thanks with
+                one tap.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section class="w-100 py-5 px-3 d-flex flex-column align-items-center">
-        <h2 class="text-center text-dark-custom mb-1 faq-title">
-          Frequently asked questions
-        </h2>
-        <p class="text-center text-muted-custom faq-subtitle">
-          Everything you need to know about the product.
-        </p>
-        <div class="mt-5 faq-container" id="faq-container"></div>
+      <section class="testimonials-section">
+        <div class="testimonials-container">
+          <h2 class="testimonials-title">Testimonials</h2>
+          <div class="testimonials-wrapper">
+            <div class="testimonials-slider">
+              <div class="testimonial-card testimonial-side testimonial-prev">
+                <p class="testimonial-text"></p>
+                <div class="testimonial-author">
+                  <div class="author-avatar"></div>
+                  <div class="author-info">
+                    <p class="author-name"></p>
+                    <p class="author-role"></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="testimonial-card testimonial-main">
+                <p class="testimonial-text"></p>
+                <div class="testimonial-author">
+                  <div class="author-avatar"></div>
+                  <div class="author-info">
+                    <p class="author-name"></p>
+                    <p class="author-role"></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="testimonial-card testimonial-side testimonial-next">
+                <p class="testimonial-text"></p>
+                <div class="testimonial-author">
+                  <div class="author-avatar"></div>
+                  <div class="author-info">
+                    <p class="author-name"></p>
+                    <p class="author-role"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonials-dots"></div>
+        </div>
       </section>
 
-      <footer
-        class="bg-white border-top border-nav w-100 d-flex flex-column align-items-center"
-      >
-        <div
-          class="container-xxl p-4 py-4 d-flex flex-column flex-sm-row align-items-start align-items-sm-center justify-content-between footer-content"
-        >
+      <section class="faq-section">
+        <h2 class="faq-title">Frequently asked questions</h2>
+        <p class="faq-subtitle">
+          Everything you need to know about the product.
+        </p>
+        <div class="faq-container"></div>
+      </section>
+
+      <footer class="footer">
+        <div class="footer-content">
           <div class="footer-brand">
-            <img
-              src="/assets/icons/logo.svg"
-              class="footer-logo"
-              alt="Wishtide"
-            />
-            <p class="text-muted-custom mt-2 mb-0">
-              Social Gifting. Thoughtful. <br />
-              Easy. Together.
+            <img src="/assets/icons/logo.svg" class="footer-logo" alt="" />
+            <p class="footer-tagline">
+              Social Gifting. Thoughtful. <br />Easy. Together.
             </p>
           </div>
-          <div
-            class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-3 footer-links"
-          >
-            <div class="d-flex align-items-center footer-link">
-              <p class="text-dark-custom mb-0 footer-link-text">ABOUT US</p>
-              <img src="/assets/icons/arrow-open.svg" class="me-3" alt="" />
+          <div class="footer-links">
+            <div class="footer-link-item">
+              <p class="footer-link-text">ABOUT US</p>
+              <img
+                src="/assets/icons/arrow-open.svg"
+                class="footer-arrow"
+                alt=""
+              />
             </div>
-            <div class="d-flex align-items-center footer-link">
-              <p class="text-dark-custom mb-0 footer-link-text">BLOG</p>
-              <img src="/assets/icons/arrow-open.svg" class="me-3" alt="" />
+            <div class="footer-link-item">
+              <p class="footer-link-text">BLOG</p>
+              <img
+                src="/assets/icons/arrow-open.svg"
+                class="footer-arrow"
+                alt=""
+              />
             </div>
-            <div class="d-flex align-items-center footer-link">
-              <p class="text-dark-custom mb-0 footer-link-text">CONTACT US</p>
-              <img src="/assets/icons/arrow-open.svg" class="me-3" alt="" />
+            <div class="footer-link-item">
+              <p class="footer-link-text">CONTACT US</p>
+              <img
+                src="/assets/icons/arrow-open.svg"
+                class="footer-arrow"
+                alt=""
+              />
             </div>
           </div>
-          <div class="d-flex align-items-center gap-3 footer-social">
-            <a href="#" class="social-link">
-              <img
+          <div class="footer-social">
+            <a href="#"
+              ><img
                 src="/assets/icons/linkedin.svg"
                 class="social-icon"
                 alt="LinkedIn"
-              />
-            </a>
-            <a href="#" class="social-link">
-              <img
+            /></a>
+            <a href="#"
+              ><img
                 src="/assets/icons/twitter.svg"
                 class="social-icon"
                 alt="Twitter"
-              />
-            </a>
-            <a href="#" class="social-link">
-              <img
+            /></a>
+            <a href="#"
+              ><img
                 src="/assets/icons/instagram.svg"
                 class="social-icon"
                 alt="Instagram"
-              />
-            </a>
+            /></a>
           </div>
         </div>
-        <div
-          class="container-xxl text-dark-custom py-3 fw-medium border-top border-nav p-4 d-flex flex-column flex-sm-row align-items-start align-items-sm-center justify-content-between footer-bottom"
-        >
-          <p class="mb-2 mb-sm-0 footer-copyright">
-            &copy; <span id="current-year"></span> Wishtide. All Rights Reserved
+        <div class="footer-bottom">
+          <p class="footer-copyright">
+            &copy; <span id="currentYear"></span> Wishtide. All Rights Reserved
           </p>
-          <div
-            class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-2 gap-sm-4"
-          >
-            <p class="mb-0 text-decoration-underline footer-policy">
-              Privacy Policy
-            </p>
-            <p class="mb-0 text-decoration-underline footer-terms">
-              Terms and Conditions
-            </p>
+          <div class="footer-legal">
+            <p class="footer-legal-link">Privacy Policy</p>
+            <p class="footer-legal-link">Terms and Conditions</p>
           </div>
         </div>
       </footer>
     </main>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/SplitText.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/landing.js"></script>
   </body>
 </html>

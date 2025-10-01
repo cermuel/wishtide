@@ -1,49 +1,3 @@
-const features = [
-  {
-    title: "Wishlist",
-    text: "Add products, experiences, or cash funds. Set privacy from Public to Friends to Private. Share once—no more guesswork.",
-  },
-  {
-    title: "Contributions",
-    text: "Secure payment options. Real-time tracking. Choose to show name/amount, or give anonymously.",
-  },
-  {
-    title: "Events",
-    text: "Attach a wishlist to birthdays, showers, weddings, graduations, and more. Manage RSVPs and send updates in one place.",
-  },
-  {
-    title: "Handles",
-    text: "Claim a @handle so friends can always find your latest wishlist and events.",
-  },
-];
-
-const howTo = [
-  {
-    number: 1,
-    title: "Create",
-    text: "Pick wishlist or event, add items, set a goal, and choose your privacy.",
-    img: "/assets/images/create.svg",
-  },
-  {
-    number: 2,
-    title: "Add Items",
-    text: "Tag and or share publicly, privately or invite friends. Also, share link to friends or post it to your social—done.",
-    img: "/assets/images/add-items.svg",
-  },
-  {
-    number: 3,
-    title: "Tag & share",
-    text: "Tag and or share publicly, privately or invite friends. Also, share link to friends or post it to your social—done.",
-    img: "/assets/images/tag.svg",
-  },
-  {
-    number: 4,
-    title: "Celebrate",
-    text: "Watch contributions arrive, track progress, and say thanks with one tap.",
-    img: "/assets/images/tag.svg",
-  },
-];
-
 const testimonials = [
   {
     id: 1,
@@ -107,6 +61,7 @@ const faqs = [
 
 let currentSlide = 0;
 let openFAQ = 0;
+let testimonialInterval;
 
 function getPrevIndex() {
   return (currentSlide - 1 + testimonials.length) % testimonials.length;
@@ -116,224 +71,318 @@ function getNextIndex() {
   return (currentSlide + 1) % testimonials.length;
 }
 
-function goToSlide(index) {
-  currentSlide = index;
-  renderTestimonials();
-}
-
-function toggleFAQ(index) {
-  openFAQ = openFAQ === index ? -1 : index;
-  renderFAQs();
-}
-
-function renderFeatures() {
-  const container = document.getElementById("features-grid");
-  container.innerHTML = features
-    .map(
-      (feature) => `
-        <div class="col-12 col-sm-6">
-            <div class="bg-white border border-nav rounded-5 p-4 p-sm-5 d-flex flex-column gap-3 feature-card">
-                <img src="/assets/icons/logo-small.svg" class="feature-icon" alt="">
-                <h1 class="text-dark-custom feature-card-title">${feature.title}</h1>
-                <p class="text-muted-custom feature-card-text">${feature.text}</p>
-            </div>
-        </div>
-    `
-    )
+function getInitials(name) {
+  return name
+    .split(" ")
+    .map((n) => n[0])
     .join("");
 }
 
-function renderScrollingFeatures() {
-  const container = document.getElementById("scrolling-features");
-  const scrollingItems = [
-    {
-      icon: "/assets/icons/spark-colored.svg",
-      text: "No hidden fees for users",
-    },
-    { icon: "/assets/icons/spark-colored.svg", text: "Link sharing" },
-    { icon: "/assets/icons/spark-colored.svg", text: "Contribution receipts" },
-  ];
+function updateTestimonials() {
+  const prevCard = document.querySelector(".testimonial-prev");
+  const mainCard = document.querySelector(".testimonial-main");
+  const nextCard = document.querySelector(".testimonial-next");
 
-  const duplicatedItems = [...scrollingItems, ...scrollingItems];
-
-  container.innerHTML = duplicatedItems
-    .map(
-      (item) => `
-        <img src="${item.icon}" alt="" class="flex-shrink-0 scrolling-icon">
-        <p class="flex-shrink-0 scrolling-text text-dark-custom">${item.text}</p>
-    `
-    )
-    .join("");
-}
-
-function renderHowTo() {
-  const howToGrid = document.getElementById("how-to-grid");
-
-  howTo.forEach((item) => {
-    const howToItem = document.createElement("div");
-    howToItem.className = `how-to-item ${item.number % 2 ? "" : "reverse"}`;
-    howToItem.innerHTML = `
-        <img src="${item.img}" alt="${item.title}">
-        <div class="how-to-content">
-          <h1 class="number">${item.number}.</h1>
-          <h1 class="title">${item.title}</h1>
-          <p>${item.text}</p>
-        </div>
-      `;
-    howToGrid.appendChild(howToItem);
-  });
-}
-
-function renderTestimonials() {
-  const container = document.getElementById("testimonials-container");
   const prevIndex = getPrevIndex();
   const nextIndex = getNextIndex();
 
-  const createAvatarHTML = (testimonial) => {
-    if (testimonial.avatar) {
-      return `<img src="${testimonial.avatar}" alt="${testimonial.name}" class="testimonial-avatar">`;
-    } else {
-      const initials = testimonial.name
-        .split(" ")
-        .map((n) => n[0])
-        .join("");
-      return `
-                <div class="testimonial-avatar-placeholder">
-                    <span class="testimonial-initials">${initials}</span>
-                </div>
-            `;
-    }
-  };
+  const prevText = prevCard.querySelector(".testimonial-text");
+  const prevAvatar = prevCard.querySelector(".author-avatar");
+  const prevName = prevCard.querySelector(".author-name");
+  const prevRole = prevCard.querySelector(".author-role");
 
-  container.innerHTML = `
-        <div class="d-none d-md-block testimonial-side-preview">
-            <div class="bg-white rounded-3 p-4 shadow-sm border border-light text-center">
-                <p class="text-muted testimonial-preview-text">"${
-                  testimonials[prevIndex].text
-                }"</p>
-                <div class="d-flex align-items-center justify-content-center gap-2">
-                    ${createAvatarHTML(testimonials[prevIndex])}
-                    <div class="text-start">
-                        <p class="fw-semibold text-dark testimonial-preview-name">${
-                          testimonials[prevIndex].name
-                        }</p>
-                        <p class="text-muted testimonial-preview-role">${
-                          testimonials[prevIndex].role
-                        }</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
+  prevText.textContent = `"${testimonials[prevIndex].text}"`;
+  prevName.textContent = testimonials[prevIndex].name;
+  prevRole.textContent = testimonials[prevIndex].role;
 
-        <div class="testimonial-main-container">
-            <div class="bg-white rounded-3 border p-4 p-sm-5 text-center testimonial-main-card">
-                <p class="text-dark testimonial-main-text">"${
-                  testimonials[currentSlide].text
-                }"</p>
-                <div class="d-flex align-items-center justify-content-start gap-3 testimonial-author">
-                    ${createAvatarHTML(testimonials[currentSlide])}
-                    <div class="text-start">
-                        <p class="fw-semibold text-dark testimonial-main-name">${
-                          testimonials[currentSlide].name
-                        }</p>
-                        <p class="text-muted testimonial-main-role">${
-                          testimonials[currentSlide].role
-                        }</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
+  if (testimonials[prevIndex].avatar) {
+    prevAvatar.innerHTML = `<img src="${testimonials[prevIndex].avatar}" alt="${testimonials[prevIndex].name}">`;
+  } else {
+    prevAvatar.innerHTML = `<span class="avatar-initials">${getInitials(
+      testimonials[prevIndex].name
+    )}</span>`;
+    prevAvatar.classList.add("avatar-placeholder");
+  }
 
-        <div class="d-none d-md-block testimonial-side-preview">
-            <div class="bg-white rounded-3 p-4 shadow-sm border border-light text-center">
-                <p class="text-muted testimonial-preview-text">"${
-                  testimonials[nextIndex].text
-                }"</p>
-                <div class="d-flex align-items-center justify-content-center gap-2">
-                    ${createAvatarHTML(testimonials[nextIndex])}
-                    <div class="text-start">
-                        <p class="fw-semibold text-dark testimonial-preview-name">${
-                          testimonials[nextIndex].name
-                        }</p>
-                        <p class="text-muted testimonial-preview-role">${
-                          testimonials[nextIndex].role
-                        }</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
+  const mainText = mainCard.querySelector(".testimonial-text");
+  const mainAvatar = mainCard.querySelector(".author-avatar");
+  const mainName = mainCard.querySelector(".author-name");
+  const mainRole = mainCard.querySelector(".author-role");
 
-  renderTestimonialIndicators();
+  mainText.textContent = `"${testimonials[currentSlide].text}"`;
+  mainName.textContent = testimonials[currentSlide].name;
+  mainRole.textContent = testimonials[currentSlide].role;
+
+  if (testimonials[currentSlide].avatar) {
+    mainAvatar.innerHTML = `<img src="${testimonials[currentSlide].avatar}" alt="${testimonials[currentSlide].name}">`;
+    mainAvatar.classList.remove("avatar-placeholder");
+  } else {
+    mainAvatar.innerHTML = `<span class="avatar-initials">${getInitials(
+      testimonials[currentSlide].name
+    )}</span>`;
+    mainAvatar.classList.add("avatar-placeholder");
+  }
+
+  const nextText = nextCard.querySelector(".testimonial-text");
+  const nextAvatar = nextCard.querySelector(".author-avatar");
+  const nextName = nextCard.querySelector(".author-name");
+  const nextRole = nextCard.querySelector(".author-role");
+
+  nextText.textContent = `"${testimonials[nextIndex].text}"`;
+  nextName.textContent = testimonials[nextIndex].name;
+  nextRole.textContent = testimonials[nextIndex].role;
+
+  if (testimonials[nextIndex].avatar) {
+    nextAvatar.innerHTML = `<img src="${testimonials[nextIndex].avatar}" alt="${testimonials[nextIndex].name}">`;
+    nextAvatar.classList.remove("avatar-placeholder");
+  } else {
+    nextAvatar.innerHTML = `<span class="avatar-initials">${getInitials(
+      testimonials[nextIndex].name
+    )}</span>`;
+    nextAvatar.classList.add("avatar-placeholder");
+  }
+
+  updateDots();
 }
 
-function renderTestimonialIndicators() {
-  const container = document.getElementById("testimonial-indicators");
-  container.innerHTML = testimonials
-    .map(
-      (_, index) => `
-        <button 
-            class="testimonial-indicator ${
-              index === currentSlide ? "active" : ""
-            }"
-            onclick="goToSlide(${index})"
-            aria-label="Go to testimonial ${index + 1}"
-        ></button>
-    `
-    )
-    .join("");
+function updateDots() {
+  const dotsContainer = document.querySelector(".testimonials-dots");
+  dotsContainer.innerHTML = "";
+
+  testimonials.forEach((_, index) => {
+    const dot = document.createElement("button");
+    dot.className = `testimonial-dot ${index === currentSlide ? "active" : ""}`;
+    dot.setAttribute("aria-label", `Go to testimonial ${index + 1}`);
+    dot.addEventListener("click", () => goToSlide(index));
+    dotsContainer.appendChild(dot);
+  });
+}
+
+function goToSlide(index) {
+  currentSlide = index;
+  updateTestimonials();
+  resetInterval();
+}
+
+function resetInterval() {
+  clearInterval(testimonialInterval);
+  testimonialInterval = setInterval(() => {
+    if (currentSlide === testimonials.length - 1) {
+      goToSlide(0);
+    } else {
+      goToSlide(currentSlide + 1);
+    }
+  }, 5000);
 }
 
 function renderFAQs() {
-  const container = document.getElementById("faq-container");
-  container.innerHTML = faqs
-    .map(
-      (faq, index) => `
-        <div class="border-bottom border-light pb-3 mb-4 faq-item">
-            <button 
-                class="btn btn-link w-100 d-flex align-items-center justify-content-between text-start p-0 text-decoration-none faq-button"
-                onclick="toggleFAQ(${index})"
-            >
-                <span class="fw-semibold text-dark faq-question">${
-                  faq.question
-                }</span>
-                <div class="flex-shrink-0 faq-icon-container">
-                    <img 
-                        src="${
-                          openFAQ === index
-                            ? "/assets/icons/faq-opened.svg"
-                            : "/assets/icons/faq-closed.svg"
-                        }"
-                        alt="${openFAQ === index ? "Collapse" : "Expand"}"
-                        class="faq-icon ${
-                          openFAQ === index ? "rotate-180" : ""
-                        }"
-                    >
+  const faqContainer = document.querySelector(".faq-container");
+
+  faqs.forEach((faq, index) => {
+    const faqItem = document.createElement("div");
+    faqItem.className = "faq-item";
+
+    faqItem.innerHTML = `
+            <button class="faq-button" data-index="${index}">
+                <span class="faq-question">${faq.question}</span>
+                <div class="faq-icon">
+                    <img src="/assets/icons/faq-closed.svg" alt="Expand" class="icon-closed">
+                    <img src="/assets/icons/faq-opened.svg" alt="Collapse" class="icon-opened">
                 </div>
             </button>
-            <div class="faq-answer ${openFAQ === index ? "show" : ""}">
-                <div class="pe-5 pb-2">
-                    <p class="text-muted faq-answer-text">${faq.answer}</p>
+            <div class="faq-answer-wrapper ${index === 0 ? "open" : ""}">
+                <div class="faq-answer">
+                    <p>${faq.answer}</p>
                 </div>
             </div>
-        </div>
-    `
-    )
-    .join("");
+        `;
+
+    faqContainer.appendChild(faqItem);
+  });
+
+  document.querySelectorAll(".faq-button").forEach((button) => {
+    button.addEventListener("click", function () {
+      const index = parseInt(this.getAttribute("data-index"));
+      toggleFAQ(index);
+    });
+  });
+}
+
+function toggleFAQ(index) {
+  const faqItems = document.querySelectorAll(".faq-item");
+
+  faqItems.forEach((item, i) => {
+    const wrapper = item.querySelector(".faq-answer-wrapper");
+    const icon = item.querySelector(".faq-icon");
+
+    if (i === index) {
+      if (openFAQ === index) {
+        wrapper.classList.remove("open");
+        icon.classList.remove("open");
+        openFAQ = -1;
+      } else {
+        wrapper.classList.add("open");
+        icon.classList.add("open");
+        openFAQ = index;
+      }
+    } else {
+      wrapper.classList.remove("open");
+      icon.classList.remove("open");
+    }
+  });
+}
+
+function initAnimations() {
+  if (typeof gsap === "undefined") {
+    return;
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  if (typeof SplitText !== "undefined") {
+    const heroTitle = new SplitText(".hero-title", { type: "words" });
+    gsap.from(heroTitle.words, {
+      y: 100,
+      opacity: 0,
+      duration: 3,
+      stagger: 0.1,
+      ease: "elastic.out(1, 0.3)",
+    });
+
+    const heroText = new SplitText(".hero-text", { type: "words" });
+    gsap.from(heroText.words, {
+      x: -1000,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.07,
+      ease: "power2.out",
+      delay: 2,
+    });
+  } else {
+    gsap.from(".hero-title", {
+      y: 100,
+      opacity: 0,
+      duration: 2,
+      ease: "elastic.out(1, 0.3)",
+    });
+
+    gsap.from(".hero-text", {
+      x: -100,
+      opacity: 0,
+      duration: 1,
+      ease: "power2.out",
+      delay: 1.5,
+    });
+  }
+
+  const timeline = gsap.timeline({
+    repeat: -1,
+    repeatDelay: 5,
+  });
+
+  const heroImg1 = document.querySelectorAll(".hero-img-1");
+  const heroImg2 = document.querySelectorAll(".hero-img-2");
+
+  if (heroImg1.length > 0 && heroImg2.length > 0) {
+    timeline
+      .fromTo(
+        heroImg1,
+        {
+          clipPath: "polygon(0% 100%, 0% 100%, 0% 100%, 0% 100%)",
+          duration: 0.8,
+          ease: "power2.out",
+          scale: 1.5,
+        },
+        {
+          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+          scale: 1,
+        }
+      )
+      .fromTo(
+        heroImg2,
+        {
+          clipPath: "polygon(100% 86%, 100% 86%, 100% 100%, 100% 100%)",
+          duration: 0.8,
+          ease: "power2.out",
+          scale: 1.5,
+        },
+        {
+          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+          scale: 1,
+        }
+      );
+  }
+
+  const features = document.querySelectorAll(".feature");
+  const featureContainer = document.querySelector(".feature-container");
+
+  if (features.length > 0 && featureContainer) {
+    features.forEach((feature, i) => {
+      gsap.from(feature, {
+        scrollTrigger: {
+          trigger: featureContainer,
+          start: "top 80%",
+          toggleActions: "restart none restart none",
+        },
+        delay: i * 0.2,
+        duration: 1.5,
+        scale: 0.8,
+        x: i % 2 ? 100 : -100,
+        opacity: 0,
+        ease: "power3.out",
+      });
+    });
+  }
+
+  const hero2Images = document.querySelectorAll(".hero-2");
+  if (hero2Images.length > 0) {
+    hero2Images.forEach((image, i) => {
+      gsap.from(image, {
+        scrollTrigger: {
+          trigger: image,
+          start: "top 80%",
+          toggleActions: "restart none restart none",
+        },
+        delay: i * 0.2,
+        duration: 1.2,
+        scale: 0.5,
+        opacity: 0,
+        ease: "power3.out",
+      });
+    });
+  }
+
+  const howtoSection = document.querySelector(".how-to-section");
+  const howtoInner = document.querySelector(".how-to-inner");
+
+  if (howtoSection && howtoInner) {
+    const scrollDistance = howtoInner.scrollWidth - howtoSection.offsetWidth;
+
+    gsap.to(howtoInner, {
+      x: -scrollDistance - 200,
+      ease: "none",
+      scrollTrigger: {
+        trigger: howtoSection,
+        pin: true,
+        scrub: 1,
+        end: () => `+=${howtoInner.scrollWidth + 200}`,
+        pinSpacing: true,
+      },
+    });
+  }
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById("current-year").textContent =
-    new Date().getFullYear();
+  document.getElementById("currentYear").textContent = new Date().getFullYear();
 
-  renderFeatures();
-  renderScrollingFeatures();
-  renderHowTo();
-  renderTestimonials();
+  updateTestimonials();
+  resetInterval();
+
   renderFAQs();
-});
 
-window.goToSlide = goToSlide;
-window.toggleFAQ = toggleFAQ;
+  if (typeof gsap !== "undefined") {
+    setTimeout(() => {
+      initAnimations();
+    }, 100);
+  }
+});
