@@ -60,7 +60,6 @@ function loadCompleteProfile() {
   fetch("complete-modal.html")
     .then((response) => response.text())
     .then((html) => {
-      console.log(document.getElementById("complete-profile").innerHTML);
       document.getElementById("complete-profile").innerHTML = html;
       const script = document.createElement("script");
       script.src = "js/complete-modal.js";
