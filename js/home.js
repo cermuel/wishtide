@@ -286,6 +286,7 @@ document.addEventListener("pageLoaded", function (e) {
   if (e.detail.pageName === "home") {
     renderWishlist();
     renderEvents();
+    loadCompleteProfile();
   }
 });
 document.querySelectorAll(".action-btn").forEach((btn) => {

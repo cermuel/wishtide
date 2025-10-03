@@ -1,0 +1,185 @@
+<div id="complete-profile-modal" class="complete-profile-container show">
+  <div
+    id="complete-profile-content"
+    class="bg-white d-flex flex-column complete-profile-content"
+    onclick="event.stopPropagation()"
+  >
+    <div class="complete-profile-header">
+      <h1 id="complete-profile-title" class="complete-profile-title">
+        Profile Completion
+      </h1>
+      <button onclick="closeCompleteProfile()">
+        <img
+          src="/assets/icons/close-dark.svg"
+          alt="close"
+          class="complete-profile-close-icon"
+        />
+      </button>
+    </div>
+
+    <div id="step-1" class="complete-profile-step">
+      <div class="complete-profile-content-scroll">
+        <div class="complete-profile-form">
+          <div class="row g-3">
+            <div class="col-6">
+              <div class="complete-profile-input-group">
+                <input
+                  type="text"
+                  class="complete-profile-floating-input"
+                  placeholder=" "
+                  id="firstname"
+                  required
+                />
+                <label for="firstname" class="complete-profile-floating-label">
+                  First name
+                </label>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="complete-profile-input-group">
+                <input
+                  type="text"
+                  class="complete-profile-floating-input"
+                  placeholder=" "
+                  id="lastname"
+                  required
+                />
+                <label for="lastname" class="complete-profile-floating-label">
+                  Last name
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="complete-profile-input-group">
+            <input
+              type="text"
+              class="complete-profile-floating-input"
+              placeholder=" "
+              id="middlename"
+              required
+            />
+            <label for="middlename" class="complete-profile-floating-label">
+              Middle name
+            </label>
+          </div>
+
+          <select class="complete-profile-select" id="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+
+          <div class="complete-profile-input-group">
+            <textarea
+              class="complete-profile-floating-input complete-profile-textarea"
+              placeholder=" "
+              id="bio"
+              required
+            ></textarea>
+            <label for="bio" class="complete-profile-floating-label">
+              Bio
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="step-2" class="complete-profile-step d-none">
+      <div class="complete-profile-content-scroll">
+        <div class="complete-profile-friends-list">
+          <div class="complete-profile-friend-item">
+            <img
+              src="/assets/images/friend.svg"
+              alt="friend"
+              class="complete-profile-friend-avatar"
+            />
+            <span class="complete-profile-friend-name">Bintu Gbadamosi</span>
+            <button class="complete-profile-follow-btn">Follow</button>
+          </div>
+          <div class="complete-profile-friend-item">
+            <img
+              src="/assets/images/friend.svg"
+              alt="friend"
+              class="complete-profile-friend-avatar"
+            />
+            <span class="complete-profile-friend-name">Bintu Gbadamosi</span>
+            <button class="complete-profile-follow-btn">Follow</button>
+          </div>
+          <div class="complete-profile-friend-item">
+            <img
+              src="/assets/images/friend.svg"
+              alt="friend"
+              class="complete-profile-friend-avatar"
+            />
+            <span class="complete-profile-friend-name">Bintu Gbadamosi</span>
+            <button class="complete-profile-follow-btn">Follow</button>
+          </div>
+          <div class="complete-profile-friend-item">
+            <img
+              src="/assets/images/friend.svg"
+              alt="friend"
+              class="complete-profile-friend-avatar"
+            />
+            <span class="complete-profile-friend-name">Bintu Gbadamosi</span>
+            <button class="complete-profile-follow-btn">Follow</button>
+          </div>
+          <div class="complete-profile-friend-item">
+            <img
+              src="/assets/images/friend.svg"
+              alt="friend"
+              class="complete-profile-friend-avatar"
+            />
+            <span class="complete-profile-friend-name">Bintu Gbadamosi</span>
+            <button class="complete-profile-follow-btn">Follow</button>
+          </div>
+          <div class="complete-profile-friend-item">
+            <img
+              src="/assets/images/friend.svg"
+              alt="friend"
+              class="complete-profile-friend-avatar"
+            />
+            <span class="complete-profile-friend-name">Bintu Gbadamosi</span>
+            <button class="complete-profile-follow-btn">Follow</button>
+          </div>
+          <div class="complete-profile-friend-item">
+            <img
+              src="/assets/images/friend.svg"
+              alt="friend"
+              class="complete-profile-friend-avatar"
+            />
+            <span class="complete-profile-friend-name">Bintu Gbadamosi</span>
+            <button class="complete-profile-follow-btn">Follow</button>
+          </div>
+          <div class="complete-profile-friend-item">
+            <img
+              src="/assets/images/friend.svg"
+              alt="friend"
+              class="complete-profile-friend-avatar"
+            />
+            <span class="complete-profile-friend-name">Bintu Gbadamosi</span>
+            <button class="complete-profile-follow-btn">Follow</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="complete-profile-footer">
+      <button
+        id="skip-btn"
+        class="complete-profile-skip-btn d-none"
+        onclick="closeCompleteProfile()"
+      >
+        Skip
+      </button>
+      <button
+        id="action-btn"
+        class="complete-profile-action-btn"
+        onclick="handleCompleteProfileNext()"
+      >
+        Update
+      </button>
+    </div>
+  </div>
+</div>
+<link rel="stylesheet" href="css/complete-modal.css" />

@@ -56,6 +56,19 @@ function loadRSVP() {
     });
 }
 
+function loadCompleteProfile() {
+  fetch("complete-modal.html")
+    .then((response) => response.text())
+    .then((html) => {
+      console.log(document.getElementById("complete-profile").innerHTML);
+      document.getElementById("complete-profile").innerHTML = html;
+      const script = document.createElement("script");
+      script.src = "js/complete-modal.js";
+      script.id = "complete-script";
+      document.body.appendChild(script);
+    });
+}
+
 function unloadCreateEvent() {
   const modal = document.getElementById("wishlist-modal");
   modal.classList.add("hidden");
@@ -212,6 +225,7 @@ function initLayout() {
     }
   });
   setActiveNav();
+  loadCompleteProfile();
 }
 
 if (document.readyState === "loading") {
@@ -224,3 +238,4 @@ window.unloadCreateEvent = unloadCreateEvent;
 window.unloadCreateWishlist = unloadCreateWishlist;
 window.loadContribute = loadContribute;
 window.loadRSVP = loadRSVP;
+window.loadCompleteProfile = loadCompleteProfile;
