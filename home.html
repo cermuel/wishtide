@@ -10,117 +10,1136 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/wishlist-modal.css" />
   </head>
   <body>
-    <div id="pageContent">
-      <div class="main-container">
-        <section class="left-section">
-          <div id="complete-profile"></div>
-          <h1 class="h2 fw-bold text-gray desktop-title mb-4">Home</h1>
+    <div
+      id="app"
+      class="d-flex w-100 overflow-hidden"
+      onclick="hideNotification()"
+    >
+      <ul
+        id="sidebar"
+        class="sidebar d-none d-md-flex flex-column align-items-center px-4 py-4"
+      >
+        <img src="/assets/icons/logo.svg" alt="logo" class="logo mb-4" />
 
-          <div class="mobile-header">
-            <img src="/assets/images/user.svg" alt="user" />
-            <p>@Chuks</p>
-            <img
-              src="/assets/icons/bell.svg"
-              class="ms-auto"
-              alt="bell"
-              onclick="toggleNotification(event)"
-            />
+        <a href="/home.html" class="sidebar-item" data-nav="home"
+          ><img class="icon" /><span class="nav-label">home</span></a
+        >
+        <a class="sidebar-item" data-nav="create" onclick="toggleCreate(event)">
+          <img class="icon" /><span class="nav-label">create</span>
+        </a>
+        <a href="/explore.html" class="sidebar-item" data-nav="search"
+          ><img class="icon" /><span class="nav-label">search</span></a
+        >
+        <a
+          class="sidebar-item"
+          data-nav="notification"
+          onclick="toggleNotification(event)"
+        >
+          <img class="icon" /><span class="nav-label">notification</span>
+        </a>
+        <a href="/profile.html" class="sidebar-item" data-nav="profile"
+          ><img class="icon" /><span class="nav-label">profile</span></a
+        >
+      </ul>
+
+      <div id="mainContent" class="flex-grow-1 h-100 d-flex position-relative">
+        <div
+          id="notificationPanel"
+          class="notification"
+          onclick="event.stopPropagation()"
+        ></div>
+        <div id="pageContent" class="flex-grow-1">
+          <div class="main-container">
+            <section class="left-section">
+              <div id="complete-profile"></div>
+              <h1 class="h2 fw-bold text-gray desktop-title mb-4">Home</h1>
+
+              <div class="mobile-header">
+                <img src="/assets/images/user.svg" alt="user" />
+                <p>@Chuks</p>
+                <img
+                  src="/assets/icons/bell.svg"
+                  class="ms-auto"
+                  alt="bell"
+                  onclick="toggleNotification(event)"
+                />
+              </div>
+
+              <div class="search-section">
+                <div class="d-flex align-items-center gap-2 mb-3">
+                  <img
+                    src="/assets/icons/spark.svg"
+                    style="width: 1.375rem; height: 1.375rem"
+                    alt="spark"
+                  />
+                  <p class="fw-bold text-white mb-0">
+                    Search across Wishlists, Users, Events
+                  </p>
+                </div>
+                <div class="search-input-container">
+                  <img
+                    src="/assets/icons/explore.svg"
+                    style="width: 0.875rem"
+                    alt="search"
+                  />
+                  <input
+                    type="text"
+                    class="search-input"
+                    placeholder="Enter item name, user or events"
+                  />
+                </div>
+              </div>
+
+              <div class="action-buttons">
+                <button class="action-btn" onclick="loadCreateWishlist()">
+                  <img
+                    src="/assets/icons/logo-small.svg"
+                    style="width: 1.5rem; height: 1.5rem"
+                    alt="wishlist"
+                  />
+                  <span>Create wishlist</span>
+                </button>
+                <button class="action-btn" onclick="loadCreateEvent()">
+                  <img
+                    src="/assets/icons/event.svg"
+                    style="width: 1.25rem; height: 1.25rem"
+                    alt="event"
+                  />
+                  <span>Start an event</span>
+                </button>
+                <button class="action-btn">
+                  <img
+                    src="/assets/icons/invite.svg"
+                    style="width: 1.5rem; height: 1.5rem"
+                    alt="invite"
+                  />
+                  <span>Invite friends</span>
+                </button>
+              </div>
+
+              <div class="section-header">
+                <h2 class="fw-bold mb-0">Trending Wishlist Now</h2>
+                <a href="#" class="see-more-link">
+                  <span>See more</span>
+                  <img
+                    src="/assets/icons/chevron-purple.svg"
+                    style="width: 7px"
+                    alt="chevron"
+                  />
+                </a>
+              </div>
+
+              <div class="wishlist-container">
+                <div class="horizontal-scroll" id="wishlistContainer">
+                  <div class="wishlist-card">
+                    <section class="card-image">
+                      <img
+                        src="/assets/images/wishlist-2.jpg"
+                        alt="wishlist image"
+                      />
+                      <div class="counter-tag image-overlay">1/5</div>
+                      <div class="image-overlay price-tag">
+                        <img
+                          src="/assets/icons/tag.svg"
+                          style="width: 1rem; height: 1rem"
+                          alt="tag"
+                        />
+                        <span>$200</span>
+                      </div>
+                    </section>
+                    <section class="card-content">
+                      <div class="user-info">
+                        <img
+                          src="/assets/images/user-2.svg"
+                          alt="user"
+                          class="user-avatar"
+                        />
+                        <span class="fw-bold">Samuel Birthday</span>
+                      </div>
+                      <div class="action-icons">
+                        <button class="action-icon">
+                          <img src="/assets/icons/like.svg" alt="like" />
+                        </button>
+                        <button
+                          class="action-icon"
+                          onclick="openWishlistModal()"
+                        >
+                          <img src="/assets/icons/comment.svg" alt="comment" />
+                        </button>
+                        <button class="action-icon">
+                          <img src="/assets/icons/share.svg" alt="share" />
+                        </button>
+                        <button class="action-icon ms-auto">
+                          <img src="/assets/icons/save.svg" alt="save" />
+                        </button>
+                      </div>
+                      <div class="likes-section">
+                        <div class="likes-avatars">
+                          <div class="like-avatar" style="margin-left: 0rem">
+                            <img
+                              src="/assets/images/user.svg"
+                              alt="avatar"
+                              class="rounded-circle"
+                            />
+                          </div>
+                          <div class="like-avatar" style="margin-left: -0.5rem">
+                            <img
+                              src="/assets/images/user-1.svg"
+                              alt="avatar"
+                              class="rounded-circle"
+                            />
+                          </div>
+                          <div class="like-avatar" style="margin-left: -0.5rem">
+                            <img
+                              src="/assets/images/user-2.svg"
+                              alt="avatar"
+                              class="rounded-circle"
+                            />
+                          </div>
+                        </div>
+                        <p class="likes-text mb-0">
+                          Liked by <strong>Chuks</strong> &
+                          <strong>more</strong>
+                        </p>
+                      </div>
+                    </section>
+                    <div
+                      class="comment-section d-none d-md-flex"
+                      onclick="openWishlistModal()"
+                    >
+                      <img
+                        src="/assets/images/user-2.svg"
+                        alt="user"
+                        class="user-avatar"
+                      />
+                      <input
+                        type="text"
+                        class="comment-input"
+                        placeholder="Add a comment"
+                      />
+                    </div>
+                  </div>
+                  <div class="wishlist-card">
+                    <section class="card-image">
+                      <img
+                        src="/assets/images/wishlist-2.jpg"
+                        alt="wishlist image"
+                      />
+                      <div class="counter-tag image-overlay">2/5</div>
+                      <div class="image-overlay price-tag">
+                        <img
+                          src="/assets/icons/tag.svg"
+                          style="width: 1rem; height: 1rem"
+                          alt="tag"
+                        />
+                        <span>$200</span>
+                      </div>
+                    </section>
+                    <section class="card-content">
+                      <div class="user-info">
+                        <img
+                          src="/assets/images/user-2.svg"
+                          alt="user"
+                          class="user-avatar"
+                        />
+                        <span class="fw-bold">Samuel Birthday</span>
+                      </div>
+                      <div class="action-icons">
+                        <button class="action-icon">
+                          <img src="/assets/icons/like.svg" alt="like" />
+                        </button>
+                        <button
+                          class="action-icon"
+                          onclick="openWishlistModal()"
+                        >
+                          <img src="/assets/icons/comment.svg" alt="comment" />
+                        </button>
+                        <button class="action-icon">
+                          <img src="/assets/icons/share.svg" alt="share" />
+                        </button>
+                        <button class="action-icon ms-auto">
+                          <img src="/assets/icons/save.svg" alt="save" />
+                        </button>
+                      </div>
+                      <div class="likes-section">
+                        <div class="likes-avatars">
+                          <div class="like-avatar" style="margin-left: 0.5rem">
+                            <img
+                              src="/assets/images/user.svg"
+                              alt="avatar"
+                              class="rounded-circle"
+                            />
+                          </div>
+                        </div>
+                        <p class="likes-text mb-0">
+                          Liked by <strong>Chuks</strong> &
+                          <strong>more</strong>
+                        </p>
+                      </div>
+                    </section>
+                    <div
+                      class="comment-section d-none d-md-flex"
+                      onclick="openWishlistModal()"
+                    >
+                      <img
+                        src="/assets/images/user-2.svg"
+                        alt="user"
+                        class="user-avatar"
+                      />
+                      <input
+                        type="text"
+                        class="comment-input"
+                        placeholder="Add a comment"
+                      />
+                    </div>
+                  </div>
+                  <div class="wishlist-card">
+                    <section class="card-image">
+                      <img
+                        src="/assets/images/wishlist-2.jpg"
+                        alt="wishlist image"
+                      />
+                      <div class="counter-tag image-overlay">3/5</div>
+                      <div class="image-overlay price-tag">
+                        <img
+                          src="/assets/icons/tag.svg"
+                          style="width: 1rem; height: 1rem"
+                          alt="tag"
+                        />
+                        <span>$200</span>
+                      </div>
+                    </section>
+                    <section class="card-content">
+                      <div class="user-info">
+                        <img
+                          src="/assets/images/user-2.svg"
+                          alt="user"
+                          class="user-avatar"
+                        />
+                        <span class="fw-bold">Samuel Birthday</span>
+                      </div>
+                      <div class="action-icons">
+                        <button class="action-icon">
+                          <img src="/assets/icons/like.svg" alt="like" />
+                        </button>
+                        <button
+                          class="action-icon"
+                          onclick="openWishlistModal()"
+                        >
+                          <img src="/assets/icons/comment.svg" alt="comment" />
+                        </button>
+                        <button class="action-icon">
+                          <img src="/assets/icons/share.svg" alt="share" />
+                        </button>
+                        <button class="action-icon ms-auto">
+                          <img src="/assets/icons/save.svg" alt="save" />
+                        </button>
+                      </div>
+                      <div class="likes-section">
+                        <div class="likes-avatars">
+                          <div class="like-avatar" style="margin-left: 0.5rem">
+                            <img
+                              src="/assets/images/user.svg"
+                              alt="avatar"
+                              class="rounded-circle"
+                            />
+                          </div>
+                        </div>
+                        <p class="likes-text mb-0">
+                          Liked by <strong>Chuks</strong> &
+                          <strong>more</strong>
+                        </p>
+                      </div>
+                    </section>
+                    <div
+                      class="comment-section d-none d-md-flex"
+                      onclick="openWishlistModal()"
+                    >
+                      <img
+                        src="/assets/images/user-2.svg"
+                        alt="user"
+                        class="user-avatar"
+                      />
+                      <input
+                        type="text"
+                        class="comment-input"
+                        placeholder="Add a comment"
+                      />
+                    </div>
+                  </div>
+                  <div class="wishlist-card">
+                    <section class="card-image">
+                      <img
+                        src="/assets/images/wishlist-2.jpg"
+                        alt="wishlist image"
+                      />
+                      <div class="counter-tag image-overlay">4/5</div>
+                      <div class="image-overlay price-tag">
+                        <img
+                          src="/assets/icons/tag.svg"
+                          style="width: 1rem; height: 1rem"
+                          alt="tag"
+                        />
+                        <span>$200</span>
+                      </div>
+                    </section>
+                    <section class="card-content">
+                      <div class="user-info">
+                        <img
+                          src="/assets/images/user-2.svg"
+                          alt="user"
+                          class="user-avatar"
+                        />
+                        <span class="fw-bold">Samuel Birthday</span>
+                      </div>
+                      <div class="action-icons">
+                        <button class="action-icon">
+                          <img src="/assets/icons/like.svg" alt="like" />
+                        </button>
+                        <button
+                          class="action-icon"
+                          onclick="openWishlistModal()"
+                        >
+                          <img src="/assets/icons/comment.svg" alt="comment" />
+                        </button>
+                        <button class="action-icon">
+                          <img src="/assets/icons/share.svg" alt="share" />
+                        </button>
+                        <button class="action-icon ms-auto">
+                          <img src="/assets/icons/save.svg" alt="save" />
+                        </button>
+                      </div>
+                      <div class="likes-section">
+                        <div class="likes-avatars">
+                          <div class="like-avatar" style="margin-left: 0.5rem">
+                            <img
+                              src="/assets/images/user.svg"
+                              alt="avatar"
+                              class="rounded-circle"
+                            />
+                          </div>
+                        </div>
+                        <p class="likes-text mb-0">
+                          Liked by <strong>Chuks</strong> &
+                          <strong>more</strong>
+                        </p>
+                      </div>
+                    </section>
+                    <div
+                      class="comment-section d-none d-md-flex"
+                      onclick="openWishlistModal()"
+                    >
+                      <img
+                        src="/assets/images/user-2.svg"
+                        alt="user"
+                        class="user-avatar"
+                      />
+                      <input
+                        type="text"
+                        class="comment-input"
+                        placeholder="Add a comment"
+                      />
+                    </div>
+                  </div>
+                  <div class="wishlist-card">
+                    <section class="card-image">
+                      <img
+                        src="/assets/images/wishlist-2.jpg"
+                        alt="wishlist image"
+                      />
+                      <div class="counter-tag image-overlay">5/5</div>
+                      <div class="image-overlay price-tag">
+                        <img
+                          src="/assets/icons/tag.svg"
+                          style="width: 1rem; height: 1rem"
+                          alt="tag"
+                        />
+                        <span>$200</span>
+                      </div>
+                    </section>
+                    <section class="card-content">
+                      <div class="user-info">
+                        <img
+                          src="/assets/images/user-2.svg"
+                          alt="user"
+                          class="user-avatar"
+                        />
+                        <span class="fw-bold">Samuel Birthday</span>
+                      </div>
+                      <div class="action-icons">
+                        <button class="action-icon">
+                          <img src="/assets/icons/like.svg" alt="like" />
+                        </button>
+                        <button
+                          class="action-icon"
+                          onclick="openWishlistModal()"
+                        >
+                          <img src="/assets/icons/comment.svg" alt="comment" />
+                        </button>
+                        <button class="action-icon">
+                          <img src="/assets/icons/share.svg" alt="share" />
+                        </button>
+                        <button class="action-icon ms-auto">
+                          <img src="/assets/icons/save.svg" alt="save" />
+                        </button>
+                      </div>
+                      <div class="likes-section">
+                        <div class="likes-avatars">
+                          <div class="like-avatar" style="margin-left: 0.5rem">
+                            <img
+                              src="/assets/images/user.svg"
+                              alt="avatar"
+                              class="rounded-circle"
+                            />
+                          </div>
+                        </div>
+                        <p class="likes-text mb-0">
+                          Liked by <strong>Chuks</strong> &
+                          <strong>more</strong>
+                        </p>
+                      </div>
+                    </section>
+                    <div
+                      class="comment-section d-none d-md-flex"
+                      onclick="openWishlistModal()"
+                    >
+                      <img
+                        src="/assets/images/user-2.svg"
+                        alt="user"
+                        class="user-avatar"
+                      />
+                      <input
+                        type="text"
+                        class="comment-input"
+                        placeholder="Add a comment"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="section-header mt-5">
+                <h2 class="fw-bold mb-0">Upcoming events</h2>
+                <a href="#" class="see-more-link">
+                  <span>See more</span>
+                  <img
+                    src="/assets/icons/chevron-purple.svg"
+                    style="width: 7px"
+                    alt="chevron"
+                  />
+                </a>
+              </div>
+
+              <div class="events-container">
+                <div class="horizontal-scroll" id="eventsContainer">
+                  <div class="event-card">
+                    <section class="card-image event-card-image">
+                      <img src="/assets/images/event.svg" alt="event image" />
+                      <div class="image-overlay days-tag">
+                        <img
+                          src="/assets/icons/clock.svg"
+                          style="width: 0.75rem"
+                          alt="clock"
+                        />
+                        <span>4 days</span>
+                      </div>
+                    </section>
+                    <section class="card-content">
+                      <div class="user-info">
+                        <img
+                          src="/assets/images/user-2.svg"
+                          alt="user"
+                          class="user-avatar"
+                        />
+                        <span class="fw-bold">Sarah Birthday</span>
+                        <div class="ms-auto d-flex align-items-center gap-1">
+                          <span style="font-size: 0.875rem">Tagged</span>
+                          <div class="likes-avatars">
+                            <div class="like-avatar" style="margin-left: 0rem">
+                              <img
+                                src="/assets/images/user.svg"
+                                alt="avatar"
+                                class="rounded-circle"
+                              />
+                            </div>
+                            <div
+                              class="like-avatar"
+                              style="margin-left: -0.5rem"
+                            >
+                              <img
+                                src="/assets/images/user.svg"
+                                alt="avatar"
+                                class="rounded-circle"
+                              />
+                            </div>
+                            <div
+                              class="like-avatar"
+                              style="margin-left: -0.5rem"
+                            >
+                              <img
+                                src="/assets/images/user.svg"
+                                alt="avatar"
+                                class="rounded-circle"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="event-tags">
+                        <img
+                          src="/assets/icons/calendar.svg"
+                          style="width: 2rem"
+                          alt="calendar"
+                          class="d-none d-md-block"
+                        />
+                        <span class="event-tag">April 1, 2025</span>
+                        <span class="event-tag d-none d-md-inline">Online</span>
+                        <span class="event-tag">RSVP count: 20</span>
+                      </div>
+                      <p class="event-description">
+                        Sarah's turning another fabulous year older! 🎉 Browse
+                        her wishlist, pick a gift she'll love, and help make her
+                        day sparkle.
+                      </p>
+                      <div class="progress-section">
+                        <p style="font-size: 0.875rem" class="mb-1">
+                          Gift progress
+                        </p>
+                        <div class="progress-bar-container">
+                          <div class="progress-bar" style="width: 20%"></div>
+                        </div>
+                        <div class="progress-text">
+                          <span
+                            >Contributed:
+                            <span style="color: #151515">$200</span></span
+                          >
+                          <span
+                            >Goal:
+                            <span style="color: #151515">$1000</span></span
+                          >
+                        </div>
+                      </div>
+                      <button
+                        class="d-flex align-items-center gap-1 border-0 bg-transparent d-none d-md-flex"
+                      >
+                        <img
+                          src="/assets/icons/comment.svg"
+                          style="width: 1.75rem"
+                          alt="comment"
+                        />
+                        <span
+                          style="
+                            font-size: 0.875rem;
+                            color: var(--text-gray-lighter);
+                          "
+                          >View comments...</span
+                        >
+                      </button>
+                    </section>
+                    <div
+                      class="comment-section d-none d-md-flex"
+                      style="border-bottom: 1px solid #ddd"
+                    >
+                      <img
+                        src="/assets/images/user.svg"
+                        alt="user"
+                        class="user-avatar"
+                      />
+                      <input
+                        type="text"
+                        class="comment-input"
+                        placeholder="Add a comment"
+                      />
+                    </div>
+                    <div class="event-buttons">
+                      <button class="event-btn btn-outline">
+                        <span>View wishlist</span>
+                        <img
+                          src="/assets/icons/open.svg"
+                          style="width: 1.125rem"
+                          alt="open"
+                        />
+                      </button>
+                      <button
+                        onclick="loadRSVP()"
+                        class="event-btn btn-primary"
+                      >
+                        <span>RSVP Now</span>
+                        <img
+                          src="/assets/icons/open-white.svg"
+                          style="width: 1.125rem"
+                          alt="open"
+                        />
+                      </button>
+                    </div>
+                  </div>
+                  <div class="event-card">
+                    <section class="card-image event-card-image">
+                      <img src="/assets/images/event.svg" alt="event image" />
+                      <div class="image-overlay days-tag">
+                        <img
+                          src="/assets/icons/clock.svg"
+                          style="width: 0.75rem"
+                          alt="clock"
+                        />
+                        <span>4 days</span>
+                      </div>
+                    </section>
+                    <section class="card-content">
+                      <div class="user-info">
+                        <img
+                          src="/assets/images/user-2.svg"
+                          alt="user"
+                          class="user-avatar"
+                        />
+                        <span class="fw-bold">Sarah Birthday</span>
+                        <div class="ms-auto d-flex align-items-center gap-1">
+                          <span style="font-size: 0.875rem">Tagged</span>
+                          <div class="likes-avatars">
+                            <div class="like-avatar" style="margin-left: 0rem">
+                              <img
+                                src="/assets/images/user.svg"
+                                alt="avatar"
+                                class="rounded-circle"
+                              />
+                            </div>
+                            <div
+                              class="like-avatar"
+                              style="margin-left: -0.5rem"
+                            >
+                              <img
+                                src="/assets/images/user.svg"
+                                alt="avatar"
+                                class="rounded-circle"
+                              />
+                            </div>
+                            <div
+                              class="like-avatar"
+                              style="margin-left: -0.5rem"
+                            >
+                              <img
+                                src="/assets/images/user.svg"
+                                alt="avatar"
+                                class="rounded-circle"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="event-tags">
+                        <img
+                          src="/assets/icons/calendar.svg"
+                          style="width: 2rem"
+                          alt="calendar"
+                          class="d-none d-md-block"
+                        />
+                        <span class="event-tag">April 1, 2025</span>
+                        <span class="event-tag d-none d-md-inline">Online</span>
+                        <span class="event-tag">RSVP count: 20</span>
+                      </div>
+                      <p class="event-description">
+                        Sarah's turning another fabulous year older! 🎉 Browse
+                        her wishlist, pick a gift she'll love, and help make her
+                        day sparkle.
+                      </p>
+                      <div class="progress-section">
+                        <p style="font-size: 0.875rem" class="mb-1">
+                          Gift progress
+                        </p>
+                        <div class="progress-bar-container">
+                          <div class="progress-bar" style="width: 20%"></div>
+                        </div>
+                        <div class="progress-text">
+                          <span
+                            >Contributed:
+                            <span style="color: #151515">$200</span></span
+                          >
+                          <span
+                            >Goal:
+                            <span style="color: #151515">$1000</span></span
+                          >
+                        </div>
+                      </div>
+                      <button
+                        class="d-flex align-items-center gap-1 border-0 bg-transparent d-none d-md-flex"
+                      >
+                        <img
+                          src="/assets/icons/comment.svg"
+                          style="width: 1.75rem"
+                          alt="comment"
+                        />
+                        <span
+                          style="
+                            font-size: 0.875rem;
+                            color: var(--text-gray-lighter);
+                          "
+                          >View comments...</span
+                        >
+                      </button>
+                    </section>
+                    <div
+                      class="comment-section d-none d-md-flex"
+                      style="border-bottom: 1px solid #ddd"
+                    >
+                      <img
+                        src="/assets/images/user.svg"
+                        alt="user"
+                        class="user-avatar"
+                      />
+                      <input
+                        type="text"
+                        class="comment-input"
+                        placeholder="Add a comment"
+                      />
+                    </div>
+                    <div class="event-buttons">
+                      <button class="event-btn btn-outline">
+                        <span>View wishlist</span>
+                        <img
+                          src="/assets/icons/open.svg"
+                          style="width: 1.125rem"
+                          alt="open"
+                        />
+                      </button>
+                      <button
+                        onclick="loadRSVP()"
+                        class="event-btn btn-primary"
+                      >
+                        <span>RSVP Now</span>
+                        <img
+                          src="/assets/icons/open-white.svg"
+                          style="width: 1.125rem"
+                          alt="open"
+                        />
+                      </button>
+                    </div>
+                  </div>
+                  <div class="event-card">
+                    <section class="card-image event-card-image">
+                      <img src="/assets/images/event.svg" alt="event image" />
+                      <div class="image-overlay days-tag">
+                        <img
+                          src="/assets/icons/clock.svg"
+                          style="width: 0.75rem"
+                          alt="clock"
+                        />
+                        <span>4 days</span>
+                      </div>
+                    </section>
+                    <section class="card-content">
+                      <div class="user-info">
+                        <img
+                          src="/assets/images/user-2.svg"
+                          alt="user"
+                          class="user-avatar"
+                        />
+                        <span class="fw-bold">Sarah Birthday</span>
+                        <div class="ms-auto d-flex align-items-center gap-1">
+                          <span style="font-size: 0.875rem">Tagged</span>
+                          <div class="likes-avatars">
+                            <div class="like-avatar" style="margin-left: 0rem">
+                              <img
+                                src="/assets/images/user.svg"
+                                alt="avatar"
+                                class="rounded-circle"
+                              />
+                            </div>
+                            <div
+                              class="like-avatar"
+                              style="margin-left: -0.5rem"
+                            >
+                              <img
+                                src="/assets/images/user.svg"
+                                alt="avatar"
+                                class="rounded-circle"
+                              />
+                            </div>
+                            <div
+                              class="like-avatar"
+                              style="margin-left: -0.5rem"
+                            >
+                              <img
+                                src="/assets/images/user.svg"
+                                alt="avatar"
+                                class="rounded-circle"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="event-tags">
+                        <img
+                          src="/assets/icons/calendar.svg"
+                          style="width: 2rem"
+                          alt="calendar"
+                          class="d-none d-md-block"
+                        />
+                        <span class="event-tag">April 1, 2025</span>
+                        <span class="event-tag d-none d-md-inline">Online</span>
+                        <span class="event-tag">RSVP count: 20</span>
+                      </div>
+                      <p class="event-description">
+                        Sarah's turning another fabulous year older! 🎉 Browse
+                        her wishlist, pick a gift she'll love, and help make her
+                        day sparkle.
+                      </p>
+                      <div class="progress-section">
+                        <p style="font-size: 0.875rem" class="mb-1">
+                          Gift progress
+                        </p>
+                        <div class="progress-bar-container">
+                          <div class="progress-bar" style="width: 20%"></div>
+                        </div>
+                        <div class="progress-text">
+                          <span
+                            >Contributed:
+                            <span style="color: #151515">$200</span></span
+                          >
+                          <span
+                            >Goal:
+                            <span style="color: #151515">$1000</span></span
+                          >
+                        </div>
+                      </div>
+                      <button
+                        class="d-flex align-items-center gap-1 border-0 bg-transparent d-none d-md-flex"
+                      >
+                        <img
+                          src="/assets/icons/comment.svg"
+                          style="width: 1.75rem"
+                          alt="comment"
+                        />
+                        <span
+                          style="
+                            font-size: 0.875rem;
+                            color: var(--text-gray-lighter);
+                          "
+                          >View comments...</span
+                        >
+                      </button>
+                    </section>
+                    <div
+                      class="comment-section d-none d-md-flex"
+                      style="border-bottom: 1px solid #ddd"
+                    >
+                      <img
+                        src="/assets/images/user.svg"
+                        alt="user"
+                        class="user-avatar"
+                      />
+                      <input
+                        type="text"
+                        class="comment-input"
+                        placeholder="Add a comment"
+                      />
+                    </div>
+                    <div class="event-buttons">
+                      <button class="event-btn btn-outline">
+                        <span>View wishlist</span>
+                        <img
+                          src="/assets/icons/open.svg"
+                          style="width: 1.125rem"
+                          alt="open"
+                        />
+                      </button>
+                      <button
+                        onclick="loadRSVP()"
+                        class="event-btn btn-primary"
+                      >
+                        <span>RSVP Now</span>
+                        <img
+                          src="/assets/icons/open-white.svg"
+                          style="width: 1.125rem"
+                          alt="open"
+                        />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="bottom-section">
+                <section class="suggested-section">
+                  <h2 class="suggested-title">Suggested for you</h2>
+                  <ul class="user-list" id="user-list">
+                    <li>
+                      <div class="user-info">
+                        <img
+                          src="/assets/images/friend.svg"
+                          alt="friend"
+                          class="user-avatar"
+                        />
+                        <span class="user-name">yrn_cermuel</span>
+                      </div>
+                      <button class="follow-btn-mobile">
+                        <span class="follow-text">Follow</span>
+                      </button>
+                    </li>
+                    <li>
+                      <div class="user-info">
+                        <img
+                          src="/assets/images/friend.svg"
+                          alt="friend"
+                          class="user-avatar"
+                        />
+                        <span class="user-name">yrn_cermuel</span>
+                      </div>
+                      <button class="follow-btn-mobile">
+                        <span class="follow-text">Follow</span>
+                      </button>
+                    </li>
+                    <li>
+                      <div class="user-info">
+                        <img
+                          src="/assets/images/friend.svg"
+                          alt="friend"
+                          class="user-avatar"
+                        />
+                        <span class="user-name">yrn_cermuel</span>
+                      </div>
+                      <button class="follow-btn-mobile">
+                        <span class="follow-text">Follow</span>
+                      </button>
+                    </li>
+                    <li>
+                      <div class="user-info">
+                        <img
+                          src="/assets/images/friend.svg"
+                          alt="friend"
+                          class="user-avatar"
+                        />
+                        <span class="user-name">yrn_cermuel</span>
+                      </div>
+                      <button class="follow-btn-mobile">
+                        <span class="follow-text">Follow</span>
+                      </button>
+                    </li>
+                  </ul>
+                </section>
+              </div>
+            </section>
+            <section id="right-section" class="right-section d-none d-md-block">
+              <div
+                class="d-flex align-items-center gap-2 mb-4"
+                id="right-user-details"
+              >
+                <img
+                  src="/assets/images/user.svg"
+                  class="user-avatar"
+                  style="border: 1px solid var(--border-light)"
+                  alt="user"
+                />
+                <div>
+                  <p class="mb-0" style="font-size: 0.8125rem; color: #151515">
+                    Chukwuemeka
+                  </p>
+                  <p
+                    class="mb-0"
+                    style="font-size: 0.8125rem; color: var(--text-gray-light)"
+                  >
+                    @Chuks
+                  </p>
+                </div>
+              </div>
+              <h5 class="fw-semibold" style="color: var(--text-gray)">
+                Suggested for you
+              </h5>
+              <div class="suggested-users" id="suggestedUsers">
+                <div class="user-suggestion">
+                  <img
+                    src="/assets/images/friend.svg"
+                    alt="friend"
+                    style="width: 2rem; height: 2rem"
+                    class="rounded-circle"
+                  />
+                  <span style="font-size: 0.875rem; color: #242424"
+                    >yrn_cermuel</span
+                  >
+                  <button class="follow-btn">Follow</button>
+                </div>
+                <div class="user-suggestion">
+                  <img
+                    src="/assets/images/friend.svg"
+                    alt="friend"
+                    style="width: 2rem; height: 2rem"
+                    class="rounded-circle"
+                  />
+                  <span style="font-size: 0.875rem; color: #242424">Chuks</span>
+                  <button class="follow-btn">Follow</button>
+                </div>
+              </div>
+            </section>
           </div>
-
-          <div class="search-section">
-            <div class="d-flex align-items-center gap-2 mb-3">
-              <img
-                src="/assets/icons/spark.svg"
-                style="width: 1.375rem; height: 1.375rem"
-                alt="spark"
-              />
-              <p class="fw-bold text-white mb-0">
-                Search across Wishlists, Users, Events
-              </p>
-            </div>
-            <div class="search-input-container">
-              <img
-                src="/assets/icons/explore.svg"
-                style="width: 0.875rem"
-                alt="search"
-              />
-              <input
-                type="text"
-                class="search-input"
-                placeholder="Enter item name, user or events"
-              />
-            </div>
+        </div>
+        <section id="wishlist-modal" class="modal hidden">
+          <div class="modal-content">
+            <span class="close" onclick="closeWishlistModal()">&times;</span>
+            <div id="wishlist-details"></div>
           </div>
+        </section>
+        <section id="contribute-modal"></section>
+        <section id="rsvp-modal"></section>
+      </div>
 
-          <div class="action-buttons">
-            <button class="action-btn" onclick="loadCreateWishlist()">
+      <div
+        id="bottomNav"
+        class="bottom-nav d-flex d-md-none border-top bg-white"
+      >
+        <a href="/home.html" class="bottom-item" data-nav="home">
+          <img class="icon" /><span class="nav-label">home</span>
+        </a>
+        <a class="bottom-item" data-nav="create" onclick="toggleCreate(event)">
+          <img class="icon" /><span class="nav-label">create</span>
+        </a>
+        <a href="/explore.html" class="bottom-item" data-nav="timeline">
+          <img class="icon" /><span class="nav-label">timeline</span>
+        </a>
+        <a href="/profile.html" class="bottom-item" data-nav="profile">
+          <img class="icon" /><span class="nav-label">profile</span>
+        </a>
+      </div>
+
+      <div
+        id="createPopup"
+        class="create-popup"
+        role="dialog"
+        aria-hidden="true"
+      >
+        <button class="close-btn" onclick="toggleCreatePopup(false)">
+          <img src="/assets/icons/close.svg" alt="close" class="h-4-5" />
+        </button>
+
+        <div class="popup-inner">
+          <button class="popup-btn wishlist-btn" onclick="loadCreateWishlist()">
+            <div>
               <img
                 src="/assets/icons/logo-small.svg"
-                style="width: 1.5rem; height: 1.5rem"
+                class="wishlist-icon"
                 alt="wishlist"
               />
-              <span>Create wishlist</span>
-            </button>
-            <button class="action-btn" onclick="loadCreateEvent()">
+            </div>
+            <span class="popup-label">Create wishlist</span>
+          </button>
+
+          <div class="popup-divider"></div>
+
+          <button class="popup-btn wishlist-btn" onclick="loadCreateEvent()">
+            <div>
               <img
                 src="/assets/icons/event.svg"
-                style="width: 1.25rem; height: 1.25rem"
-                alt="event"
+                class="wishlist-icon"
+                alt="wishlist"
               />
-              <span>Start an event</span>
-            </button>
-            <button class="action-btn">
-              <img
-                src="/assets/icons/invite.svg"
-                style="width: 1.5rem; height: 1.5rem"
-                alt="invite"
-              />
-              <span>Invite friends</span>
-            </button>
-          </div>
-
-          <div class="section-header">
-            <h2 class="fw-bold mb-0">Trending Wishlist Now</h2>
-            <a href="#" class="see-more-link">
-              <span>See more</span>
-              <img
-                src="/assets/icons/chevron-purple.svg"
-                style="width: 7px"
-                alt="chevron"
-              />
-            </a>
-          </div>
-
-          <div class="wishlist-container">
-            <div class="horizontal-scroll" id="wishlistContainer"></div>
-          </div>
-
-          <div class="section-header mt-5">
-            <h2 class="fw-bold mb-0">Upcoming events</h2>
-            <a href="#" class="see-more-link">
-              <span>See more</span>
-              <img
-                src="/assets/icons/chevron-purple.svg"
-                style="width: 7px"
-                alt="chevron"
-              />
-            </a>
-          </div>
-
-          <div class="events-container">
-            <div class="horizontal-scroll" id="eventsContainer"></div>
-          </div>
-          <div id="bottom-section"></div>
-        </section>
-        <section
-          id="right-section"
-          class="right-section d-none d-md-block"
-        ></section>
+            </div>
+            <span class="popup-label">Create event</span>
+          </button>
+        </div>
       </div>
     </div>
   </body>
 
-  <script src="js/load-layout.js"></script>
+  <script type="module" src="js/home.js"></script>
 </html>

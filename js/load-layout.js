@@ -33,6 +33,7 @@ async function loadBottomSection() {
     return false;
   }
 }
+
 function renderSuggestedUsersMobile() {
   const users = Array.from({ length: 8 }, (_, i) => ({
     name: "Bintu Gbadamosi",
@@ -219,3 +220,4 @@ if (document.getElementById("sidebar")) {
 }
 
 window.navigateToPage = navigateToPage;
+window.loadRightSection = loadRightSection;

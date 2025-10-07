@@ -115,16 +115,6 @@ function toggleNotification(e) {
         panel.style.display = "block";
         notificationOpen = true;
         setActiveNav();
-      })
-      .catch(() => {
-        const panel = document.getElementById("notificationPanel");
-        panel.innerHTML = `<div style="padding: 20px; background: white;">
-          <h3>Notifications</h3>
-          <p>Unable to load notifications</p>
-        </div>`;
-        panel.style.display = "block";
-        notificationOpen = true;
-        setActiveNav();
       });
   } else {
     notificationOpen = false;
@@ -224,7 +214,6 @@ function initLayout() {
     }
   });
   setActiveNav();
-  loadCompleteProfile();
 }
 
 if (document.readyState === "loading") {
@@ -233,8 +222,29 @@ if (document.readyState === "loading") {
   initLayout();
 }
 
+function openWishlistModal() {
+  const modal = document.getElementById("wishlist-modal");
+
+  fetch("modal.html")
+    .then((response) => response.text())
+    .then((modalHtml) => {
+      console.log(modalHtml);
+      const details = document.getElementById("wishlist-details");
+      details.innerHTML = modalHtml;
+      modal.classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+    });
+}
 window.unloadCreateEvent = unloadCreateEvent;
 window.unloadCreateWishlist = unloadCreateWishlist;
 window.loadContribute = loadContribute;
 window.loadRSVP = loadRSVP;
 window.loadCompleteProfile = loadCompleteProfile;
+window.initLayout = initLayout;
+window.toggleNotification = toggleNotification;
+window.hideNotification = hideNotification;
+window.setActiveNav = setActiveNav;
+window.loadCreateEvent = loadCreateEvent;
+window.loadCreateWishlist = loadCreateWishlist;
+window.toggleCreate = toggleCreate;
+window.toggleCreatePopup = toggleCreatePopup;

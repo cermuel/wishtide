@@ -13,7 +13,7 @@
     <img
       id="modal-wishlist-image"
       class="d-none d-md-block wishlist-image"
-      src=""
+      src="/assets/images/wishlist-2.jpg"
       alt=""
     />
     <div class="d-flex flex-column wishlist-body">
@@ -22,31 +22,35 @@
           <img
             id="modal-user-avatar"
             class="rounded-circle wishlist-avatar"
-            src=""
+            src="/assets/images/user-2.svg"
             alt="user"
           />
-          <span id="modal-wishlist-name" class="fw-bold"></span>
+          <span id="modal-wishlist-name" class="fw-bold">Samuel Birthday</span>
         </div>
         <p
           id="modal-wishlist-description"
           class="text-muted mb-2 wishlist-description"
-        ></p>
+        >
+          Help Sarah achieve her dreams! Every contribution counts towards
+          making her wishes come true.
+        </p>
 
         <div class="mb-2">
           <div class="border bg-white my-1 wishlist-progress-container">
             <div
               id="modal-progress-bar"
               class="bg-info wishlist-progress-bar"
+              style="width: 20%"
             ></div>
           </div>
           <div class="d-flex justify-content-between">
             <p class="mb-0 wishlist-progress-text">
               Contributed:
-              <span id="modal-progress-amount">$0</span>
+              <span id="modal-progress-amount">$200</span>
             </p>
             <p class="mb-0 wishlist-progress-text">
               Goal:
-              <span id="modal-progress-goal">$0</span>
+              <span id="modal-progress-goal">$1000</span>
             </p>
           </div>
         </div>
@@ -55,7 +59,42 @@
       <section
         id="modal-comments-section"
         class="w-100 p-3 flex-grow-1 wishlist-comments"
-      ></section>
+      >
+        <div class="d-flex align-items-start gap-2 mb-3 comment">
+          <img
+            src="/assets/images/user-1.svg"
+            alt=""
+            class="rounded-circle comment-avatar"
+          />
+          <div class="flex-grow-1">
+            <p class="mb-0 comment-author">
+              Chuks
+              <span class="comment-time">2 hours ago</span>
+            </p>
+            <p class="mb-0 comment-text">
+              This looks amazing! Can't wait to contribute.
+            </p>
+          </div>
+          <img src="/assets/icons/like.svg" alt="like" class="comment-like" />
+        </div>
+        <div class="d-flex align-items-start gap-2 mb-3 comment">
+          <img
+            src="/assets/images/user-1.svg"
+            alt=""
+            class="rounded-circle comment-avatar"
+          />
+          <div class="flex-grow-1">
+            <p class="mb-0 comment-author">
+              Chuks
+              <span class="comment-time">2 hours ago</span>
+            </p>
+            <p class="mb-0 comment-text">
+              This looks amazing! Can't wait to contribute.
+            </p>
+          </div>
+          <img src="/assets/icons/like.svg" alt="like" class="comment-like" />
+        </div>
+      </section>
 
       <section class="w-100 mt-auto p-2 border wishlist-actions">
         <div class="d-flex align-items-center wishlist-action-group w-100">
