@@ -354,3 +354,18 @@ body {
     display: none !important;
   }
 }
+
+.h-4-5 {
+  height: 18px;
+}
+
+.user-list li {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: #fff;
+  border: 1px solid rgba(18, 32, 35, 0.14);
+  border-radius: 0.5rem;
+}

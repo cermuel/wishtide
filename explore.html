@@ -11,73 +11,1165 @@
     />
     <link rel="stylesheet" href="css/home.css" />
     <link rel="stylesheet" href="css/explore.css" />
+    <link rel="stylesheet" href="css/layout.css" />
   </head>
   <body>
-    <div id="pageContent">
-      <div class="main-container d-flex text-secondary">
-        <section
-          class="left-section"
-          style="min-width: 0; height: 100dvh; padding-bottom: 7rem !important"
+    <div
+      id="app"
+      class="d-flex w-100 overflow-hidden"
+      onclick="hideNotification()"
+    >
+      <ul
+        id="sidebar"
+        class="sidebar d-none d-md-flex flex-column align-items-center px-4 py-4"
+      >
+        <img src="/assets/icons/logo.svg" alt="logo" class="logo mb-4" />
+        <a href="/home.html" class="sidebar-item" data-nav="home"
+          ><img class="icon" /><span class="nav-label">home</span></a
         >
-          <h1 class="h2 fw-bold text-gray desktop-title mb-4">Explore</h1>
+        <a class="sidebar-item" data-nav="create" onclick="toggleCreate(event)">
+          <img class="icon" /><span class="nav-label">create</span>
+        </a>
+        <a href="/explore.html" class="sidebar-item" data-nav="search"
+          ><img class="icon" /><span class="nav-label">search</span></a
+        >
+        <a
+          class="sidebar-item"
+          data-nav="notification"
+          onclick="toggleNotification(event)"
+        >
+          <img class="icon" /><span class="nav-label">notification</span>
+        </a>
+        <a href="/profile.html" class="sidebar-item" data-nav="profile"
+          ><img class="icon" /><span class="nav-label">profile</span></a
+        >
+      </ul>
+      <div id="mainContent" class="flex-grow-1 h-100 d-flex position-relative">
+        <div
+          id="notificationPanel"
+          class="notification"
+          onclick="event.stopPropagation()"
+        ></div>
+        <div id="pageContent" class="flex-grow-1">
+          <div class="main-container d-flex text-secondary">
+            <section
+              class="left-section"
+              style="
+                min-width: 0;
+                height: 100dvh;
+                padding-bottom: 7rem !important;
+              "
+            >
+              <h1 class="h2 fw-bold text-gray desktop-title mb-4">Explore</h1>
+              <div class="mobile-header">
+                <img src="/assets/images/user.svg" alt="user" />
+                <p>@Chuks</p>
+                <img
+                  src="/assets/icons/bell.svg"
+                  class="ms-auto"
+                  alt="bell"
+                  onclick="toggleNotification(event)"
+                />
+              </div>
+              <div class="search-section">
+                <div class="d-flex align-items-center gap-2 mb-3">
+                  <img
+                    src="/assets/icons/spark.svg"
+                    style="width: 1.375rem; height: 1.375rem"
+                    alt="spark"
+                  />
+                  <p class="fw-bold text-white mb-0">
+                    Search across Wishlists, Users, Events
+                  </p>
+                </div>
+                <div class="search-input-container">
+                  <img
+                    src="/assets/icons/explore.svg"
+                    style="width: 0.875rem"
+                    alt="search"
+                  />
+                  <input
+                    type="text"
+                    class="search-input"
+                    id="searchInput"
+                    placeholder="Enter item name, user or events"
+                    oninput="handleSearch(this.value)"
+                  />
+                </div>
+              </div>
+              <div class="main-tabs-container mb-4 d-flex">
+                <div id="mainTabs" class="d-flex gap-0 w-100">
+                  <button class="tab-btn active" onclick="selectMainTab('All')">
+                    All
+                  </button>
+                  <button class="tab-btn" onclick="selectMainTab('Trending')">
+                    Trending
+                  </button>
+                  <button class="tab-btn" onclick="selectMainTab('Following')">
+                    Following
+                  </button>
+                </div>
+              </div>
+              <div id="sortTabs" class="d-none d-flex gap-2 mb-4 overflow-auto">
+                <button
+                  class="sort-tab-btn"
+                  onclick="selectSortTab('Accounts')"
+                >
+                  Accounts
+                </button>
+                <button
+                  class="sort-tab-btn"
+                  onclick="selectSortTab('Wishlists')"
+                >
+                  Wishlists
+                </button>
+                <button class="sort-tab-btn" onclick="selectSortTab('Events')">
+                  Events
+                </button>
+              </div>
+              <div id="contentContainer" class="overflow-hidden">
+                <div
+                  class="d-flex flex-column align-items-center gap-4 gap-md-5 mt-4"
+                >
+                  <div
+                    class="bg-white rounded-4 border border-light-subtle"
+                    style="flex-shrink: 0; width: 100%"
+                  >
+                    <div
+                      class="position-relative overflow-hidden rounded-top-4"
+                      style="aspect-ratio: 531/386"
+                    >
+                      <img
+                        src="/assets/images/wishlist-1.svg"
+                        alt="image"
+                        class="w-100 h-100"
+                        style="object-fit: cover"
+                      />
+                      <div
+                        class="position-absolute top-0 end-0 m-2 bg-white px-3 py-1 rounded-pill"
+                        style="font-size: 0.875rem"
+                      >
+                        1/2
+                      </div>
+                      <div
+                        class="position-absolute bottom-0 start-0 m-2 bg-white px-3 py-1 rounded-pill d-flex align-items-center gap-1"
+                      >
+                        <img
+                          src="/assets/icons/tag.svg"
+                          style="width: 1rem; height: 1rem"
+                          alt="tag"
+                        />
+                        <span style="font-size: 0.875rem">$150</span>
+                      </div>
+                    </div>
+                    <div class="p-4 border-bottom border-light-subtle">
+                      <div class="d-flex align-items-center gap-3 mb-3">
+                        <img
+                          src="/assets/images/user-1.svg"
+                          alt="user"
+                          class="rounded-circle"
+                          style="width: 2rem; height: 2rem"
+                        />
+                        <span class="fw-bold">Tjaay Birthday wishlist</span>
+                      </div>
+                      <div class="d-flex align-items-center gap-3 mb-3">
+                        <button class="btn p-0 border-0 bg-transparent">
+                          <img
+                            src="/assets/icons/like.svg"
+                            alt="like"
+                            style="width: 1.75rem; height: 1.75rem"
+                          />
+                        </button>
+                        <button
+                          class="btn p-0 border-0 bg-transparent"
+                          onclick="openWishlistModal()"
+                        >
+                          <img
+                            src="/assets/icons/comment.svg"
+                            alt="comment"
+                            style="width: 1.75rem; height: 1.75rem"
+                          />
+                        </button>
+                        <button class="btn p-0 border-0 bg-transparent">
+                          <img
+                            src="/assets/icons/share.svg"
+                            alt="share"
+                            style="width: 1.75rem; height: 1.75rem"
+                          />
+                        </button>
+                        <button class="btn p-0 border-0 bg-transparent ms-auto">
+                          <img
+                            src="/assets/icons/save.svg"
+                            alt="save"
+                            style="width: 1.75rem; height: 1.75rem"
+                          />
+                        </button>
+                      </div>
+                      <div class="likes-section">
+                        <div class="likes-avatars">
+                          <div class="like-avatar" style="margin-left: 0rem">
+                            <img
+                              src="/assets/images/user-1.svg"
+                              alt="avatar"
+                              class="rounded-circle"
+                            />
+                          </div>
+                          <div class="like-avatar" style="margin-left: -0.5rem">
+                            <img
+                              src="/assets/images/user-2.svg"
+                              alt="avatar"
+                              class="rounded-circle"
+                            />
+                          </div>
+                          <div class="like-avatar" style="margin-left: -0.5rem">
+                            <img
+                              src="/assets/images/user.svg"
+                              alt="avatar"
+                              class="rounded-circle"
+                            />
+                          </div>
+                        </div>
+                        <p class="likes-text mb-0">
+                          Liked by <strong>Chuks</strong> &
+                          <strong>more</strong>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="comment-section d-none d-md-flex">
+                      <img
+                        src="/assets/images/user-1.svg"
+                        alt="user"
+                        class="user-avatar"
+                      />
+                      <input
+                        type="text"
+                        class="comment-input"
+                        placeholder="Add a comment"
+                      />
+                    </div>
+                  </div>
 
-          <div class="mobile-header">
-            <img src="/assets/images/user.svg" alt="user" />
-            <p>@Chuks</p>
-            <img
-              src="/assets/icons/bell.svg"
-              class="ms-auto"
-              alt="bell"
-              onclick="toggleNotification(event)"
-            />
+                  <div
+                    class="bg-white rounded-4 border border-light-subtle"
+                    style="flex-shrink: 0; width: 100%"
+                  >
+                    <div
+                      class="position-relative overflow-hidden rounded-top-4"
+                      style="aspect-ratio: 531/386"
+                    >
+                      <img
+                        src="/assets/images/wishlist-2.jpg"
+                        alt="image"
+                        class="w-100 h-100"
+                        style="object-fit: cover"
+                      />
+                      <div
+                        class="position-absolute top-0 end-0 m-2 bg-white px-3 py-1 rounded-pill"
+                        style="font-size: 0.875rem"
+                      >
+                        2/2
+                      </div>
+                      <div
+                        class="position-absolute bottom-0 start-0 m-2 bg-white px-3 py-1 rounded-pill d-flex align-items-center gap-1"
+                      >
+                        <img
+                          src="/assets/icons/tag.svg"
+                          style="width: 1rem; height: 1rem"
+                          alt="tag"
+                        />
+                        <span style="font-size: 0.875rem">$150</span>
+                      </div>
+                    </div>
+                    <div class="p-4 border-bottom border-light-subtle">
+                      <div class="d-flex align-items-center gap-3 mb-3">
+                        <img
+                          src="/assets/images/user-2.svg"
+                          alt="user"
+                          class="rounded-circle"
+                          style="width: 2rem; height: 2rem"
+                        />
+                        <span class="fw-bold">Sarah's Dream Wishlist</span>
+                      </div>
+                      <div class="d-flex align-items-center gap-3 mb-3">
+                        <button class="btn p-0 border-0 bg-transparent">
+                          <img
+                            src="/assets/icons/like.svg"
+                            alt="like"
+                            style="width: 1.75rem; height: 1.75rem"
+                          />
+                        </button>
+                        <button class="btn p-0 border-0 bg-transparent">
+                          <img
+                            src="/assets/icons/comment.svg"
+                            alt="comment"
+                            style="width: 1.75rem; height: 1.75rem"
+                          />
+                        </button>
+                        <button class="btn p-0 border-0 bg-transparent">
+                          <img
+                            src="/assets/icons/share.svg"
+                            alt="share"
+                            style="width: 1.75rem; height: 1.75rem"
+                          />
+                        </button>
+                        <button class="btn p-0 border-0 bg-transparent ms-auto">
+                          <img
+                            src="/assets/icons/save.svg"
+                            alt="save"
+                            style="width: 1.75rem; height: 1.75rem"
+                          />
+                        </button>
+                      </div>
+                      <div class="likes-section">
+                        <div class="likes-avatars">
+                          <div class="like-avatar" style="margin-left: 0rem">
+                            <img
+                              src="/assets/images/user-1.svg"
+                              alt="avatar"
+                              class="rounded-circle"
+                            />
+                          </div>
+                          <div class="like-avatar" style="margin-left: -0.5rem">
+                            <img
+                              src="/assets/images/user-2.svg"
+                              alt="avatar"
+                              class="rounded-circle"
+                            />
+                          </div>
+                          <div class="like-avatar" style="margin-left: -0.5rem">
+                            <img
+                              src="/assets/images/user.svg"
+                              alt="avatar"
+                              class="rounded-circle"
+                            />
+                          </div>
+                        </div>
+                        <p class="likes-text mb-0">
+                          Liked by <strong>Chuks</strong> &
+                          <strong>more</strong>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="comment-section d-none d-md-flex">
+                      <img
+                        src="/assets/images/user-2.svg"
+                        alt="user"
+                        class="user-avatar"
+                      />
+                      <input
+                        type="text"
+                        class="comment-input"
+                        placeholder="Add a comment"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="searchResults" class="d-none">
+                <div class="mb-5">
+                  <h5 class="fw-bold mb-3 text-dark">Accounts</h5>
+                  <div class="d-flex flex-column gap-3">
+                    <a
+                      href="/user.html#cermuel"
+                      class="d-flex align-items-center gap-2 text-decoration-none"
+                    >
+                      <img
+                        src="/assets/images/user-1.svg"
+                        class="rounded-circle"
+                        style="
+                          width: 2.5rem;
+                          height: 2.5rem;
+                          border: 1px solid rgba(18, 32, 35, 0.14);
+                        "
+                        alt="user"
+                      />
+                      <div>
+                        <p
+                          class="mb-0"
+                          style="font-size: 0.8125rem; color: #151515"
+                        >
+                          Samuel Ngene
+                        </p>
+                        <p
+                          class="mb-0"
+                          style="
+                            font-size: 0.8125rem;
+                            color: rgba(67, 67, 67, 0.8);
+                          "
+                        >
+                          @cermuel
+                        </p>
+                      </div>
+                    </a>
+                    <a
+                      href="/user.html#john"
+                      class="d-flex align-items-center gap-2 text-decoration-none"
+                    >
+                      <img
+                        src="/assets/images/friend.svg"
+                        class="rounded-circle"
+                        style="
+                          width: 2.5rem;
+                          height: 2.5rem;
+                          border: 1px solid rgba(18, 32, 35, 0.14);
+                        "
+                        alt="user"
+                      />
+                      <div>
+                        <p
+                          class="mb-0"
+                          style="font-size: 0.8125rem; color: #151515"
+                        >
+                          John Doe
+                        </p>
+                        <p
+                          class="mb-0"
+                          style="
+                            font-size: 0.8125rem;
+                            color: rgba(67, 67, 67, 0.8);
+                          "
+                        >
+                          @john
+                        </p>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="mb-5">
+                  <h5 class="fw-bold mb-3 text-dark">Wishlists</h5>
+                  <div class="d-flex gap-3" style="overflow-x: auto">
+                    <div
+                      class="bg-white rounded-4 border border-light-subtle"
+                      style="flex-shrink: 0; width: 85%"
+                    >
+                      <div
+                        class="position-relative overflow-hidden rounded-top-4"
+                        style="aspect-ratio: 531/386"
+                      >
+                        <img
+                          src="/assets/images/wishlist-1.svg"
+                          alt="image"
+                          class="w-100 h-100"
+                          style="object-fit: cover"
+                        />
+                        <div
+                          class="position-absolute top-0 end-0 m-2 bg-white px-3 py-1 rounded-pill"
+                          style="font-size: 0.875rem"
+                        >
+                          1/2
+                        </div>
+                        <div
+                          class="position-absolute bottom-0 start-0 m-2 bg-white px-3 py-1 rounded-pill d-flex align-items-center gap-1"
+                        >
+                          <img
+                            src="/assets/icons/tag.svg"
+                            style="width: 1rem; height: 1rem"
+                            alt="tag"
+                          />
+                          <span style="font-size: 0.875rem">$150</span>
+                        </div>
+                      </div>
+                      <div class="p-4 border-bottom border-light-subtle">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                          <img
+                            src="/assets/images/user-1.svg"
+                            alt="user"
+                            class="rounded-circle"
+                            style="width: 2rem; height: 2rem"
+                          />
+                          <span class="fw-bold">Tjaay Birthday wishlist</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                          <button class="btn p-0 border-0 bg-transparent">
+                            <img
+                              src="/assets/icons/like.svg"
+                              alt="like"
+                              style="width: 1.75rem; height: 1.75rem"
+                            />
+                          </button>
+                          <button
+                            class="btn p-0 border-0 bg-transparent"
+                            onclick="openWishlistModal()"
+                          >
+                            <img
+                              src="/assets/icons/comment.svg"
+                              alt="comment"
+                              style="width: 1.75rem; height: 1.75rem"
+                            />
+                          </button>
+                          <button class="btn p-0 border-0 bg-transparent">
+                            <img
+                              src="/assets/icons/share.svg"
+                              alt="share"
+                              style="width: 1.75rem; height: 1.75rem"
+                            />
+                          </button>
+                          <button
+                            class="btn p-0 border-0 bg-transparent ms-auto"
+                          >
+                            <img
+                              src="/assets/icons/save.svg"
+                              alt="save"
+                              style="width: 1.75rem; height: 1.75rem"
+                            />
+                          </button>
+                        </div>
+                        <div class="likes-section">
+                          <div class="likes-avatars">
+                            <div class="like-avatar" style="margin-left: 0rem">
+                              <img
+                                src="/assets/images/user-1.svg"
+                                alt="avatar"
+                                class="rounded-circle"
+                              />
+                            </div>
+                            <div
+                              class="like-avatar"
+                              style="margin-left: -0.5rem"
+                            >
+                              <img
+                                src="/assets/images/user-2.svg"
+                                alt="avatar"
+                                class="rounded-circle"
+                              />
+                            </div>
+                            <div
+                              class="like-avatar"
+                              style="margin-left: -0.5rem"
+                            >
+                              <img
+                                src="/assets/images/user.svg"
+                                alt="avatar"
+                                class="rounded-circle"
+                              />
+                            </div>
+                          </div>
+                          <p class="likes-text mb-0">
+                            Liked by <strong>Chuks</strong> &
+                            <strong>more</strong>
+                          </p>
+                        </div>
+                      </div>
+                      <div
+                        onclick="openWishlistModal()"
+                        class="comment-section d-none d-md-flex"
+                      >
+                        <img
+                          src="/assets/images/user-1.svg"
+                          alt="user"
+                          class="user-avatar"
+                        />
+                        <input
+                          type="text"
+                          class="comment-input"
+                          placeholder="Add a comment"
+                        />
+                      </div>
+                    </div>
+                    <div
+                      class="bg-white rounded-4 border border-light-subtle"
+                      style="flex-shrink: 0; width: 85%"
+                    >
+                      <div
+                        class="position-relative overflow-hidden rounded-top-4"
+                        style="aspect-ratio: 531/386"
+                      >
+                        <img
+                          src="/assets/images/wishlist-1.svg"
+                          alt="image"
+                          class="w-100 h-100"
+                          style="object-fit: cover"
+                        />
+                        <div
+                          class="position-absolute top-0 end-0 m-2 bg-white px-3 py-1 rounded-pill"
+                          style="font-size: 0.875rem"
+                        >
+                          1/2
+                        </div>
+                        <div
+                          class="position-absolute bottom-0 start-0 m-2 bg-white px-3 py-1 rounded-pill d-flex align-items-center gap-1"
+                        >
+                          <img
+                            src="/assets/icons/tag.svg"
+                            style="width: 1rem; height: 1rem"
+                            alt="tag"
+                          />
+                          <span style="font-size: 0.875rem">$150</span>
+                        </div>
+                      </div>
+                      <div class="p-4 border-bottom border-light-subtle">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                          <img
+                            src="/assets/images/user-1.svg"
+                            alt="user"
+                            class="rounded-circle"
+                            style="width: 2rem; height: 2rem"
+                          />
+                          <span class="fw-bold">Tjaay Birthday wishlist</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                          <button class="btn p-0 border-0 bg-transparent">
+                            <img
+                              src="/assets/icons/like.svg"
+                              alt="like"
+                              style="width: 1.75rem; height: 1.75rem"
+                            />
+                          </button>
+                          <button
+                            class="btn p-0 border-0 bg-transparent"
+                            onclick="openWishlistModal()"
+                          >
+                            <img
+                              src="/assets/icons/comment.svg"
+                              alt="comment"
+                              style="width: 1.75rem; height: 1.75rem"
+                            />
+                          </button>
+                          <button class="btn p-0 border-0 bg-transparent">
+                            <img
+                              src="/assets/icons/share.svg"
+                              alt="share"
+                              style="width: 1.75rem; height: 1.75rem"
+                            />
+                          </button>
+                          <button
+                            class="btn p-0 border-0 bg-transparent ms-auto"
+                          >
+                            <img
+                              src="/assets/icons/save.svg"
+                              alt="save"
+                              style="width: 1.75rem; height: 1.75rem"
+                            />
+                          </button>
+                        </div>
+                        <div class="likes-section">
+                          <div class="likes-avatars">
+                            <div class="like-avatar" style="margin-left: 0rem">
+                              <img
+                                src="/assets/images/user-1.svg"
+                                alt="avatar"
+                                class="rounded-circle"
+                              />
+                            </div>
+                            <div
+                              class="like-avatar"
+                              style="margin-left: -0.5rem"
+                            >
+                              <img
+                                src="/assets/images/user-2.svg"
+                                alt="avatar"
+                                class="rounded-circle"
+                              />
+                            </div>
+                            <div
+                              class="like-avatar"
+                              style="margin-left: -0.5rem"
+                            >
+                              <img
+                                src="/assets/images/user.svg"
+                                alt="avatar"
+                                class="rounded-circle"
+                              />
+                            </div>
+                          </div>
+                          <p class="likes-text mb-0">
+                            Liked by <strong>Chuks</strong> &
+                            <strong>more</strong>
+                          </p>
+                        </div>
+                      </div>
+                      <div
+                        onclick="openWishlistModal()"
+                        class="comment-section d-none d-md-flex"
+                      >
+                        <img
+                          src="/assets/images/user-1.svg"
+                          alt="user"
+                          class="user-avatar"
+                        />
+                        <input
+                          type="text"
+                          class="comment-input"
+                          placeholder="Add a comment"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mb-5">
+                  <h5 class="fw-bold mb-3 text-dark">Events</h5>
+                  <div class="d-flex gap-3" style="overflow-x: auto">
+                    <div
+                      class="bg-white rounded-4 border border-light-subtle"
+                      style="flex-shrink: 0; width: 85%"
+                    >
+                      <div
+                        class="position-relative overflow-hidden rounded-top-4"
+                        style="aspect-ratio: 531/151"
+                      >
+                        <img
+                          src="/assets/images/event.svg"
+                          alt="image"
+                          class="w-100 h-100"
+                          style="object-fit: cover"
+                        />
+                        <div
+                          class="position-absolute top-0 end-0 m-2 text-white border border-white border-opacity-60 px-2 py-1 rounded-pill d-flex align-items-center gap-1"
+                        >
+                          <img
+                            src="/assets/icons/clock.svg"
+                            style="width: 0.75rem; height: 0.75rem"
+                          />
+                          <span style="font-size: 0.875rem">10 days</span>
+                        </div>
+                      </div>
+                      <div class="p-4 border-bottom border-light-subtle">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                          <img
+                            src="/assets/images/user-2.svg"
+                            alt="user"
+                            class="rounded-circle"
+                            style="width: 2rem; height: 2rem"
+                          />
+                          <span class="fw-bold">Sarah Birthday</span>
+                          <div class="d-flex align-items-center gap-1 ms-auto">
+                            <span style="font-size: 0.875rem">Tagged</span>
+                            <div
+                              class="d-flex align-items-center position-relative"
+                            >
+                              <div
+                                class="bg-white rounded-circle p-1"
+                                style="margin-left: 0; width: 1.625rem"
+                              >
+                                <img
+                                  src="/assets/images/user-1.svg"
+                                  alt="tagged"
+                                  class="rounded-circle"
+                                  style="width: 1.5rem; height: 1.5rem"
+                                />
+                              </div>
+                              <div
+                                class="bg-white rounded-circle p-1"
+                                style="margin-left: -0.75rem; width: 1.625rem"
+                              >
+                                <img
+                                  src="/assets/images/user-2.svg"
+                                  alt="tagged"
+                                  class="rounded-circle"
+                                  style="width: 1.5rem; height: 1.5rem"
+                                />
+                              </div>
+                              <div
+                                class="bg-white rounded-circle p-1"
+                                style="margin-left: -0.75rem; width: 1.625rem"
+                              >
+                                <img
+                                  src="/assets/images/user.svg"
+                                  alt="tagged"
+                                  class="rounded-circle"
+                                  style="width: 1.5rem; height: 1.5rem"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="d-flex align-items-center gap-2 mb-3">
+                          <img
+                            src="/assets/icons/calendar.svg"
+                            alt="calendar"
+                            class="d-none d-md-block"
+                            style="width: 2rem; height: 2rem"
+                          />
+                          <span class="bg-light-subtle py-1 px-2 rounded"
+                            >April 1, 2025</span
+                          >
+                          <span
+                            class="bg-light-subtle py-1 px-2 rounded d-none d-md-inline"
+                            >Online</span
+                          >
+                          <span class="bg-light-subtle py-1 px-2 rounded"
+                            >RSVP count: 10</span
+                          >
+                        </div>
+                        <p class="text-muted mb-3">
+                          Sarah's turning another fabulous year older! 🎉 Browse
+                          her wishlist, pick a gift she'll love, and help make
+                          her day sparkle.
+                        </p>
+                        <div class="mb-3">
+                          <p class="mb-1">Gift progress</p>
+                          <div class="progress" style="height: 10px">
+                            <div
+                              class="progress-bar"
+                              style="width: 40%; background-color: #009fe2"
+                            ></div>
+                          </div>
+                          <div class="d-flex justify-content-between mt-1">
+                            <p
+                              class="mb-0 text-muted"
+                              style="font-size: 0.875rem"
+                            >
+                              Contributed: <span class="text-dark">$400</span>
+                            </p>
+                            <p
+                              class="mb-0 text-muted"
+                              style="font-size: 0.875rem"
+                            >
+                              Goal: <span class="text-dark">$1000</span>
+                            </p>
+                          </div>
+                        </div>
+                        <button
+                          class="btn p-0 border-0 bg-transparent d-none d-md-flex align-items-center gap-1"
+                        >
+                          <img
+                            src="/assets/icons/comment.svg"
+                            alt="comment"
+                            style="width: 1.75rem; height: 1.75rem"
+                          />
+                          <span class="text-muted">View comments...</span>
+                        </button>
+                      </div>
+                      <div
+                        class="p-4 border-bottom border-light-subtle d-none d-md-flex align-items-center gap-3"
+                      >
+                        <img
+                          src="/assets/images/user-2.svg"
+                          alt="user"
+                          class="rounded-circle"
+                          style="width: 2rem; height: 2rem"
+                        />
+                        <input
+                          type="text"
+                          class="form-control rounded-pill"
+                          placeholder="Add a comment"
+                        />
+                      </div>
+                      <div class="p-4 d-flex align-items-center gap-3">
+                        <button
+                          class="btn flex-fill border border-light-subtle d-flex align-items-center justify-content-center gap-1 py-2 py-md-3"
+                        >
+                          <span>View wishlist</span>
+                          <img
+                            src="/assets/icons/open.svg"
+                            style="width: 1.125rem; height: 1.125rem"
+                            alt="open"
+                          />
+                        </button>
+                        <button
+                          class="btn flex-fill text-white d-flex align-items-center justify-content-center gap-1 py-2 py-md-3"
+                          style="
+                            background-color: #6d29d9;
+                            border-color: #6d29d9;
+                          "
+                          onclick="loadRSVP()"
+                        >
+                          <span>RSVP Now</span>
+                          <img
+                            src="/assets/icons/open-white.svg"
+                            style="width: 1.125rem; height: 1.125rem"
+                            alt="open"
+                          />
+                        </button>
+                      </div>
+                    </div>
+
+                    <div
+                      class="bg-white rounded-4 border border-light-subtle"
+                      style="flex-shrink: 0; width: 85%"
+                    >
+                      <div
+                        class="position-relative overflow-hidden rounded-top-4"
+                        style="aspect-ratio: 531/151"
+                      >
+                        <img
+                          src="/assets/images/event.svg"
+                          alt="image"
+                          class="w-100 h-100"
+                          style="object-fit: cover"
+                        />
+                        <div
+                          class="position-absolute top-0 end-0 m-2 text-white border border-white border-opacity-60 px-2 py-1 rounded-pill d-flex align-items-center gap-1"
+                        >
+                          <img
+                            src="/assets/icons/clock.svg"
+                            style="width: 0.75rem; height: 0.75rem"
+                          />
+                          <span style="font-size: 0.875rem">10 days</span>
+                        </div>
+                      </div>
+                      <div class="p-4 border-bottom border-light-subtle">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                          <img
+                            src="/assets/images/user-2.svg"
+                            alt="user"
+                            class="rounded-circle"
+                            style="width: 2rem; height: 2rem"
+                          />
+                          <span class="fw-bold">Sarah Birthday</span>
+                          <div class="d-flex align-items-center gap-1 ms-auto">
+                            <span style="font-size: 0.875rem">Tagged</span>
+                            <div
+                              class="d-flex align-items-center position-relative"
+                            >
+                              <div
+                                class="bg-white rounded-circle p-1"
+                                style="margin-left: 0; width: 1.625rem"
+                              >
+                                <img
+                                  src="/assets/images/user-1.svg"
+                                  alt="tagged"
+                                  class="rounded-circle"
+                                  style="width: 1.5rem; height: 1.5rem"
+                                />
+                              </div>
+                              <div
+                                class="bg-white rounded-circle p-1"
+                                style="margin-left: -0.75rem; width: 1.625rem"
+                              >
+                                <img
+                                  src="/assets/images/user-2.svg"
+                                  alt="tagged"
+                                  class="rounded-circle"
+                                  style="width: 1.5rem; height: 1.5rem"
+                                />
+                              </div>
+                              <div
+                                class="bg-white rounded-circle p-1"
+                                style="margin-left: -0.75rem; width: 1.625rem"
+                              >
+                                <img
+                                  src="/assets/images/user.svg"
+                                  alt="tagged"
+                                  class="rounded-circle"
+                                  style="width: 1.5rem; height: 1.5rem"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="d-flex align-items-center gap-2 mb-3">
+                          <img
+                            src="/assets/icons/calendar.svg"
+                            alt="calendar"
+                            class="d-none d-md-block"
+                            style="width: 2rem; height: 2rem"
+                          />
+                          <span class="bg-light-subtle py-1 px-2 rounded"
+                            >April 1, 2025</span
+                          >
+                          <span
+                            class="bg-light-subtle py-1 px-2 rounded d-none d-md-inline"
+                            >Online</span
+                          >
+                          <span class="bg-light-subtle py-1 px-2 rounded"
+                            >RSVP count: 10</span
+                          >
+                        </div>
+                        <p class="text-muted mb-3">
+                          Sarah's turning another fabulous year older! 🎉 Browse
+                          her wishlist, pick a gift she'll love, and help make
+                          her day sparkle.
+                        </p>
+                        <div class="mb-3">
+                          <p class="mb-1">Gift progress</p>
+                          <div class="progress" style="height: 10px">
+                            <div
+                              class="progress-bar"
+                              style="width: 40%; background-color: #009fe2"
+                            ></div>
+                          </div>
+                          <div class="d-flex justify-content-between mt-1">
+                            <p
+                              class="mb-0 text-muted"
+                              style="font-size: 0.875rem"
+                            >
+                              Contributed: <span class="text-dark">$400</span>
+                            </p>
+                            <p
+                              class="mb-0 text-muted"
+                              style="font-size: 0.875rem"
+                            >
+                              Goal: <span class="text-dark">$1000</span>
+                            </p>
+                          </div>
+                        </div>
+                        <button
+                          class="btn p-0 border-0 bg-transparent d-none d-md-flex align-items-center gap-1"
+                        >
+                          <img
+                            src="/assets/icons/comment.svg"
+                            alt="comment"
+                            style="width: 1.75rem; height: 1.75rem"
+                          />
+                          <span class="text-muted">View comments...</span>
+                        </button>
+                      </div>
+                      <div
+                        class="p-4 border-bottom border-light-subtle d-none d-md-flex align-items-center gap-3"
+                      >
+                        <img
+                          src="/assets/images/user-2.svg"
+                          alt="user"
+                          class="rounded-circle"
+                          style="width: 2rem; height: 2rem"
+                        />
+                        <input
+                          type="text"
+                          class="form-control rounded-pill"
+                          placeholder="Add a comment"
+                        />
+                      </div>
+                      <div class="p-4 d-flex align-items-center gap-3">
+                        <button
+                          class="btn flex-fill border border-light-subtle d-flex align-items-center justify-content-center gap-1 py-2 py-md-3"
+                        >
+                          <span>View wishlist</span>
+                          <img
+                            src="/assets/icons/open.svg"
+                            style="width: 1.125rem; height: 1.125rem"
+                            alt="open"
+                          />
+                        </button>
+                        <button
+                          class="btn flex-fill text-white d-flex align-items-center justify-content-center gap-1 py-2 py-md-3"
+                          style="
+                            background-color: #6d29d9;
+                            border-color: #6d29d9;
+                          "
+                          onclick="loadRSVP()"
+                        >
+                          <span>RSVP Now</span>
+                          <img
+                            src="/assets/icons/open-white.svg"
+                            style="width: 1.125rem; height: 1.125rem"
+                            alt="open"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section id="right-section" class="right-section d-none d-md-block">
+              <div
+                class="d-flex align-items-center gap-2 mb-4"
+                id="right-user-details"
+              >
+                <img
+                  src="/assets/images/user.svg"
+                  class="user-avatar"
+                  style="border: 1px solid var(--border-light)"
+                  alt="user"
+                />
+                <div>
+                  <p class="mb-0" style="font-size: 0.8125rem; color: #151515">
+                    Chukwuemeka
+                  </p>
+                  <p
+                    class="mb-0"
+                    style="font-size: 0.8125rem; color: var(--text-gray-light)"
+                  >
+                    @Chuks
+                  </p>
+                </div>
+              </div>
+              <h5 class="fw-semibold" style="color: var(--text-gray)">
+                Suggested for you
+              </h5>
+              <div class="suggested-users" id="suggestedUsers">
+                <div class="user-suggestion">
+                  <img
+                    src="/assets/images/friend.svg"
+                    alt="friend"
+                    style="width: 2rem; height: 2rem"
+                    class="rounded-circle"
+                  />
+                  <span style="font-size: 0.875rem; color: #242424"
+                    >yrn_cermuel</span
+                  >
+                  <button class="follow-btn">Follow</button>
+                </div>
+                <div class="user-suggestion">
+                  <img
+                    src="/assets/images/friend.svg"
+                    alt="friend"
+                    style="width: 2rem; height: 2rem"
+                    class="rounded-circle"
+                  />
+                  <span style="font-size: 0.875rem; color: #242424">Chuks</span>
+                  <button class="follow-btn">Follow</button>
+                </div>
+              </div>
+            </section>
           </div>
-
-          <div class="search-section">
-            <div class="d-flex align-items-center gap-2 mb-3">
-              <img
-                src="/assets/icons/spark.svg"
-                style="width: 1.375rem; height: 1.375rem"
-                alt="spark"
-              />
-              <p class="fw-bold text-white mb-0">
-                Search across Wishlists, Users, Events
-              </p>
-            </div>
-            <div class="search-input-container">
-              <img
-                src="/assets/icons/explore.svg"
-                style="width: 0.875rem"
-                alt="search"
-              />
-              <input
-                type="text"
-                class="search-input"
-                id="searchInput"
-                placeholder="Enter item name, user or events"
-              />
-            </div>
+        </div>
+        <section id="wishlist-modal" class="modal hidden">
+          <div class="modal-content">
+            <span class="close" onclick="closeWishlistModal()">&times;</span>
+            <div id="wishlist-details"></div>
           </div>
-
-          <div class="main-tabs-container mb-4 d-flex">
-            <div id="mainTabs" class="d-flex gap-0 w-100"></div>
-          </div>
-
-          <div
-            id="sortTabs"
-            class="d-none d-flex gap-2 mb-4 overflow-auto"
-          ></div>
-
-          <div id="contentContainer" class="overflow-hidden"></div>
         </section>
-
-        <section
-          id="right-section"
-          class="right-section d-none d-md-block"
-        ></section>
+        <section id="contribute-modal"></section>
+        <section id="rsvp-modal"></section>
+      </div>
+      <div
+        id="bottomNav"
+        class="bottom-nav d-flex d-md-none border-top bg-white"
+      >
+        <a href="/home.html" class="bottom-item" data-nav="home">
+          <img class="icon" /><span class="nav-label">home</span>
+        </a>
+        <a class="bottom-item" data-nav="create" onclick="toggleCreate(event)">
+          <img class="icon" /><span class="nav-label">create</span>
+        </a>
+        <a href="/explore.html" class="bottom-item" data-nav="timeline">
+          <img class="icon" /><span class="nav-label">timeline</span>
+        </a>
+        <a href="/profile.html" class="bottom-item" data-nav="profile">
+          <img class="icon" /><span class="nav-label">profile</span>
+        </a>
+      </div>
+      <div
+        id="createPopup"
+        class="create-popup"
+        role="dialog"
+        aria-hidden="true"
+      >
+        <button class="close-btn" onclick="toggleCreatePopup(false)">
+          <img src="/assets/icons/close.svg" alt="close" class="h-4-5" />
+        </button>
+        <div class="popup-inner">
+          <button class="popup-btn wishlist-btn" onclick="loadCreateWishlist()">
+            <div>
+              <img
+                src="/assets/icons/logo-small.svg"
+                class="wishlist-icon"
+                alt="wishlist"
+              />
+            </div>
+            <span class="popup-label">Create wishlist</span>
+          </button>
+          <div class="popup-divider"></div>
+          <button class="popup-btn wishlist-btn" onclick="loadCreateEvent()">
+            <div>
+              <img
+                src="/assets/icons/event.svg"
+                class="wishlist-icon"
+                alt="wishlist"
+              />
+            </div>
+            <span class="popup-label">Create event</span>
+          </button>
+        </div>
       </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/load-layout.js"></script>
+    <script type="module" src="js/explore.js"></script>
   </body>
 </html>

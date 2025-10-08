@@ -508,3 +508,116 @@ body {
     font-size: 12px;
   }
 }
+
+.spark-icon {
+  width: 1.375rem;
+  height: 1.375rem;
+}
+
+.explore-icon {
+  width: 0.875rem;
+}
+
+.wishlist-action-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.event-action-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.invite-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.chevron-icon {
+  width: 7px;
+}
+
+.tag-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.clock-icon {
+  width: 0.75rem;
+}
+
+.calendar-icon {
+  width: 2rem;
+}
+
+.comment-icon {
+  width: 1.75rem;
+}
+
+.open-icon {
+  width: 1.125rem;
+}
+
+.right-user-avatar {
+  border: 1px solid var(--border-light);
+}
+
+.right-user-name {
+  font-size: 0.8125rem;
+  color: #151515;
+}
+
+.right-user-handle {
+  font-size: 0.8125rem;
+  color: var(--text-gray-light);
+}
+
+.suggested-friend-avatar {
+  width: 2rem;
+  height: 2rem;
+}
+
+.suggested-friend-name {
+  font-size: 0.875rem;
+  color: #242424;
+}
+
+.event-tagged-text {
+  font-size: 0.875rem;
+}
+
+.progress-label {
+  font-size: 0.875rem;
+}
+
+.progress-contributed,
+.progress-goal {
+  color: #151515;
+}
+
+.view-comments-text {
+  font-size: 0.875rem;
+  color: var(--text-gray-lighter);
+}
+
+.comment-section-bordered {
+  border-bottom: 1px solid #ddd;
+}
+
+.mobile-bell {
+  margin-left: auto;
+  width: 24px;
+  height: 24px;
+}
+
+.mobile-user-avatar {
+  border: 1px solid var(--border-light);
+  border-radius: 100%;
+  width: 40px;
+  height: 40px;
+}
+
+.mobile-username {
+  font-size: 0.875rem;
+  color: var(--text-gray-light);
+}
