@@ -52,21 +52,18 @@
         ></div>
         <div id="pageContent" class="flex-grow-1">
           <div class="main-container d-flex text-secondary">
-            <section
-              class="left-section"
-              style="
-                min-width: 0;
-                height: 100dvh;
-                padding-bottom: 7rem !important;
-              "
-            >
+            <section class="left-section explore-left-section">
               <h1 class="h2 fw-bold text-gray desktop-title mb-4">Explore</h1>
               <div class="mobile-header">
-                <img src="/assets/images/user.svg" alt="user" />
-                <p>@Chuks</p>
+                <img
+                  src="/assets/images/user.svg"
+                  class="mobile-user-avatar"
+                  alt="user"
+                />
+                <p class="mobile-username">@Chuks</p>
                 <img
                   src="/assets/icons/bell.svg"
-                  class="ms-auto"
+                  class="mobile-bell"
                   alt="bell"
                   onclick="toggleNotification(event)"
                 />
@@ -75,7 +72,7 @@
                 <div class="d-flex align-items-center gap-2 mb-3">
                   <img
                     src="/assets/icons/spark.svg"
-                    style="width: 1.375rem; height: 1.375rem"
+                    class="spark-icon"
                     alt="spark"
                   />
                   <p class="fw-bold text-white mb-0">
@@ -85,7 +82,7 @@
                 <div class="search-input-container">
                   <img
                     src="/assets/icons/explore.svg"
-                    style="width: 0.875rem"
+                    class="explore-icon"
                     alt="search"
                   />
                   <input
@@ -131,35 +128,21 @@
                 <div
                   class="d-flex flex-column align-items-center gap-4 gap-md-5 mt-4"
                 >
-                  <div
-                    class="bg-white rounded-4 border border-light-subtle"
-                    style="flex-shrink: 0; width: 100%"
-                  >
-                    <div
-                      class="position-relative overflow-hidden rounded-top-4"
-                      style="aspect-ratio: 531/386"
-                    >
+                  <div class="explore-card">
+                    <div class="explore-card-image-container">
                       <img
                         src="/assets/images/wishlist-1.svg"
                         alt="image"
-                        class="w-100 h-100"
-                        style="object-fit: cover"
+                        class="w-100 h-100 explore-card-img"
                       />
-                      <div
-                        class="position-absolute top-0 end-0 m-2 bg-white px-3 py-1 rounded-pill"
-                        style="font-size: 0.875rem"
-                      >
-                        1/2
-                      </div>
-                      <div
-                        class="position-absolute bottom-0 start-0 m-2 bg-white px-3 py-1 rounded-pill d-flex align-items-center gap-1"
-                      >
+                      <div class="explore-counter-badge">1/2</div>
+                      <div class="explore-price-badge">
                         <img
                           src="/assets/icons/tag.svg"
-                          style="width: 1rem; height: 1rem"
+                          class="tag-icon"
                           alt="tag"
                         />
-                        <span style="font-size: 0.875rem">$150</span>
+                        <span class="price-text">$150</span>
                       </div>
                     </div>
                     <div class="p-4 border-bottom border-light-subtle">
@@ -167,8 +150,7 @@
                         <img
                           src="/assets/images/user-1.svg"
                           alt="user"
-                          class="rounded-circle"
-                          style="width: 2rem; height: 2rem"
+                          class="rounded-circle user-avatar"
                         />
                         <span class="fw-bold">Tjaay Birthday wishlist</span>
                       </div>
@@ -177,7 +159,7 @@
                           <img
                             src="/assets/icons/like.svg"
                             alt="like"
-                            style="width: 1.75rem; height: 1.75rem"
+                            class="action-icon"
                           />
                         </button>
                         <button
@@ -187,41 +169,41 @@
                           <img
                             src="/assets/icons/comment.svg"
                             alt="comment"
-                            style="width: 1.75rem; height: 1.75rem"
+                            class="action-icon"
                           />
                         </button>
                         <button class="btn p-0 border-0 bg-transparent">
                           <img
                             src="/assets/icons/share.svg"
                             alt="share"
-                            style="width: 1.75rem; height: 1.75rem"
+                            class="action-icon"
                           />
                         </button>
                         <button class="btn p-0 border-0 bg-transparent ms-auto">
                           <img
                             src="/assets/icons/save.svg"
                             alt="save"
-                            style="width: 1.75rem; height: 1.75rem"
+                            class="action-icon"
                           />
                         </button>
                       </div>
                       <div class="likes-section">
                         <div class="likes-avatars">
-                          <div class="like-avatar" style="margin-left: 0rem">
+                          <div class="like-avatar">
                             <img
                               src="/assets/images/user-1.svg"
                               alt="avatar"
                               class="rounded-circle"
                             />
                           </div>
-                          <div class="like-avatar" style="margin-left: -0.5rem">
+                          <div class="like-avatar">
                             <img
                               src="/assets/images/user-2.svg"
                               alt="avatar"
                               class="rounded-circle"
                             />
                           </div>
-                          <div class="like-avatar" style="margin-left: -0.5rem">
+                          <div class="like-avatar">
                             <img
                               src="/assets/images/user.svg"
                               alt="avatar"
@@ -248,36 +230,21 @@
                       />
                     </div>
                   </div>
-
-                  <div
-                    class="bg-white rounded-4 border border-light-subtle"
-                    style="flex-shrink: 0; width: 100%"
-                  >
-                    <div
-                      class="position-relative overflow-hidden rounded-top-4"
-                      style="aspect-ratio: 531/386"
-                    >
+                  <div class="explore-card">
+                    <div class="explore-card-image-container">
                       <img
                         src="/assets/images/wishlist-2.jpg"
                         alt="image"
-                        class="w-100 h-100"
-                        style="object-fit: cover"
+                        class="w-100 h-100 explore-card-img"
                       />
-                      <div
-                        class="position-absolute top-0 end-0 m-2 bg-white px-3 py-1 rounded-pill"
-                        style="font-size: 0.875rem"
-                      >
-                        2/2
-                      </div>
-                      <div
-                        class="position-absolute bottom-0 start-0 m-2 bg-white px-3 py-1 rounded-pill d-flex align-items-center gap-1"
-                      >
+                      <div class="explore-counter-badge">2/2</div>
+                      <div class="explore-price-badge">
                         <img
                           src="/assets/icons/tag.svg"
-                          style="width: 1rem; height: 1rem"
+                          class="tag-icon"
                           alt="tag"
                         />
-                        <span style="font-size: 0.875rem">$150</span>
+                        <span class="price-text">$150</span>
                       </div>
                     </div>
                     <div class="p-4 border-bottom border-light-subtle">
@@ -285,8 +252,7 @@
                         <img
                           src="/assets/images/user-2.svg"
                           alt="user"
-                          class="rounded-circle"
-                          style="width: 2rem; height: 2rem"
+                          class="rounded-circle user-avatar"
                         />
                         <span class="fw-bold">Sarah's Dream Wishlist</span>
                       </div>
@@ -295,48 +261,48 @@
                           <img
                             src="/assets/icons/like.svg"
                             alt="like"
-                            style="width: 1.75rem; height: 1.75rem"
+                            class="action-icon"
                           />
                         </button>
                         <button class="btn p-0 border-0 bg-transparent">
                           <img
                             src="/assets/icons/comment.svg"
                             alt="comment"
-                            style="width: 1.75rem; height: 1.75rem"
+                            class="action-icon"
                           />
                         </button>
                         <button class="btn p-0 border-0 bg-transparent">
                           <img
                             src="/assets/icons/share.svg"
                             alt="share"
-                            style="width: 1.75rem; height: 1.75rem"
+                            class="action-icon"
                           />
                         </button>
                         <button class="btn p-0 border-0 bg-transparent ms-auto">
                           <img
                             src="/assets/icons/save.svg"
                             alt="save"
-                            style="width: 1.75rem; height: 1.75rem"
+                            class="action-icon"
                           />
                         </button>
                       </div>
                       <div class="likes-section">
                         <div class="likes-avatars">
-                          <div class="like-avatar" style="margin-left: 0rem">
+                          <div class="like-avatar">
                             <img
                               src="/assets/images/user-1.svg"
                               alt="avatar"
                               class="rounded-circle"
                             />
                           </div>
-                          <div class="like-avatar" style="margin-left: -0.5rem">
+                          <div class="like-avatar">
                             <img
                               src="/assets/images/user-2.svg"
                               alt="avatar"
                               class="rounded-circle"
                             />
                           </div>
-                          <div class="like-avatar" style="margin-left: -0.5rem">
+                          <div class="like-avatar">
                             <img
                               src="/assets/images/user.svg"
                               alt="avatar"
@@ -365,7 +331,6 @@
                   </div>
                 </div>
               </div>
-
               <div id="searchResults" class="d-none">
                 <div class="mb-5">
                   <h5 class="fw-bold mb-3 text-dark">Accounts</h5>
@@ -376,30 +341,12 @@
                     >
                       <img
                         src="/assets/images/user-1.svg"
-                        class="rounded-circle"
-                        style="
-                          width: 2.5rem;
-                          height: 2.5rem;
-                          border: 1px solid rgba(18, 32, 35, 0.14);
-                        "
+                        class="rounded-circle account-avatar"
                         alt="user"
                       />
                       <div>
-                        <p
-                          class="mb-0"
-                          style="font-size: 0.8125rem; color: #151515"
-                        >
-                          Samuel Ngene
-                        </p>
-                        <p
-                          class="mb-0"
-                          style="
-                            font-size: 0.8125rem;
-                            color: rgba(67, 67, 67, 0.8);
-                          "
-                        >
-                          @cermuel
-                        </p>
+                        <p class="mb-0 account-name">Samuel Ngene</p>
+                        <p class="mb-0 account-username">@cermuel</p>
                       </div>
                     </a>
                     <a
@@ -408,67 +355,34 @@
                     >
                       <img
                         src="/assets/images/friend.svg"
-                        class="rounded-circle"
-                        style="
-                          width: 2.5rem;
-                          height: 2.5rem;
-                          border: 1px solid rgba(18, 32, 35, 0.14);
-                        "
+                        class="rounded-circle account-avatar"
                         alt="user"
                       />
                       <div>
-                        <p
-                          class="mb-0"
-                          style="font-size: 0.8125rem; color: #151515"
-                        >
-                          John Doe
-                        </p>
-                        <p
-                          class="mb-0"
-                          style="
-                            font-size: 0.8125rem;
-                            color: rgba(67, 67, 67, 0.8);
-                          "
-                        >
-                          @john
-                        </p>
+                        <p class="mb-0 account-name">John Doe</p>
+                        <p class="mb-0 account-username">@john</p>
                       </div>
                     </a>
                   </div>
                 </div>
-
                 <div class="mb-5">
                   <h5 class="fw-bold mb-3 text-dark">Wishlists</h5>
-                  <div class="d-flex gap-3" style="overflow-x: auto">
-                    <div
-                      class="bg-white rounded-4 border border-light-subtle"
-                      style="flex-shrink: 0; width: 85%"
-                    >
-                      <div
-                        class="position-relative overflow-hidden rounded-top-4"
-                        style="aspect-ratio: 531/386"
-                      >
+                  <div class="wishlist-scroll d-flex gap-3">
+                    <div class="explore-card search-card">
+                      <div class="explore-card-image-container">
                         <img
                           src="/assets/images/wishlist-1.svg"
                           alt="image"
-                          class="w-100 h-100"
-                          style="object-fit: cover"
+                          class="w-100 h-100 explore-card-img"
                         />
-                        <div
-                          class="position-absolute top-0 end-0 m-2 bg-white px-3 py-1 rounded-pill"
-                          style="font-size: 0.875rem"
-                        >
-                          1/2
-                        </div>
-                        <div
-                          class="position-absolute bottom-0 start-0 m-2 bg-white px-3 py-1 rounded-pill d-flex align-items-center gap-1"
-                        >
+                        <div class="explore-counter-badge">1/2</div>
+                        <div class="explore-price-badge">
                           <img
                             src="/assets/icons/tag.svg"
-                            style="width: 1rem; height: 1rem"
+                            class="tag-icon"
                             alt="tag"
                           />
-                          <span style="font-size: 0.875rem">$150</span>
+                          <span class="price-text">$150</span>
                         </div>
                       </div>
                       <div class="p-4 border-bottom border-light-subtle">
@@ -476,8 +390,7 @@
                           <img
                             src="/assets/images/user-1.svg"
                             alt="user"
-                            class="rounded-circle"
-                            style="width: 2rem; height: 2rem"
+                            class="rounded-circle user-avatar"
                           />
                           <span class="fw-bold">Tjaay Birthday wishlist</span>
                         </div>
@@ -486,7 +399,7 @@
                             <img
                               src="/assets/icons/like.svg"
                               alt="like"
-                              style="width: 1.75rem; height: 1.75rem"
+                              class="action-icon"
                             />
                           </button>
                           <button
@@ -496,14 +409,14 @@
                             <img
                               src="/assets/icons/comment.svg"
                               alt="comment"
-                              style="width: 1.75rem; height: 1.75rem"
+                              class="action-icon"
                             />
                           </button>
                           <button class="btn p-0 border-0 bg-transparent">
                             <img
                               src="/assets/icons/share.svg"
                               alt="share"
-                              style="width: 1.75rem; height: 1.75rem"
+                              class="action-icon"
                             />
                           </button>
                           <button
@@ -512,33 +425,27 @@
                             <img
                               src="/assets/icons/save.svg"
                               alt="save"
-                              style="width: 1.75rem; height: 1.75rem"
+                              class="action-icon"
                             />
                           </button>
                         </div>
                         <div class="likes-section">
                           <div class="likes-avatars">
-                            <div class="like-avatar" style="margin-left: 0rem">
+                            <div class="like-avatar">
                               <img
                                 src="/assets/images/user-1.svg"
                                 alt="avatar"
                                 class="rounded-circle"
                               />
                             </div>
-                            <div
-                              class="like-avatar"
-                              style="margin-left: -0.5rem"
-                            >
+                            <div class="like-avatar">
                               <img
                                 src="/assets/images/user-2.svg"
                                 alt="avatar"
                                 class="rounded-circle"
                               />
                             </div>
-                            <div
-                              class="like-avatar"
-                              style="margin-left: -0.5rem"
-                            >
+                            <div class="like-avatar">
                               <img
                                 src="/assets/images/user.svg"
                                 alt="avatar"
@@ -568,35 +475,21 @@
                         />
                       </div>
                     </div>
-                    <div
-                      class="bg-white rounded-4 border border-light-subtle"
-                      style="flex-shrink: 0; width: 85%"
-                    >
-                      <div
-                        class="position-relative overflow-hidden rounded-top-4"
-                        style="aspect-ratio: 531/386"
-                      >
+                    <div class="explore-card search-card">
+                      <div class="explore-card-image-container">
                         <img
                           src="/assets/images/wishlist-1.svg"
                           alt="image"
-                          class="w-100 h-100"
-                          style="object-fit: cover"
+                          class="w-100 h-100 explore-card-img"
                         />
-                        <div
-                          class="position-absolute top-0 end-0 m-2 bg-white px-3 py-1 rounded-pill"
-                          style="font-size: 0.875rem"
-                        >
-                          1/2
-                        </div>
-                        <div
-                          class="position-absolute bottom-0 start-0 m-2 bg-white px-3 py-1 rounded-pill d-flex align-items-center gap-1"
-                        >
+                        <div class="explore-counter-badge">1/2</div>
+                        <div class="explore-price-badge">
                           <img
                             src="/assets/icons/tag.svg"
-                            style="width: 1rem; height: 1rem"
+                            class="tag-icon"
                             alt="tag"
                           />
-                          <span style="font-size: 0.875rem">$150</span>
+                          <span class="price-text">$150</span>
                         </div>
                       </div>
                       <div class="p-4 border-bottom border-light-subtle">
@@ -604,8 +497,7 @@
                           <img
                             src="/assets/images/user-1.svg"
                             alt="user"
-                            class="rounded-circle"
-                            style="width: 2rem; height: 2rem"
+                            class="rounded-circle user-avatar"
                           />
                           <span class="fw-bold">Tjaay Birthday wishlist</span>
                         </div>
@@ -614,7 +506,7 @@
                             <img
                               src="/assets/icons/like.svg"
                               alt="like"
-                              style="width: 1.75rem; height: 1.75rem"
+                              class="action-icon"
                             />
                           </button>
                           <button
@@ -624,14 +516,14 @@
                             <img
                               src="/assets/icons/comment.svg"
                               alt="comment"
-                              style="width: 1.75rem; height: 1.75rem"
+                              class="action-icon"
                             />
                           </button>
                           <button class="btn p-0 border-0 bg-transparent">
                             <img
                               src="/assets/icons/share.svg"
                               alt="share"
-                              style="width: 1.75rem; height: 1.75rem"
+                              class="action-icon"
                             />
                           </button>
                           <button
@@ -640,33 +532,27 @@
                             <img
                               src="/assets/icons/save.svg"
                               alt="save"
-                              style="width: 1.75rem; height: 1.75rem"
+                              class="action-icon"
                             />
                           </button>
                         </div>
                         <div class="likes-section">
                           <div class="likes-avatars">
-                            <div class="like-avatar" style="margin-left: 0rem">
+                            <div class="like-avatar">
                               <img
                                 src="/assets/images/user-1.svg"
                                 alt="avatar"
                                 class="rounded-circle"
                               />
                             </div>
-                            <div
-                              class="like-avatar"
-                              style="margin-left: -0.5rem"
-                            >
+                            <div class="like-avatar">
                               <img
                                 src="/assets/images/user-2.svg"
                                 alt="avatar"
                                 class="rounded-circle"
                               />
                             </div>
-                            <div
-                              class="like-avatar"
-                              style="margin-left: -0.5rem"
-                            >
+                            <div class="like-avatar">
                               <img
                                 src="/assets/images/user.svg"
                                 alt="avatar"
@@ -698,32 +584,22 @@
                     </div>
                   </div>
                 </div>
-
                 <div class="mb-5">
                   <h5 class="fw-bold mb-3 text-dark">Events</h5>
-                  <div class="d-flex gap-3" style="overflow-x: auto">
-                    <div
-                      class="bg-white rounded-4 border border-light-subtle"
-                      style="flex-shrink: 0; width: 85%"
-                    >
-                      <div
-                        class="position-relative overflow-hidden rounded-top-4"
-                        style="aspect-ratio: 531/151"
-                      >
+                  <div class="events-scroll d-flex gap-3">
+                    <div class="explore-card search-card">
+                      <div class="explore-event-image-container">
                         <img
                           src="/assets/images/event.svg"
                           alt="image"
-                          class="w-100 h-100"
-                          style="object-fit: cover"
+                          class="w-100 h-100 explore-card-img"
                         />
-                        <div
-                          class="position-absolute top-0 end-0 m-2 text-white border border-white border-opacity-60 px-2 py-1 rounded-pill d-flex align-items-center gap-1"
-                        >
+                        <div class="explore-days-badge">
                           <img
                             src="/assets/icons/clock.svg"
-                            style="width: 0.75rem; height: 0.75rem"
+                            class="clock-icon"
                           />
-                          <span style="font-size: 0.875rem">10 days</span>
+                          <span class="timer-text">10days</span>
                         </div>
                       </div>
                       <div class="p-4 border-bottom border-light-subtle">
@@ -731,46 +607,33 @@
                           <img
                             src="/assets/images/user-2.svg"
                             alt="user"
-                            class="rounded-circle"
-                            style="width: 2rem; height: 2rem"
+                            class="rounded-circle user-avatar"
                           />
                           <span class="fw-bold">Sarah Birthday</span>
                           <div class="d-flex align-items-center gap-1 ms-auto">
-                            <span style="font-size: 0.875rem">Tagged</span>
+                            <span class="tagged-text">Tagged</span>
                             <div
                               class="d-flex align-items-center position-relative"
                             >
-                              <div
-                                class="bg-white rounded-circle p-1"
-                                style="margin-left: 0; width: 1.625rem"
-                              >
+                              <div class="tagged-avatar first-tagged">
                                 <img
                                   src="/assets/images/user-1.svg"
                                   alt="tagged"
-                                  class="rounded-circle"
-                                  style="width: 1.5rem; height: 1.5rem"
+                                  class="rounded-circle tagged-avatar-img"
                                 />
                               </div>
-                              <div
-                                class="bg-white rounded-circle p-1"
-                                style="margin-left: -0.75rem; width: 1.625rem"
-                              >
+                              <div class="tagged-avatar">
                                 <img
                                   src="/assets/images/user-2.svg"
                                   alt="tagged"
-                                  class="rounded-circle"
-                                  style="width: 1.5rem; height: 1.5rem"
+                                  class="rounded-circle tagged-avatar-img"
                                 />
                               </div>
-                              <div
-                                class="bg-white rounded-circle p-1"
-                                style="margin-left: -0.75rem; width: 1.625rem"
-                              >
+                              <div class="tagged-avatar">
                                 <img
                                   src="/assets/images/user.svg"
                                   alt="tagged"
-                                  class="rounded-circle"
-                                  style="width: 1.5rem; height: 1.5rem"
+                                  class="rounded-circle tagged-avatar-img"
                                 />
                               </div>
                             </div>
@@ -780,45 +643,34 @@
                           <img
                             src="/assets/icons/calendar.svg"
                             alt="calendar"
-                            class="d-none d-md-block"
-                            style="width: 2rem; height: 2rem"
+                            class="calendar-icon d-none d-md-block"
                           />
-                          <span class="bg-light-subtle py-1 px-2 rounded"
-                            >April 1, 2025</span
-                          >
-                          <span
-                            class="bg-light-subtle py-1 px-2 rounded d-none d-md-inline"
+                          <span class="event-tag">April 1, 2025</span>
+                          <span class="event-tag d-none d-md-inline"
                             >Online</span
                           >
-                          <span class="bg-light-subtle py-1 px-2 rounded"
-                            >RSVP count: 10</span
-                          >
+                          <span class="event-tag">RSVP count: 10</span>
                         </div>
-                        <p class="text-muted mb-3">
+                        <p class="event-description mb-3">
                           Sarah's turning another fabulous year older! 🎉 Browse
                           her wishlist, pick a gift she'll love, and help make
                           her day sparkle.
                         </p>
                         <div class="mb-3">
-                          <p class="mb-1">Gift progress</p>
-                          <div class="progress" style="height: 10px">
+                          <p class="progress-label mb-1">Gift progress</p>
+                          <div class="progress-bar-container">
                             <div
-                              class="progress-bar"
-                              style="width: 40%; background-color: #009fe2"
+                              class="progress-bar bg-info"
+                              style="width: 40%"
                             ></div>
                           </div>
                           <div class="d-flex justify-content-between mt-1">
-                            <p
-                              class="mb-0 text-muted"
-                              style="font-size: 0.875rem"
-                            >
-                              Contributed: <span class="text-dark">$400</span>
+                            <p class="mb-0 progress-text">
+                              Contributed:
+                              <span class="progress-contributed">$400</span>
                             </p>
-                            <p
-                              class="mb-0 text-muted"
-                              style="font-size: 0.875rem"
-                            >
-                              Goal: <span class="text-dark">$1000</span>
+                            <p class="mb-0 progress-text">
+                              Goal: <span class="progress-goal">$1000</span>
                             </p>
                           </div>
                         </div>
@@ -828,9 +680,11 @@
                           <img
                             src="/assets/icons/comment.svg"
                             alt="comment"
-                            style="width: 1.75rem; height: 1.75rem"
+                            class="comment-icon"
                           />
-                          <span class="text-muted">View comments...</span>
+                          <span class="view-comments-text"
+                            >View comments...</span
+                          >
                         </button>
                       </div>
                       <div
@@ -839,8 +693,7 @@
                         <img
                           src="/assets/images/user-2.svg"
                           alt="user"
-                          class="rounded-circle"
-                          style="width: 2rem; height: 2rem"
+                          class="rounded-circle user-avatar"
                         />
                         <input
                           type="text"
@@ -849,56 +702,40 @@
                         />
                       </div>
                       <div class="p-4 d-flex align-items-center gap-3">
-                        <button
-                          class="btn flex-fill border border-light-subtle d-flex align-items-center justify-content-center gap-1 py-2 py-md-3"
-                        >
+                        <button class="event-btn btn-outline">
                           <span>View wishlist</span>
                           <img
                             src="/assets/icons/open.svg"
-                            style="width: 1.125rem; height: 1.125rem"
+                            class="open-icon"
                             alt="open"
                           />
                         </button>
                         <button
-                          class="btn flex-fill text-white d-flex align-items-center justify-content-center gap-1 py-2 py-md-3"
-                          style="
-                            background-color: #6d29d9;
-                            border-color: #6d29d9;
-                          "
+                          class="event-btn btn-primary"
                           onclick="loadRSVP()"
                         >
                           <span>RSVP Now</span>
                           <img
                             src="/assets/icons/open-white.svg"
-                            style="width: 1.125rem; height: 1.125rem"
+                            class="open-icon"
                             alt="open"
                           />
                         </button>
                       </div>
                     </div>
-
-                    <div
-                      class="bg-white rounded-4 border border-light-subtle"
-                      style="flex-shrink: 0; width: 85%"
-                    >
-                      <div
-                        class="position-relative overflow-hidden rounded-top-4"
-                        style="aspect-ratio: 531/151"
-                      >
+                    <div class="explore-card search-card">
+                      <div class="explore-event-image-container">
                         <img
                           src="/assets/images/event.svg"
                           alt="image"
-                          class="w-100 h-100"
-                          style="object-fit: cover"
+                          class="w-100 h-100 explore-card-img"
                         />
-                        <div
-                          class="position-absolute top-0 end-0 m-2 text-white border border-white border-opacity-60 px-2 py-1 rounded-pill d-flex align-items-center gap-1"
-                        >
+                        <div class="explore-days-badge">
                           <img
                             src="/assets/icons/clock.svg"
-                            style="width: 0.75rem; height: 0.75rem"
+                            class="clock-icon"
                           />
-                          <span style="font-size: 0.875rem">10 days</span>
+                          <span class="timer-text">10days</span>
                         </div>
                       </div>
                       <div class="p-4 border-bottom border-light-subtle">
@@ -906,46 +743,33 @@
                           <img
                             src="/assets/images/user-2.svg"
                             alt="user"
-                            class="rounded-circle"
-                            style="width: 2rem; height: 2rem"
+                            class="rounded-circle user-avatar"
                           />
                           <span class="fw-bold">Sarah Birthday</span>
                           <div class="d-flex align-items-center gap-1 ms-auto">
-                            <span style="font-size: 0.875rem">Tagged</span>
+                            <span class="tagged-text">Tagged</span>
                             <div
                               class="d-flex align-items-center position-relative"
                             >
-                              <div
-                                class="bg-white rounded-circle p-1"
-                                style="margin-left: 0; width: 1.625rem"
-                              >
+                              <div class="tagged-avatar first-tagged">
                                 <img
                                   src="/assets/images/user-1.svg"
                                   alt="tagged"
-                                  class="rounded-circle"
-                                  style="width: 1.5rem; height: 1.5rem"
+                                  class="rounded-circle tagged-avatar-img"
                                 />
                               </div>
-                              <div
-                                class="bg-white rounded-circle p-1"
-                                style="margin-left: -0.75rem; width: 1.625rem"
-                              >
+                              <div class="tagged-avatar">
                                 <img
                                   src="/assets/images/user-2.svg"
                                   alt="tagged"
-                                  class="rounded-circle"
-                                  style="width: 1.5rem; height: 1.5rem"
+                                  class="rounded-circle tagged-avatar-img"
                                 />
                               </div>
-                              <div
-                                class="bg-white rounded-circle p-1"
-                                style="margin-left: -0.75rem; width: 1.625rem"
-                              >
+                              <div class="tagged-avatar">
                                 <img
                                   src="/assets/images/user.svg"
                                   alt="tagged"
-                                  class="rounded-circle"
-                                  style="width: 1.5rem; height: 1.5rem"
+                                  class="rounded-circle tagged-avatar-img"
                                 />
                               </div>
                             </div>
@@ -955,45 +779,34 @@
                           <img
                             src="/assets/icons/calendar.svg"
                             alt="calendar"
-                            class="d-none d-md-block"
-                            style="width: 2rem; height: 2rem"
+                            class="calendar-icon d-none d-md-block"
                           />
-                          <span class="bg-light-subtle py-1 px-2 rounded"
-                            >April 1, 2025</span
-                          >
-                          <span
-                            class="bg-light-subtle py-1 px-2 rounded d-none d-md-inline"
+                          <span class="event-tag">April 1, 2025</span>
+                          <span class="event-tag d-none d-md-inline"
                             >Online</span
                           >
-                          <span class="bg-light-subtle py-1 px-2 rounded"
-                            >RSVP count: 10</span
-                          >
+                          <span class="event-tag">RSVP count: 10</span>
                         </div>
-                        <p class="text-muted mb-3">
+                        <p class="event-description mb-3">
                           Sarah's turning another fabulous year older! 🎉 Browse
                           her wishlist, pick a gift she'll love, and help make
                           her day sparkle.
                         </p>
                         <div class="mb-3">
-                          <p class="mb-1">Gift progress</p>
-                          <div class="progress" style="height: 10px">
+                          <p class="progress-label mb-1">Gift progress</p>
+                          <div class="progress-bar-container">
                             <div
-                              class="progress-bar"
-                              style="width: 40%; background-color: #009fe2"
+                              class="progress-bar bg-info"
+                              style="width: 40%"
                             ></div>
                           </div>
                           <div class="d-flex justify-content-between mt-1">
-                            <p
-                              class="mb-0 text-muted"
-                              style="font-size: 0.875rem"
-                            >
-                              Contributed: <span class="text-dark">$400</span>
+                            <p class="mb-0 progress-text">
+                              Contributed:
+                              <span class="progress-contributed">$400</span>
                             </p>
-                            <p
-                              class="mb-0 text-muted"
-                              style="font-size: 0.875rem"
-                            >
-                              Goal: <span class="text-dark">$1000</span>
+                            <p class="mb-0 progress-text">
+                              Goal: <span class="progress-goal">$1000</span>
                             </p>
                           </div>
                         </div>
@@ -1003,9 +816,11 @@
                           <img
                             src="/assets/icons/comment.svg"
                             alt="comment"
-                            style="width: 1.75rem; height: 1.75rem"
+                            class="comment-icon"
                           />
-                          <span class="text-muted">View comments...</span>
+                          <span class="view-comments-text"
+                            >View comments...</span
+                          >
                         </button>
                       </div>
                       <div
@@ -1014,8 +829,7 @@
                         <img
                           src="/assets/images/user-2.svg"
                           alt="user"
-                          class="rounded-circle"
-                          style="width: 2rem; height: 2rem"
+                          class="rounded-circle user-avatar"
                         />
                         <input
                           type="text"
@@ -1024,28 +838,158 @@
                         />
                       </div>
                       <div class="p-4 d-flex align-items-center gap-3">
-                        <button
-                          class="btn flex-fill border border-light-subtle d-flex align-items-center justify-content-center gap-1 py-2 py-md-3"
-                        >
+                        <button class="event-btn btn-outline">
                           <span>View wishlist</span>
                           <img
                             src="/assets/icons/open.svg"
-                            style="width: 1.125rem; height: 1.125rem"
+                            class="open-icon"
                             alt="open"
                           />
                         </button>
                         <button
-                          class="btn flex-fill text-white d-flex align-items-center justify-content-center gap-1 py-2 py-md-3"
-                          style="
-                            background-color: #6d29d9;
-                            border-color: #6d29d9;
-                          "
+                          class="event-btn btn-primary"
                           onclick="loadRSVP()"
                         >
                           <span>RSVP Now</span>
                           <img
                             src="/assets/icons/open-white.svg"
-                            style="width: 1.125rem; height: 1.125rem"
+                            class="open-icon"
+                            alt="open"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                    <div class="explore-card search-card">
+                      <div class="explore-event-image-container">
+                        <img
+                          src="/assets/images/event.svg"
+                          alt="image"
+                          class="w-100 h-100 explore-card-img"
+                        />
+                        <div class="explore-days-badge">
+                          <img
+                            src="/assets/icons/clock.svg"
+                            class="clock-icon"
+                          />
+                          <span class="timer-text">10days</span>
+                        </div>
+                      </div>
+                      <div class="p-4 border-bottom border-light-subtle">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                          <img
+                            src="/assets/images/user-2.svg"
+                            alt="user"
+                            class="rounded-circle user-avatar"
+                          />
+                          <span class="fw-bold">Sarah Birthday</span>
+                          <div class="d-flex align-items-center gap-1 ms-auto">
+                            <span class="tagged-text">Tagged</span>
+                            <div
+                              class="d-flex align-items-center position-relative"
+                            >
+                              <div class="tagged-avatar first-tagged">
+                                <img
+                                  src="/assets/images/user-1.svg"
+                                  alt="tagged"
+                                  class="rounded-circle tagged-avatar-img"
+                                />
+                              </div>
+                              <div class="tagged-avatar">
+                                <img
+                                  src="/assets/images/user-2.svg"
+                                  alt="tagged"
+                                  class="rounded-circle tagged-avatar-img"
+                                />
+                              </div>
+                              <div class="tagged-avatar">
+                                <img
+                                  src="/assets/images/user.svg"
+                                  alt="tagged"
+                                  class="rounded-circle tagged-avatar-img"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="d-flex align-items-center gap-2 mb-3">
+                          <img
+                            src="/assets/icons/calendar.svg"
+                            alt="calendar"
+                            class="calendar-icon d-none d-md-block"
+                          />
+                          <span class="event-tag">April 1, 2025</span>
+                          <span class="event-tag d-none d-md-inline"
+                            >Online</span
+                          >
+                          <span class="event-tag">RSVP count: 10</span>
+                        </div>
+                        <p class="event-description mb-3">
+                          Sarah's turning another fabulous year older! 🎉 Browse
+                          her wishlist, pick a gift she'll love, and help make
+                          her day sparkle.
+                        </p>
+                        <div class="mb-3">
+                          <p class="progress-label mb-1">Gift progress</p>
+                          <div class="progress-bar-container">
+                            <div
+                              class="progress-bar bg-info"
+                              style="width: 40%"
+                            ></div>
+                          </div>
+                          <div class="d-flex justify-content-between mt-1">
+                            <p class="mb-0 progress-text">
+                              Contributed:
+                              <span class="progress-contributed">$400</span>
+                            </p>
+                            <p class="mb-0 progress-text">
+                              Goal: <span class="progress-goal">$1000</span>
+                            </p>
+                          </div>
+                        </div>
+                        <button
+                          class="btn p-0 border-0 bg-transparent d-none d-md-flex align-items-center gap-1"
+                        >
+                          <img
+                            src="/assets/icons/comment.svg"
+                            alt="comment"
+                            class="comment-icon"
+                          />
+                          <span class="view-comments-text"
+                            >View comments...</span
+                          >
+                        </button>
+                      </div>
+                      <div
+                        class="p-4 border-bottom border-light-subtle d-none d-md-flex align-items-center gap-3"
+                      >
+                        <img
+                          src="/assets/images/user-2.svg"
+                          alt="user"
+                          class="rounded-circle user-avatar"
+                        />
+                        <input
+                          type="text"
+                          class="form-control rounded-pill"
+                          placeholder="Add a comment"
+                        />
+                      </div>
+                      <div class="p-4 d-flex align-items-center gap-3">
+                        <button class="event-btn btn-outline">
+                          <span>View wishlist</span>
+                          <img
+                            src="/assets/icons/open.svg"
+                            class="open-icon"
+                            alt="open"
+                          />
+                        </button>
+                        <button
+                          class="event-btn btn-primary"
+                          onclick="loadRSVP()"
+                        >
+                          <span>RSVP Now</span>
+                          <img
+                            src="/assets/icons/open-white.svg"
+                            class="open-icon"
                             alt="open"
                           />
                         </button>
@@ -1062,20 +1006,12 @@
               >
                 <img
                   src="/assets/images/user.svg"
-                  class="user-avatar"
-                  style="border: 1px solid var(--border-light)"
+                  class="user-avatar right-user-avatar"
                   alt="user"
                 />
                 <div>
-                  <p class="mb-0" style="font-size: 0.8125rem; color: #151515">
-                    Chukwuemeka
-                  </p>
-                  <p
-                    class="mb-0"
-                    style="font-size: 0.8125rem; color: var(--text-gray-light)"
-                  >
-                    @Chuks
-                  </p>
+                  <p class="mb-0 right-user-name">Chukwuemeka</p>
+                  <p class="mb-0 right-user-handle">@Chuks</p>
                 </div>
               </div>
               <h5 class="fw-semibold" style="color: var(--text-gray)">
@@ -1086,22 +1022,18 @@
                   <img
                     src="/assets/images/friend.svg"
                     alt="friend"
-                    style="width: 2rem; height: 2rem"
-                    class="rounded-circle"
+                    class="suggested-friend-avatar rounded-circle"
                   />
-                  <span style="font-size: 0.875rem; color: #242424"
-                    >yrn_cermuel</span
-                  >
+                  <span class="suggested-friend-name">yrn_cermuel</span>
                   <button class="follow-btn">Follow</button>
                 </div>
                 <div class="user-suggestion">
                   <img
                     src="/assets/images/friend.svg"
                     alt="friend"
-                    style="width: 2rem; height: 2rem"
-                    class="rounded-circle"
+                    class="suggested-friend-avatar rounded-circle"
                   />
-                  <span style="font-size: 0.875rem; color: #242424">Chuks</span>
+                  <span class="suggested-friend-name">Chuks</span>
                   <button class="follow-btn">Follow</button>
                 </div>
               </div>
@@ -1168,7 +1100,6 @@
         </div>
       </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script type="module" src="js/explore.js"></script>
   </body>

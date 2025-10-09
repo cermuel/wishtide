@@ -3,34 +3,26 @@
   class="w-100 h-100 justify-content-center align-items-md-center align-items-end rsvp-container"
 >
   <div id="add-to-calendar-modal" class="d-none">
-    <div
-      class="position-fixed w-100 h-100 top-0 start-0 d-flex align-items-center justify-content-center bg-black bg-opacity-10"
-      style="z-index: 20"
-    >
-      <div
-        class="bg-white border rounded-4 p-5 d-flex flex-column gap-3 align-items-center"
-        style="border-color: #d7d7d7"
-      >
+    <div class="calendar-modal-overlay">
+      <div class="calendar-modal-content">
         <img
           src="/assets/icons/warning.svg"
           alt=""
-          style="width: 80px; height: 80px"
+          class="calendar-warning-icon"
         />
-        <p class="text-center" style="color: #151515">
+        <p class="calendar-modal-text">
           Do you want to add this event to your calendar
         </p>
         <div class="d-flex w-100 align-items-center gap-3">
           <button
             onclick="closeAddToCalendar()"
-            class="btn flex-fill py-2 border rounded-2 text-sm"
-            style="border-color: #d7d7d7; color: #242424"
+            class="btn flex-fill py-2 border rounded-2 text-sm calendar-btn-no"
           >
             No
           </button>
           <button
             onclick="confirmAddToCalendar()"
-            class="btn flex-fill py-2 border rounded-2 text-white text-sm"
-            style="background-color: #6d29d9; border-color: #6d29d9"
+            class="btn flex-fill py-2 border rounded-2 text-white text-sm calendar-btn-yes"
           >
             Yes
           </button>
@@ -38,49 +30,30 @@
       </div>
     </div>
   </div>
-
   <button
     class="position-absolute d-sm-block d-none rsvp-close-btn"
     onclick="closeRSVP()"
-    style="
-      top: 2rem;
-      right: 2.5rem;
-      z-index: 10;
-      background: none;
-      border: none;
-    "
   >
-    <img src="/assets/icons/close.svg" alt="close" style="height: 18px" />
+    <img src="/assets/icons/close.svg" alt="close" class="close-icon-desktop" />
   </button>
   <button
     class="position-absolute d-sm-none d-block rsvp-close-btn-mobile"
     onclick="closeRSVP()"
-    style="
-      top: 1.25rem;
-      right: 1rem;
-      z-index: 10;
-      background: none;
-      border: none;
-    "
   >
-    <img src="/assets/icons/close-dark.svg" alt="close" style="height: 20px" />
+    <img
+      src="/assets/icons/close-dark.svg"
+      alt="close"
+      class="close-icon-mobile"
+    />
   </button>
-
   <div
     id="rsvp-content"
-    class="w-100 bg-light d-flex flex-column rsvp-content"
+    class="w-100 bg-light d-flex flex-column rsvp-content rsvp-bg-light"
     onclick="event.stopPropagation()"
-    style="background-color: #fbfbfb !important"
   >
     <div class="w-100 bg-white p-3 d-flex justify-content-center">
-      <p
-        class="mb-0 fw-bold rsvp-header-title"
-        style="font-size: 20px; color: #243134"
-      >
-        RSVP
-      </p>
+      <p class="mb-0 fw-bold rsvp-header-title">RSVP</p>
     </div>
-
     <div class="p-4 w-100 h-100 rsvp-scroll-content">
       <div class="w-100 bg-white rounded-4 mb-3 rsvp-event-card">
         <section
@@ -103,7 +76,6 @@
             <span id="event-countdown" class="rsvp-countdown-text">5 days</span>
           </div>
         </section>
-
         <section class="w-100 p-3 d-flex flex-column rounded-bottom-4">
           <div class="d-flex align-items-center gap-2 mb-2">
             <img
@@ -123,7 +95,6 @@
               ></div>
             </div>
           </div>
-
           <div class="d-flex align-items-center gap-2 mb-2">
             <img
               src="/assets/icons/calendar.svg"
@@ -149,14 +120,12 @@
               RSVP count: 15
             </span>
           </div>
-
           <p id="event-description" class="rsvp-event-description">
             Join us for an amazing celebration! It's going to be a wonderful
             evening filled with joy, laughter, and great memories.
           </p>
         </section>
       </div>
-
       <div
         class="bg-white rounded-4 d-flex align-items-start gap-2 w-100 p-3 mb-3"
       >
@@ -170,8 +139,7 @@
         <div class="flex-fill">
           <p class="mb-0 rsvp-section-title">RSVP</p>
           <div
-            class="rounded-4 border my-3 d-flex rsvp-options-container"
-            style="border-color: #d7d7d7"
+            class="rounded-4 border my-3 d-flex rsvp-options-container rsvp-options-border"
           >
             <button
               class="rsvp-option rsvp-option-yes"
@@ -207,7 +175,6 @@
           </div>
         </div>
       </div>
-
       <div class="bg-white rounded-4 w-100 p-3">
         <div class="d-flex align-items-center gap-2 mb-3">
           <div class="p-2 rounded-circle rsvp-contribute-icon-container">
@@ -250,5 +217,4 @@
     </div>
   </div>
 </div>
-
 <link id="rsvp-css" rel="stylesheet" href="css/rsvp.css" />

@@ -76,9 +76,7 @@ function loadManageWishlist() {
       const script = document.createElement("script");
       script.id = "manage-wishlist-script";
       script.src = "js/manage-wishlist.js";
-      script.onload = function () {
-        initializeManageWishlist();
-      };
+
       document.body.appendChild(script);
     });
 }
@@ -93,12 +91,8 @@ function loadManageEvent() {
         const script = document.createElement("script");
         script.id = "manage-event-script";
         script.src = "js/manage-event.js";
-        script.onload = () => {
-          window.initializeManageEvent();
-        };
+        script.onload = () => {};
         document.body.appendChild(script);
-      } else {
-        window.initializeManageEvent();
       }
     });
 }
@@ -285,3 +279,4 @@ window.toggleCreate = toggleCreate;
 window.toggleCreatePopup = toggleCreatePopup;
 window.loadManageWishlist = loadManageWishlist;
 window.loadManageEvent = loadManageEvent;
+window.openWishlistModal = openWishlistModal;

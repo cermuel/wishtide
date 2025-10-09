@@ -26,36 +26,13 @@
       <button
         id="back-btn"
         class="manage-wishlist-back-btn d-none"
-        onclick="handleBackNavigation()"
+        onclick="handleBack()"
       >
         <img src="/assets/icons/back-dark.svg" alt="back" />
       </button>
       <p id="header-title" class="manage-wishlist-title">Manage Wishlist</p>
     </div>
-
     <div class="manage-wishlist-scroll-container">
-      <div id="no-wishlist-state" class="manage-wishlist-no-content d-none">
-        <div class="manage-wishlist-search-container">
-          <img
-            src="/assets/icons/explore.svg"
-            class="manage-wishlist-search-icon"
-            alt="search"
-          />
-          <input
-            type="text"
-            class="manage-wishlist-search-input"
-            placeholder="Enter wishlist name"
-            id="wishlist-search-empty"
-          />
-        </div>
-        <img
-          src="/assets/images/logo-xl.svg"
-          alt="no wishlist"
-          class="manage-wishlist-empty-logo"
-        />
-        <p class="manage-wishlist-empty-text">No wishlist</p>
-      </div>
-
       <div id="wishlist-list-state" class="manage-wishlist-list-content">
         <div class="manage-wishlist-search-container">
           <img
@@ -68,10 +45,62 @@
             class="manage-wishlist-search-input"
             placeholder="Enter wishlist name"
             id="wishlist-search"
-            oninput="handleWishlistSearch(event)"
+            oninput="filterWishlists(this.value)"
           />
         </div>
-        <div id="wishlist-items-container" class="manage-wishlist-items"></div>
+        <div id="wishlist-items-container" class="manage-wishlist-items">
+          <div class="manage-wishlist-item" onclick="selectWishlist(1)">
+            <img
+              src="/assets/images/wishlist-1.svg"
+              alt="Tjaay Birthday wishlist"
+              class="manage-wishlist-item-avatar"
+            />
+            <div class="manage-wishlist-item-content">
+              <div class="manage-wishlist-item-header">
+                <p class="manage-wishlist-item-title">
+                  Tjaay Birthday wishlist
+                </p>
+                <p class="manage-wishlist-item-goal">Goal: $150 / 500</p>
+              </div>
+              <div class="manage-wishlist-item-progress-container">
+                <div
+                  class="manage-wishlist-item-progress-bar"
+                  style="width: 30%"
+                ></div>
+              </div>
+            </div>
+            <img
+              src="/assets/icons/chevron.svg"
+              class="manage-wishlist-item-chevron"
+              alt="view"
+            />
+          </div>
+
+          <div class="manage-wishlist-item" onclick="selectWishlist(2)">
+            <img
+              src="/assets/images/wishlist-2.jpg"
+              alt="Sam Birthday wishlist"
+              class="manage-wishlist-item-avatar"
+            />
+            <div class="manage-wishlist-item-content">
+              <div class="manage-wishlist-item-header">
+                <p class="manage-wishlist-item-title">Sam Birthday wishlist</p>
+                <p class="manage-wishlist-item-goal">Goal: $600 / 1000</p>
+              </div>
+              <div class="manage-wishlist-item-progress-container">
+                <div
+                  class="manage-wishlist-item-progress-bar"
+                  style="width: 60%"
+                ></div>
+              </div>
+            </div>
+            <img
+              src="/assets/icons/chevron.svg"
+              class="manage-wishlist-item-chevron"
+              alt="view"
+            />
+          </div>
+        </div>
       </div>
 
       <div id="selected-wishlist-state" class="manage-wishlist-selected d-none">
@@ -79,7 +108,7 @@
           <div class="manage-wishlist-header-image-container">
             <img
               id="selected-wishlist-image"
-              src=""
+              src="/assets/images/wishlist-1.svg"
               alt="wishlist image"
               class="manage-wishlist-header-image"
             />
@@ -88,34 +117,37 @@
             <div class="manage-wishlist-user-info">
               <img
                 id="selected-wishlist-user-avatar"
-                src=""
+                src="/assets/images/user-1.svg"
                 alt="user"
                 class="manage-wishlist-user-avatar"
               />
               <span
                 id="selected-wishlist-name"
                 class="manage-wishlist-user-name"
-              ></span>
+                >Tjaay Birthday wishlist</span
+              >
             </div>
             <p
               id="selected-wishlist-description"
               class="manage-wishlist-description"
-            ></p>
+            >
+              Sarah's turning another fabulous year older! 🎉 Browse her
+              wishlist, pick a gift she'll love, and help make her day sparkle.
+            </p>
           </div>
         </div>
-
         <div class="manage-wishlist-item-card">
           <div class="manage-wishlist-item-image-container">
             <img
               id="current-item-image"
-              src=""
+              src="/assets/images/wishlist-2.jpg"
               alt="item image"
               class="manage-wishlist-item-image"
             />
             <button
               id="prev-item-btn"
               class="manage-wishlist-nav-btn manage-wishlist-nav-prev d-none"
-              onclick="navigateItem(-1)"
+              onclick="navItem(-1)"
             >
               <img
                 src="/assets/icons/chevron-grey.svg"
@@ -125,8 +157,8 @@
             </button>
             <button
               id="next-item-btn"
-              class="manage-wishlist-nav-btn manage-wishlist-nav-next d-none"
-              onclick="navigateItem(1)"
+              class="manage-wishlist-nav-btn manage-wishlist-nav-next"
+              onclick="navItem(1)"
             >
               <img
                 src="/assets/icons/chevron-grey.svg"
@@ -135,31 +167,33 @@
               />
             </button>
           </div>
-
           <div class="manage-wishlist-item-details">
-            <p id="current-item-name" class="manage-wishlist-item-name"></p>
-
+            <p id="current-item-name" class="manage-wishlist-item-name">
+              Jordan Airforce 1s
+            </p>
             <div class="manage-wishlist-progress-container">
-              <div id="progress-bar" class="manage-wishlist-progress-bar"></div>
+              <div
+                id="progress-bar"
+                class="manage-wishlist-progress-bar"
+                style="width: 30%"
+              ></div>
             </div>
-
             <div class="manage-wishlist-progress-text">
               <p class="manage-wishlist-progress-label">
                 Contributed:
                 <span
                   id="contributed-amount"
                   class="manage-wishlist-progress-value"
-                ></span>
+                  >$150</span
+                >
               </p>
               <p class="manage-wishlist-progress-label">
                 Goal:
-                <span
-                  id="goal-amount"
-                  class="manage-wishlist-progress-value"
-                ></span>
+                <span id="goal-amount" class="manage-wishlist-progress-value"
+                  >$500</span
+                >
               </p>
             </div>
-
             <div class="manage-wishlist-actions">
               <button class="manage-wishlist-action-btn">
                 <img
@@ -183,19 +217,41 @@
                 />
               </button>
             </div>
-
             <div class="manage-wishlist-likes-section">
-              <div
-                id="likes-avatars"
-                class="manage-wishlist-likes-avatars"
-              ></div>
+              <div id="likes-avatars" class="manage-wishlist-likes-avatars">
+                <div class="manage-wishlist-like-avatar-wrapper">
+                  <img
+                    src="/assets/images/user-1.svg"
+                    alt="like"
+                    class="manage-wishlist-like-avatar"
+                  />
+                </div>
+                <div
+                  class="manage-wishlist-like-avatar-wrapper"
+                  style="margin-left: -0.75rem"
+                >
+                  <img
+                    src="/assets/images/user-2.svg"
+                    alt="like"
+                    class="manage-wishlist-like-avatar"
+                  />
+                </div>
+                <div
+                  class="manage-wishlist-like-avatar-wrapper"
+                  style="margin-left: -0.75rem"
+                >
+                  <img
+                    src="/assets/images/user.svg"
+                    alt="like"
+                    class="manage-wishlist-like-avatar"
+                  />
+                </div>
+              </div>
               <p class="manage-wishlist-likes-text" onclick="showLikes()">
                 Liked by <strong>Chuks</strong> & <strong>more</strong>
               </p>
             </div>
-
             <div class="manage-wishlist-divider"></div>
-
             <div
               class="manage-wishlist-contributors-btn"
               onclick="showContributors()"
@@ -214,38 +270,103 @@
       </div>
 
       <div id="contributors-state" class="manage-wishlist-contributors d-none">
-        <div
-          id="contributors-content"
-          class="manage-wishlist-contributors-content"
-        >
-          <div class="manage-wishlist-no-content">
-            <p class="manage-wishlist-empty-text">No contributions</p>
-          </div>
-        </div>
-        <div
-          id="contributors-list"
-          class="manage-wishlist-contributors-list d-none"
-        >
+        <div id="contributors-list" class="manage-wishlist-contributors-list">
           <h2 class="manage-wishlist-contributors-title">Contributors</h2>
           <div
             id="contributors-items"
             class="manage-wishlist-contributors-items"
-          ></div>
+          >
+            <div class="manage-wishlist-contributor-item">
+              <img
+                src="/assets/images/user-1.svg"
+                alt="contributor"
+                class="manage-wishlist-contributor-avatar"
+              />
+              <div class="manage-wishlist-contributor-info">
+                <div class="manage-wishlist-contributor-name">Samuel Chuks</div>
+                <div class="manage-wishlist-contributor-username">
+                  @username
+                </div>
+              </div>
+              <p class="manage-wishlist-contributor-amount">$50.00</p>
+            </div>
+
+            <div class="manage-wishlist-contributor-item">
+              <img
+                src="/assets/images/user-2.svg"
+                alt="contributor"
+                class="manage-wishlist-contributor-avatar"
+              />
+              <div class="manage-wishlist-contributor-info">
+                <div class="manage-wishlist-contributor-name">Jane Doe</div>
+                <div class="manage-wishlist-contributor-username">@janedoe</div>
+              </div>
+              <p class="manage-wishlist-contributor-amount">$75.00</p>
+            </div>
+
+            <div class="manage-wishlist-contributor-item">
+              <img
+                src="/assets/images/user.svg"
+                alt="contributor"
+                class="manage-wishlist-contributor-avatar"
+              />
+              <div class="manage-wishlist-contributor-info">
+                <div class="manage-wishlist-contributor-name">John Smith</div>
+                <div class="manage-wishlist-contributor-username">
+                  @johnsmith
+                </div>
+              </div>
+              <p class="manage-wishlist-contributor-amount">$25.00</p>
+            </div>
+          </div>
         </div>
       </div>
 
       <div id="likes-state" class="manage-wishlist-likes d-none">
-        <div id="likes-content" class="manage-wishlist-likes-content">
-          <div class="manage-wishlist-no-content">
-            <p class="manage-wishlist-empty-text">No likes yet</p>
+        <div id="likes-list" class="manage-wishlist-likes-list">
+          <div id="likes-items" class="manage-wishlist-likes-items">
+            <div class="manage-wishlist-like-item">
+              <img
+                src="/assets/images/user-1.svg"
+                alt="user"
+                class="manage-wishlist-like-user-avatar"
+              />
+              <div class="manage-wishlist-like-user-info">
+                <div class="manage-wishlist-like-user-name">Samuel Chuks</div>
+                <div class="manage-wishlist-like-user-username">@username</div>
+              </div>
+              <div class="manage-wishlist-follow-btn following">Unfollow</div>
+            </div>
+
+            <div class="manage-wishlist-like-item">
+              <img
+                src="/assets/images/user-2.svg"
+                alt="user"
+                class="manage-wishlist-like-user-avatar"
+              />
+              <div class="manage-wishlist-like-user-info">
+                <div class="manage-wishlist-like-user-name">Jane Doe</div>
+                <div class="manage-wishlist-like-user-username">@janedoe</div>
+              </div>
+              <div class="manage-wishlist-follow-btn not-following">Follow</div>
+            </div>
+
+            <div class="manage-wishlist-like-item">
+              <img
+                src="/assets/images/user.svg"
+                alt="user"
+                class="manage-wishlist-like-user-avatar"
+              />
+              <div class="manage-wishlist-like-user-info">
+                <div class="manage-wishlist-like-user-name">John Smith</div>
+                <div class="manage-wishlist-like-user-username">@johnsmith</div>
+              </div>
+              <div class="manage-wishlist-follow-btn following">Unfollow</div>
+            </div>
           </div>
-        </div>
-        <div id="likes-list" class="manage-wishlist-likes-list d-none">
-          <div id="likes-items" class="manage-wishlist-likes-items"></div>
         </div>
       </div>
     </div>
-
     <div class="manage-wishlist-footer">
       <button id="edit-btn" class="manage-wishlist-edit-btn d-none">
         Edit/Update
@@ -253,7 +374,6 @@
     </div>
   </div>
 </div>
-
 <link
   id="manage-wishlist-css"
   rel="stylesheet"

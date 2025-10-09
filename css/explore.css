@@ -53,7 +53,8 @@
   flex-shrink: 0;
   width: 100%;
 }
-#contentContainer {
+#contentContainer,
+#searchResults {
   max-width: calc(100vw - 48px);
 }
 @media (min-width: 770px) {
@@ -61,7 +62,8 @@
   .event-card {
     width: 85%;
   }
-  #contentContainer {
+  #contentContainer,
+  #searchResults {
     max-width: calc(((100vw - 250px) * 2 / 3) - 48px);
   }
 }
@@ -305,4 +307,123 @@
 
 .bg-info {
   background-color: #009fe2 !important;
+}
+
+.explore-left-section {
+  min-width: 0;
+  height: 100dvh;
+  padding-bottom: 7rem !important;
+}
+
+.explore-card {
+  background: white;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.search-card {
+  flex-shrink: 0;
+  width: 85%;
+}
+
+.explore-card-image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem 1.5rem 0 0;
+  aspect-ratio: 531/386;
+}
+
+.explore-event-image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem 1.5rem 0 0;
+  aspect-ratio: 531/151;
+}
+
+.explore-card-img {
+  object-fit: cover;
+}
+
+.explore-counter-badge {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+}
+
+.explore-price-badge {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.5rem;
+  background: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.explore-days-badge {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: transparent;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.account-avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid rgba(18, 32, 35, 0.14);
+}
+
+.account-name {
+  font-size: 0.8125rem;
+  color: #151515;
+}
+
+.account-username {
+  font-size: 0.8125rem;
+  color: rgba(67, 67, 67, 0.8);
+}
+
+.tagged-avatar {
+  background: white;
+  border-radius: 50%;
+  padding: 0.125rem;
+  width: 1.625rem;
+  margin-left: -0.75rem;
+}
+
+.tagged-avatar.first-tagged {
+  margin-left: 0;
+}
+
+.tagged-avatar-img {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.tagged-text {
+  font-size: 0.875rem;
+}
+
+.timer-text {
+  font-size: 0.875rem;
+}
+
+.wishlist-scroll,
+.events-scroll {
+  overflow-x: auto;
 }

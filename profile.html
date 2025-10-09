@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/home.css" />
     <link rel="stylesheet" href="css/layout.css" />
     <link rel="stylesheet" href="css/explore.css" />
+    <link rel="stylesheet" href="css/notification.css" />
   </head>
   <body>
     <div
@@ -127,35 +128,21 @@
                     class="d-flex flex-column align-items-center gap-4 gap-md-5 mt-4 mb-4"
                     id="wishlistItems"
                   >
-                    <div
-                      class="bg-white rounded-4 border border-light-subtle"
-                      style="flex-shrink: 0; width: 100%"
-                    >
-                      <div
-                        class="position-relative overflow-hidden rounded-top-4"
-                        style="aspect-ratio: 531/386"
-                      >
+                    <div class="profile-wishlist-card">
+                      <div class="profile-card-image-container">
                         <img
                           src="/assets/images/wishlist-1.svg"
                           alt="image"
-                          class="w-100 h-100"
-                          style="object-fit: cover"
+                          class="w-100 h-100 profile-card-img"
                         />
-                        <div
-                          class="position-absolute top-0 end-0 m-2 bg-white px-3 py-1 rounded-pill"
-                          style="font-size: 0.875rem"
-                        >
-                          1/2
-                        </div>
-                        <div
-                          class="position-absolute bottom-0 start-0 m-2 bg-white px-3 py-1 rounded-pill d-flex align-items-center gap-1"
-                        >
+                        <div class="profile-counter-badge">1/2</div>
+                        <div class="profile-price-badge">
                           <img
                             src="/assets/icons/tag.svg"
-                            style="width: 1rem; height: 1rem"
+                            class="tag-icon"
                             alt="tag"
                           />
-                          <span style="font-size: 0.875rem">$150</span>
+                          <span class="price-text">$150</span>
                         </div>
                       </div>
                       <div class="p-4 border-bottom border-light-subtle">
@@ -163,8 +150,7 @@
                           <img
                             src="/assets/images/user-1.svg"
                             alt="user"
-                            class="rounded-circle"
-                            style="width: 2rem; height: 2rem"
+                            class="rounded-circle user-avatar"
                           />
                           <span class="fw-bold">Tjaay Birthday wishlist</span>
                         </div>
@@ -173,7 +159,7 @@
                             <img
                               src="/assets/icons/like.svg"
                               alt="like"
-                              style="width: 1.75rem; height: 1.75rem"
+                              class="action-icon"
                             />
                           </button>
                           <button
@@ -183,14 +169,14 @@
                             <img
                               src="/assets/icons/comment.svg"
                               alt="comment"
-                              style="width: 1.75rem; height: 1.75rem"
+                              class="action-icon"
                             />
                           </button>
                           <button class="btn p-0 border-0 bg-transparent">
                             <img
                               src="/assets/icons/share.svg"
                               alt="share"
-                              style="width: 1.75rem; height: 1.75rem"
+                              class="action-icon"
                             />
                           </button>
                           <button
@@ -199,33 +185,27 @@
                             <img
                               src="/assets/icons/save.svg"
                               alt="save"
-                              style="width: 1.75rem; height: 1.75rem"
+                              class="action-icon"
                             />
                           </button>
                         </div>
                         <div class="likes-section">
                           <div class="likes-avatars">
-                            <div class="like-avatar" style="margin-left: 0rem">
+                            <div class="like-avatar">
                               <img
                                 src="/assets/images/user-1.svg"
                                 alt="avatar"
                                 class="rounded-circle"
                               />
                             </div>
-                            <div
-                              class="like-avatar"
-                              style="margin-left: -0.5rem"
-                            >
+                            <div class="like-avatar">
                               <img
                                 src="/assets/images/user-2.svg"
                                 alt="avatar"
                                 class="rounded-circle"
                               />
                             </div>
-                            <div
-                              class="like-avatar"
-                              style="margin-left: -0.5rem"
-                            >
+                            <div class="like-avatar">
                               <img
                                 src="/assets/images/user.svg"
                                 alt="avatar"
@@ -255,36 +235,21 @@
                         />
                       </div>
                     </div>
-
-                    <div
-                      class="bg-white rounded-4 border border-light-subtle"
-                      style="flex-shrink: 0; width: 100%"
-                    >
-                      <div
-                        class="position-relative overflow-hidden rounded-top-4"
-                        style="aspect-ratio: 531/386"
-                      >
+                    <div class="profile-wishlist-card">
+                      <div class="profile-card-image-container">
                         <img
                           src="/assets/images/wishlist-2.jpg"
                           alt="image"
-                          class="w-100 h-100"
-                          style="object-fit: cover"
+                          class="w-100 h-100 profile-card-img"
                         />
-                        <div
-                          class="position-absolute top-0 end-0 m-2 bg-white px-3 py-1 rounded-pill"
-                          style="font-size: 0.875rem"
-                        >
-                          2/2
-                        </div>
-                        <div
-                          class="position-absolute bottom-0 start-0 m-2 bg-white px-3 py-1 rounded-pill d-flex align-items-center gap-1"
-                        >
+                        <div class="profile-counter-badge">2/2</div>
+                        <div class="profile-price-badge">
                           <img
                             src="/assets/icons/tag.svg"
-                            style="width: 1rem; height: 1rem"
+                            class="tag-icon"
                             alt="tag"
                           />
-                          <span style="font-size: 0.875rem">$150</span>
+                          <span class="price-text">$150</span>
                         </div>
                       </div>
                       <div class="p-4 border-bottom border-light-subtle">
@@ -292,8 +257,7 @@
                           <img
                             src="/assets/images/user-2.svg"
                             alt="user"
-                            class="rounded-circle"
-                            style="width: 2rem; height: 2rem"
+                            class="rounded-circle user-avatar"
                           />
                           <span class="fw-bold">Sarah's Dream Wishlist</span>
                         </div>
@@ -302,7 +266,7 @@
                             <img
                               src="/assets/icons/like.svg"
                               alt="like"
-                              style="width: 1.75rem; height: 1.75rem"
+                              class="action-icon"
                             />
                           </button>
                           <button
@@ -312,14 +276,14 @@
                             <img
                               src="/assets/icons/comment.svg"
                               alt="comment"
-                              style="width: 1.75rem; height: 1.75rem"
+                              class="action-icon"
                             />
                           </button>
                           <button class="btn p-0 border-0 bg-transparent">
                             <img
                               src="/assets/icons/share.svg"
                               alt="share"
-                              style="width: 1.75rem; height: 1.75rem"
+                              class="action-icon"
                             />
                           </button>
                           <button
@@ -328,33 +292,27 @@
                             <img
                               src="/assets/icons/save.svg"
                               alt="save"
-                              style="width: 1.75rem; height: 1.75rem"
+                              class="action-icon"
                             />
                           </button>
                         </div>
                         <div class="likes-section">
                           <div class="likes-avatars">
-                            <div class="like-avatar" style="margin-left: 0rem">
+                            <div class="like-avatar">
                               <img
                                 src="/assets/images/user-1.svg"
                                 alt="avatar"
                                 class="rounded-circle"
                               />
                             </div>
-                            <div
-                              class="like-avatar"
-                              style="margin-left: -0.5rem"
-                            >
+                            <div class="like-avatar">
                               <img
                                 src="/assets/images/user-2.svg"
                                 alt="avatar"
                                 class="rounded-circle"
                               />
                             </div>
-                            <div
-                              class="like-avatar"
-                              style="margin-left: -0.5rem"
-                            >
+                            <div class="like-avatar">
                               <img
                                 src="/assets/images/user.svg"
                                 alt="avatar"
@@ -385,7 +343,6 @@
                       </div>
                     </div>
                   </div>
-
                   <div class="action-card">
                     <button class="action-item" onclick="loadCreateWishlist()">
                       <img
@@ -419,20 +376,18 @@
                   </div>
                 </div>
 
-                <!-- Events Tab Content -->
                 <div class="tab-content" id="events-content">
                   <div class="events-items" id="eventsItems">
-                    <!-- Event Card 1 -->
                     <div class="event-card w-100 mb-4 mb-md-5">
                       <section class="card-image event-card-image">
                         <img src="/assets/images/event.svg" alt="event image" />
                         <div class="image-overlay days-tag">
                           <img
                             src="/assets/icons/clock.svg"
-                            style="width: 0.75rem"
+                            class="clock-icon"
                             alt="clock"
                           />
-                          <span>10 days</span>
+                          <span>10days</span>
                         </div>
                       </section>
                       <section class="card-content">
@@ -444,32 +399,23 @@
                           />
                           <span class="fw-bold">Sarah Birthday</span>
                           <div class="ms-auto d-flex align-items-center gap-1">
-                            <span style="font-size: 0.875rem">Tagged</span>
+                            <span class="event-tagged-text">Tagged</span>
                             <div class="likes-avatars">
-                              <div
-                                class="like-avatar"
-                                style="margin-left: 0rem"
-                              >
+                              <div class="like-avatar">
                                 <img
                                   src="/assets/images/user-1.svg"
                                   alt="avatar"
                                   class="rounded-circle"
                                 />
                               </div>
-                              <div
-                                class="like-avatar"
-                                style="margin-left: -0.5rem"
-                              >
+                              <div class="like-avatar">
                                 <img
                                   src="/assets/images/user-2.svg"
                                   alt="avatar"
                                   class="rounded-circle"
                                 />
                               </div>
-                              <div
-                                class="like-avatar"
-                                style="margin-left: -0.5rem"
-                              >
+                              <div class="like-avatar">
                                 <img
                                   src="/assets/images/user.svg"
                                   alt="avatar"
@@ -482,9 +428,8 @@
                         <div class="event-tags">
                           <img
                             src="/assets/icons/calendar.svg"
-                            style="width: 2rem"
+                            class="calendar-icon d-none d-md-block"
                             alt="calendar"
-                            class="d-none d-md-block"
                           />
                           <span class="event-tag">April 1, 2025</span>
                           <span class="event-tag d-none d-md-inline"
@@ -498,20 +443,20 @@
                           her day sparkle.
                         </p>
                         <div class="progress-section">
-                          <p style="font-size: 0.875rem" class="mb-1">
-                            Gift progress
-                          </p>
+                          <p class="progress-label mb-1">Gift progress</p>
                           <div class="progress-bar-container">
                             <div class="progress-bar" style="width: 40%"></div>
                           </div>
                           <div class="progress-text">
                             <span
                               >Contributed:
-                              <span style="color: #151515">$400</span></span
+                              <span class="progress-contributed"
+                                >$400</span
+                              ></span
                             >
                             <span
                               >Goal:
-                              <span style="color: #151515">$1000</span></span
+                              <span class="progress-goal">$1000</span></span
                             >
                           </div>
                         </div>
@@ -520,21 +465,16 @@
                         >
                           <img
                             src="/assets/icons/comment.svg"
-                            style="width: 1.75rem"
+                            class="comment-icon"
                             alt="comment"
                           />
-                          <span
-                            style="
-                              font-size: 0.875rem;
-                              color: var(--text-gray-lighter);
-                            "
+                          <span class="view-comments-text"
                             >View comments...</span
                           >
                         </button>
                       </section>
                       <div
-                        class="comment-section d-none d-md-flex"
-                        style="border-bottom: 1px solid #ddd"
+                        class="comment-section comment-section-bordered d-none d-md-flex"
                       >
                         <img
                           src="/assets/images/user-2.svg"
@@ -552,7 +492,7 @@
                           <span>View wishlist</span>
                           <img
                             src="/assets/icons/open.svg"
-                            style="width: 1.125rem"
+                            class="open-icon"
                             alt="open"
                           />
                         </button>
@@ -563,24 +503,23 @@
                           <span>RSVP Now</span>
                           <img
                             src="/assets/icons/open-white.svg"
-                            style="width: 1.125rem"
+                            class="open-icon"
                             alt="open"
                           />
                         </button>
                       </div>
                     </div>
 
-                    <!-- Event Card 2 -->
                     <div class="event-card w-100 mb-4 mb-md-5">
                       <section class="card-image event-card-image">
                         <img src="/assets/images/event.svg" alt="event image" />
                         <div class="image-overlay days-tag">
                           <img
                             src="/assets/icons/clock.svg"
-                            style="width: 0.75rem"
+                            class="clock-icon"
                             alt="clock"
                           />
-                          <span>10 days</span>
+                          <span>10days</span>
                         </div>
                       </section>
                       <section class="card-content">
@@ -592,32 +531,23 @@
                           />
                           <span class="fw-bold">Sarah Birthday</span>
                           <div class="ms-auto d-flex align-items-center gap-1">
-                            <span style="font-size: 0.875rem">Tagged</span>
+                            <span class="event-tagged-text">Tagged</span>
                             <div class="likes-avatars">
-                              <div
-                                class="like-avatar"
-                                style="margin-left: 0rem"
-                              >
+                              <div class="like-avatar">
                                 <img
                                   src="/assets/images/user-1.svg"
                                   alt="avatar"
                                   class="rounded-circle"
                                 />
                               </div>
-                              <div
-                                class="like-avatar"
-                                style="margin-left: -0.5rem"
-                              >
+                              <div class="like-avatar">
                                 <img
                                   src="/assets/images/user-2.svg"
                                   alt="avatar"
                                   class="rounded-circle"
                                 />
                               </div>
-                              <div
-                                class="like-avatar"
-                                style="margin-left: -0.5rem"
-                              >
+                              <div class="like-avatar">
                                 <img
                                   src="/assets/images/user.svg"
                                   alt="avatar"
@@ -630,9 +560,8 @@
                         <div class="event-tags">
                           <img
                             src="/assets/icons/calendar.svg"
-                            style="width: 2rem"
+                            class="calendar-icon d-none d-md-block"
                             alt="calendar"
-                            class="d-none d-md-block"
                           />
                           <span class="event-tag">April 1, 2025</span>
                           <span class="event-tag d-none d-md-inline"
@@ -646,20 +575,20 @@
                           her day sparkle.
                         </p>
                         <div class="progress-section">
-                          <p style="font-size: 0.875rem" class="mb-1">
-                            Gift progress
-                          </p>
+                          <p class="progress-label mb-1">Gift progress</p>
                           <div class="progress-bar-container">
                             <div class="progress-bar" style="width: 40%"></div>
                           </div>
                           <div class="progress-text">
                             <span
                               >Contributed:
-                              <span style="color: #151515">$400</span></span
+                              <span class="progress-contributed"
+                                >$400</span
+                              ></span
                             >
                             <span
                               >Goal:
-                              <span style="color: #151515">$1000</span></span
+                              <span class="progress-goal">$1000</span></span
                             >
                           </div>
                         </div>
@@ -668,21 +597,16 @@
                         >
                           <img
                             src="/assets/icons/comment.svg"
-                            style="width: 1.75rem"
+                            class="comment-icon"
                             alt="comment"
                           />
-                          <span
-                            style="
-                              font-size: 0.875rem;
-                              color: var(--text-gray-lighter);
-                            "
+                          <span class="view-comments-text"
                             >View comments...</span
                           >
                         </button>
                       </section>
                       <div
-                        class="comment-section d-none d-md-flex"
-                        style="border-bottom: 1px solid #ddd"
+                        class="comment-section comment-section-bordered d-none d-md-flex"
                       >
                         <img
                           src="/assets/images/user-2.svg"
@@ -700,7 +624,7 @@
                           <span>View wishlist</span>
                           <img
                             src="/assets/icons/open.svg"
-                            style="width: 1.125rem"
+                            class="open-icon"
                             alt="open"
                           />
                         </button>
@@ -711,14 +635,13 @@
                           <span>RSVP Now</span>
                           <img
                             src="/assets/icons/open-white.svg"
-                            style="width: 1.125rem"
+                            class="open-icon"
                             alt="open"
                           />
                         </button>
                       </div>
                     </div>
                   </div>
-
                   <div class="action-card">
                     <button class="action-item" onclick="loadCreateEvent()">
                       <img
@@ -752,10 +675,8 @@
                   </div>
                 </div>
 
-                <!-- Contributions Tab Content -->
                 <div class="tab-content" id="contributions-content">
                   <div class="contributions-items" id="contributionsItems">
-                    <!-- Contribution Card 1 -->
                     <div class="contribution-card">
                       <div class="contribution-header">
                         <p class="contribution-name">Tjaay Birthday wishlist</p>
@@ -769,17 +690,16 @@
                         <div class="progress-text">
                           <span
                             >Contributed:
-                            <span style="color: #151515">$400</span></span
+                            <span class="progress-contributed">$400</span></span
                           >
                           <span
                             >Goal:
-                            <span style="color: #151515">$1000</span></span
+                            <span class="progress-goal">$1000</span></span
                           >
                         </div>
                       </div>
                     </div>
 
-                    <!-- Contribution Card 2 -->
                     <div class="contribution-card">
                       <div class="contribution-header">
                         <p class="contribution-name">
@@ -795,17 +715,15 @@
                         <div class="progress-text">
                           <span
                             >Contributed:
-                            <span style="color: #151515">$700</span></span
+                            <span class="progress-contributed">$700</span></span
                           >
                           <span
-                            >Goal:
-                            <span style="color: #151515">$900</span></span
+                            >Goal: <span class="progress-goal">$900</span></span
                           >
                         </div>
                       </div>
                     </div>
                   </div>
-
                   <div class="action-card">
                     <button class="action-item">
                       <img
@@ -835,7 +753,6 @@
                     </button>
                   </div>
                 </div>
-
                 <div class="divider"></div>
                 <div class="action-card bottom-actions">
                   <button class="action-item">
@@ -866,7 +783,6 @@
                   </button>
                 </div>
               </div>
-
               <div class="qr-modal" id="qrModal">
                 <div class="notification-header">
                   <button
@@ -900,7 +816,6 @@
                 </div>
               </div>
             </section>
-
             <section id="right-section" class="right-section d-none d-md-block">
               <div
                 class="d-flex align-items-center gap-2 mb-4"
@@ -908,20 +823,12 @@
               >
                 <img
                   src="/assets/images/user.svg"
-                  class="user-avatar"
-                  style="border: 1px solid var(--border-light)"
+                  class="user-avatar right-user-avatar"
                   alt="user"
                 />
                 <div>
-                  <p class="mb-0" style="font-size: 0.8125rem; color: #151515">
-                    Chukwuemeka
-                  </p>
-                  <p
-                    class="mb-0"
-                    style="font-size: 0.8125rem; color: var(--text-gray-light)"
-                  >
-                    @Chuks
-                  </p>
+                  <p class="mb-0 right-user-name">Chukwuemeka</p>
+                  <p class="mb-0 right-user-handle">@Chuks</p>
                 </div>
               </div>
               <h5 class="fw-semibold" style="color: var(--text-gray)">
@@ -932,22 +839,18 @@
                   <img
                     src="/assets/images/friend.svg"
                     alt="friend"
-                    style="width: 2rem; height: 2rem"
-                    class="rounded-circle"
+                    class="suggested-friend-avatar rounded-circle"
                   />
-                  <span style="font-size: 0.875rem; color: #242424"
-                    >yrn_cermuel</span
-                  >
+                  <span class="suggested-friend-name">yrn_cermuel</span>
                   <button class="follow-btn">Follow</button>
                 </div>
                 <div class="user-suggestion">
                   <img
                     src="/assets/images/friend.svg"
                     alt="friend"
-                    style="width: 2rem; height: 2rem"
-                    class="rounded-circle"
+                    class="suggested-friend-avatar rounded-circle"
                   />
-                  <span style="font-size: 0.875rem; color: #242424">Chuks</span>
+                  <span class="suggested-friend-name">Chuks</span>
                   <button class="follow-btn">Follow</button>
                 </div>
               </div>
@@ -1014,7 +917,6 @@
         </div>
       </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script type="module" src="js/profile.js"></script>
   </body>
