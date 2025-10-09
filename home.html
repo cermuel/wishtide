@@ -11,6 +11,7 @@
     />
     <link rel="stylesheet" href="css/home.css" />
     <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/wishlist-modal.css" />
   </head>
   <body>
     <div
@@ -23,7 +24,6 @@
         class="sidebar d-none d-md-flex flex-column align-items-center px-4 py-4"
       >
         <img src="/assets/icons/logo.svg" alt="logo" class="logo mb-4" />
-
         <a href="/home.html" class="sidebar-item" data-nav="home"
           ><img class="icon" /><span class="nav-label">home</span></a
         >
@@ -44,7 +44,6 @@
           ><img class="icon" /><span class="nav-label">profile</span></a
         >
       </ul>
-
       <div id="mainContent" class="flex-grow-1 h-100 d-flex position-relative">
         <div
           id="notificationPanel"
@@ -56,23 +55,25 @@
             <section class="left-section">
               <div id="complete-profile"></div>
               <h1 class="h2 fw-bold text-gray desktop-title mb-4">Home</h1>
-
               <div class="mobile-header">
-                <img src="/assets/images/user.svg" alt="user" />
-                <p>@Chuks</p>
+                <img
+                  src="/assets/images/user.svg"
+                  class="mobile-user-avatar"
+                  alt="user"
+                />
+                <p class="mobile-username">@Chuks</p>
                 <img
                   src="/assets/icons/bell.svg"
-                  class="ms-auto"
+                  class="mobile-bell"
                   alt="bell"
                   onclick="toggleNotification(event)"
                 />
               </div>
-
               <div class="search-section">
                 <div class="d-flex align-items-center gap-2 mb-3">
                   <img
                     src="/assets/icons/spark.svg"
-                    style="width: 1.375rem; height: 1.375rem"
+                    class="spark-icon"
                     alt="spark"
                   />
                   <p class="fw-bold text-white mb-0">
@@ -82,7 +83,7 @@
                 <div class="search-input-container">
                   <img
                     src="/assets/icons/explore.svg"
-                    style="width: 0.875rem"
+                    class="explore-icon"
                     alt="search"
                   />
                   <input
@@ -92,12 +93,11 @@
                   />
                 </div>
               </div>
-
               <div class="action-buttons">
                 <button class="action-btn" onclick="loadCreateWishlist()">
                   <img
                     src="/assets/icons/logo-small.svg"
-                    style="width: 1.5rem; height: 1.5rem"
+                    class="wishlist-action-icon"
                     alt="wishlist"
                   />
                   <span>Create wishlist</span>
@@ -105,7 +105,7 @@
                 <button class="action-btn" onclick="loadCreateEvent()">
                   <img
                     src="/assets/icons/event.svg"
-                    style="width: 1.25rem; height: 1.25rem"
+                    class="event-action-icon"
                     alt="event"
                   />
                   <span>Start an event</span>
@@ -113,25 +113,23 @@
                 <button class="action-btn">
                   <img
                     src="/assets/icons/invite.svg"
-                    style="width: 1.5rem; height: 1.5rem"
+                    class="invite-icon"
                     alt="invite"
                   />
                   <span>Invite friends</span>
                 </button>
               </div>
-
               <div class="section-header">
                 <h2 class="fw-bold mb-0">Trending Wishlist Now</h2>
                 <a href="#" class="see-more-link">
                   <span>See more</span>
                   <img
                     src="/assets/icons/chevron-purple.svg"
-                    style="width: 7px"
+                    class="chevron-icon"
                     alt="chevron"
                   />
                 </a>
               </div>
-
               <div class="wishlist-container">
                 <div class="horizontal-scroll" id="wishlistContainer">
                   <div class="wishlist-card">
@@ -144,7 +142,7 @@
                       <div class="image-overlay price-tag">
                         <img
                           src="/assets/icons/tag.svg"
-                          style="width: 1rem; height: 1rem"
+                          class="tag-icon"
                           alt="tag"
                         />
                         <span>$200</span>
@@ -178,21 +176,21 @@
                       </div>
                       <div class="likes-section">
                         <div class="likes-avatars">
-                          <div class="like-avatar" style="margin-left: 0rem">
+                          <div class="like-avatar">
                             <img
                               src="/assets/images/user.svg"
                               alt="avatar"
                               class="rounded-circle"
                             />
                           </div>
-                          <div class="like-avatar" style="margin-left: -0.5rem">
+                          <div class="like-avatar">
                             <img
                               src="/assets/images/user-1.svg"
                               alt="avatar"
                               class="rounded-circle"
                             />
                           </div>
-                          <div class="like-avatar" style="margin-left: -0.5rem">
+                          <div class="like-avatar">
                             <img
                               src="/assets/images/user-2.svg"
                               alt="avatar"
@@ -232,7 +230,7 @@
                       <div class="image-overlay price-tag">
                         <img
                           src="/assets/icons/tag.svg"
-                          style="width: 1rem; height: 1rem"
+                          class="tag-icon"
                           alt="tag"
                         />
                         <span>$200</span>
@@ -266,7 +264,7 @@
                       </div>
                       <div class="likes-section">
                         <div class="likes-avatars">
-                          <div class="like-avatar" style="margin-left: 0.5rem">
+                          <div class="like-avatar first-avatar">
                             <img
                               src="/assets/images/user.svg"
                               alt="avatar"
@@ -306,7 +304,7 @@
                       <div class="image-overlay price-tag">
                         <img
                           src="/assets/icons/tag.svg"
-                          style="width: 1rem; height: 1rem"
+                          class="tag-icon"
                           alt="tag"
                         />
                         <span>$200</span>
@@ -340,7 +338,7 @@
                       </div>
                       <div class="likes-section">
                         <div class="likes-avatars">
-                          <div class="like-avatar" style="margin-left: 0.5rem">
+                          <div class="like-avatar first-avatar">
                             <img
                               src="/assets/images/user.svg"
                               alt="avatar"
@@ -380,7 +378,7 @@
                       <div class="image-overlay price-tag">
                         <img
                           src="/assets/icons/tag.svg"
-                          style="width: 1rem; height: 1rem"
+                          class="tag-icon"
                           alt="tag"
                         />
                         <span>$200</span>
@@ -414,7 +412,7 @@
                       </div>
                       <div class="likes-section">
                         <div class="likes-avatars">
-                          <div class="like-avatar" style="margin-left: 0.5rem">
+                          <div class="like-avatar first-avatar">
                             <img
                               src="/assets/images/user.svg"
                               alt="avatar"
@@ -454,7 +452,7 @@
                       <div class="image-overlay price-tag">
                         <img
                           src="/assets/icons/tag.svg"
-                          style="width: 1rem; height: 1rem"
+                          class="tag-icon"
                           alt="tag"
                         />
                         <span>$200</span>
@@ -488,7 +486,7 @@
                       </div>
                       <div class="likes-section">
                         <div class="likes-avatars">
-                          <div class="like-avatar" style="margin-left: 0.5rem">
+                          <div class="like-avatar first-avatar">
                             <img
                               src="/assets/images/user.svg"
                               alt="avatar"
@@ -520,19 +518,17 @@
                   </div>
                 </div>
               </div>
-
               <div class="section-header mt-5">
                 <h2 class="fw-bold mb-0">Upcoming events</h2>
                 <a href="#" class="see-more-link">
                   <span>See more</span>
                   <img
                     src="/assets/icons/chevron-purple.svg"
-                    style="width: 7px"
+                    class="chevron-icon"
                     alt="chevron"
                   />
                 </a>
               </div>
-
               <div class="events-container">
                 <div class="horizontal-scroll" id="eventsContainer">
                   <div class="event-card">
@@ -541,10 +537,10 @@
                       <div class="image-overlay days-tag">
                         <img
                           src="/assets/icons/clock.svg"
-                          style="width: 0.75rem"
+                          class="clock-icon"
                           alt="clock"
                         />
-                        <span>4 days</span>
+                        <span>4days</span>
                       </div>
                     </section>
                     <section class="card-content">
@@ -556,29 +552,23 @@
                         />
                         <span class="fw-bold">Sarah Birthday</span>
                         <div class="ms-auto d-flex align-items-center gap-1">
-                          <span style="font-size: 0.875rem">Tagged</span>
+                          <span class="event-tagged-text">Tagged</span>
                           <div class="likes-avatars">
-                            <div class="like-avatar" style="margin-left: 0rem">
+                            <div class="like-avatar">
                               <img
                                 src="/assets/images/user.svg"
                                 alt="avatar"
                                 class="rounded-circle"
                               />
                             </div>
-                            <div
-                              class="like-avatar"
-                              style="margin-left: -0.5rem"
-                            >
+                            <div class="like-avatar">
                               <img
                                 src="/assets/images/user.svg"
                                 alt="avatar"
                                 class="rounded-circle"
                               />
                             </div>
-                            <div
-                              class="like-avatar"
-                              style="margin-left: -0.5rem"
-                            >
+                            <div class="like-avatar">
                               <img
                                 src="/assets/images/user.svg"
                                 alt="avatar"
@@ -591,9 +581,8 @@
                       <div class="event-tags">
                         <img
                           src="/assets/icons/calendar.svg"
-                          style="width: 2rem"
+                          class="calendar-icon d-none d-md-block"
                           alt="calendar"
-                          class="d-none d-md-block"
                         />
                         <span class="event-tag">April 1, 2025</span>
                         <span class="event-tag d-none d-md-inline">Online</span>
@@ -605,20 +594,18 @@
                         day sparkle.
                       </p>
                       <div class="progress-section">
-                        <p style="font-size: 0.875rem" class="mb-1">
-                          Gift progress
-                        </p>
+                        <p class="progress-label mb-1">Gift progress</p>
                         <div class="progress-bar-container">
                           <div class="progress-bar" style="width: 20%"></div>
                         </div>
                         <div class="progress-text">
                           <span
                             >Contributed:
-                            <span style="color: #151515">$200</span></span
+                            <span class="progress-contributed">$200</span></span
                           >
                           <span
                             >Goal:
-                            <span style="color: #151515">$1000</span></span
+                            <span class="progress-goal">$1000</span></span
                           >
                         </div>
                       </div>
@@ -627,21 +614,14 @@
                       >
                         <img
                           src="/assets/icons/comment.svg"
-                          style="width: 1.75rem"
+                          class="comment-icon"
                           alt="comment"
                         />
-                        <span
-                          style="
-                            font-size: 0.875rem;
-                            color: var(--text-gray-lighter);
-                          "
-                          >View comments...</span
-                        >
+                        <span class="view-comments-text">View comments...</span>
                       </button>
                     </section>
                     <div
-                      class="comment-section d-none d-md-flex"
-                      style="border-bottom: 1px solid #ddd"
+                      class="comment-section comment-section-bordered d-none d-md-flex"
                     >
                       <img
                         src="/assets/images/user.svg"
@@ -659,7 +639,7 @@
                         <span>View wishlist</span>
                         <img
                           src="/assets/icons/open.svg"
-                          style="width: 1.125rem"
+                          class="open-icon"
                           alt="open"
                         />
                       </button>
@@ -670,7 +650,7 @@
                         <span>RSVP Now</span>
                         <img
                           src="/assets/icons/open-white.svg"
-                          style="width: 1.125rem"
+                          class="open-icon"
                           alt="open"
                         />
                       </button>
@@ -682,10 +662,10 @@
                       <div class="image-overlay days-tag">
                         <img
                           src="/assets/icons/clock.svg"
-                          style="width: 0.75rem"
+                          class="clock-icon"
                           alt="clock"
                         />
-                        <span>4 days</span>
+                        <span>4days</span>
                       </div>
                     </section>
                     <section class="card-content">
@@ -697,29 +677,23 @@
                         />
                         <span class="fw-bold">Sarah Birthday</span>
                         <div class="ms-auto d-flex align-items-center gap-1">
-                          <span style="font-size: 0.875rem">Tagged</span>
+                          <span class="event-tagged-text">Tagged</span>
                           <div class="likes-avatars">
-                            <div class="like-avatar" style="margin-left: 0rem">
+                            <div class="like-avatar">
                               <img
                                 src="/assets/images/user.svg"
                                 alt="avatar"
                                 class="rounded-circle"
                               />
                             </div>
-                            <div
-                              class="like-avatar"
-                              style="margin-left: -0.5rem"
-                            >
+                            <div class="like-avatar">
                               <img
                                 src="/assets/images/user.svg"
                                 alt="avatar"
                                 class="rounded-circle"
                               />
                             </div>
-                            <div
-                              class="like-avatar"
-                              style="margin-left: -0.5rem"
-                            >
+                            <div class="like-avatar">
                               <img
                                 src="/assets/images/user.svg"
                                 alt="avatar"
@@ -732,9 +706,8 @@
                       <div class="event-tags">
                         <img
                           src="/assets/icons/calendar.svg"
-                          style="width: 2rem"
+                          class="calendar-icon d-none d-md-block"
                           alt="calendar"
-                          class="d-none d-md-block"
                         />
                         <span class="event-tag">April 1, 2025</span>
                         <span class="event-tag d-none d-md-inline">Online</span>
@@ -746,20 +719,18 @@
                         day sparkle.
                       </p>
                       <div class="progress-section">
-                        <p style="font-size: 0.875rem" class="mb-1">
-                          Gift progress
-                        </p>
+                        <p class="progress-label mb-1">Gift progress</p>
                         <div class="progress-bar-container">
                           <div class="progress-bar" style="width: 20%"></div>
                         </div>
                         <div class="progress-text">
                           <span
                             >Contributed:
-                            <span style="color: #151515">$200</span></span
+                            <span class="progress-contributed">$200</span></span
                           >
                           <span
                             >Goal:
-                            <span style="color: #151515">$1000</span></span
+                            <span class="progress-goal">$1000</span></span
                           >
                         </div>
                       </div>
@@ -768,21 +739,14 @@
                       >
                         <img
                           src="/assets/icons/comment.svg"
-                          style="width: 1.75rem"
+                          class="comment-icon"
                           alt="comment"
                         />
-                        <span
-                          style="
-                            font-size: 0.875rem;
-                            color: var(--text-gray-lighter);
-                          "
-                          >View comments...</span
-                        >
+                        <span class="view-comments-text">View comments...</span>
                       </button>
                     </section>
                     <div
-                      class="comment-section d-none d-md-flex"
-                      style="border-bottom: 1px solid #ddd"
+                      class="comment-section comment-section-bordered d-none d-md-flex"
                     >
                       <img
                         src="/assets/images/user.svg"
@@ -800,7 +764,7 @@
                         <span>View wishlist</span>
                         <img
                           src="/assets/icons/open.svg"
-                          style="width: 1.125rem"
+                          class="open-icon"
                           alt="open"
                         />
                       </button>
@@ -811,7 +775,7 @@
                         <span>RSVP Now</span>
                         <img
                           src="/assets/icons/open-white.svg"
-                          style="width: 1.125rem"
+                          class="open-icon"
                           alt="open"
                         />
                       </button>
@@ -823,10 +787,10 @@
                       <div class="image-overlay days-tag">
                         <img
                           src="/assets/icons/clock.svg"
-                          style="width: 0.75rem"
+                          class="clock-icon"
                           alt="clock"
                         />
-                        <span>4 days</span>
+                        <span>4days</span>
                       </div>
                     </section>
                     <section class="card-content">
@@ -838,29 +802,23 @@
                         />
                         <span class="fw-bold">Sarah Birthday</span>
                         <div class="ms-auto d-flex align-items-center gap-1">
-                          <span style="font-size: 0.875rem">Tagged</span>
+                          <span class="event-tagged-text">Tagged</span>
                           <div class="likes-avatars">
-                            <div class="like-avatar" style="margin-left: 0rem">
+                            <div class="like-avatar">
                               <img
                                 src="/assets/images/user.svg"
                                 alt="avatar"
                                 class="rounded-circle"
                               />
                             </div>
-                            <div
-                              class="like-avatar"
-                              style="margin-left: -0.5rem"
-                            >
+                            <div class="like-avatar">
                               <img
                                 src="/assets/images/user.svg"
                                 alt="avatar"
                                 class="rounded-circle"
                               />
                             </div>
-                            <div
-                              class="like-avatar"
-                              style="margin-left: -0.5rem"
-                            >
+                            <div class="like-avatar">
                               <img
                                 src="/assets/images/user.svg"
                                 alt="avatar"
@@ -873,9 +831,8 @@
                       <div class="event-tags">
                         <img
                           src="/assets/icons/calendar.svg"
-                          style="width: 2rem"
+                          class="calendar-icon d-none d-md-block"
                           alt="calendar"
-                          class="d-none d-md-block"
                         />
                         <span class="event-tag">April 1, 2025</span>
                         <span class="event-tag d-none d-md-inline">Online</span>
@@ -887,20 +844,18 @@
                         day sparkle.
                       </p>
                       <div class="progress-section">
-                        <p style="font-size: 0.875rem" class="mb-1">
-                          Gift progress
-                        </p>
+                        <p class="progress-label mb-1">Gift progress</p>
                         <div class="progress-bar-container">
                           <div class="progress-bar" style="width: 20%"></div>
                         </div>
                         <div class="progress-text">
                           <span
                             >Contributed:
-                            <span style="color: #151515">$200</span></span
+                            <span class="progress-contributed">$200</span></span
                           >
                           <span
                             >Goal:
-                            <span style="color: #151515">$1000</span></span
+                            <span class="progress-goal">$1000</span></span
                           >
                         </div>
                       </div>
@@ -909,21 +864,14 @@
                       >
                         <img
                           src="/assets/icons/comment.svg"
-                          style="width: 1.75rem"
+                          class="comment-icon"
                           alt="comment"
                         />
-                        <span
-                          style="
-                            font-size: 0.875rem;
-                            color: var(--text-gray-lighter);
-                          "
-                          >View comments...</span
-                        >
+                        <span class="view-comments-text">View comments...</span>
                       </button>
                     </section>
                     <div
-                      class="comment-section d-none d-md-flex"
-                      style="border-bottom: 1px solid #ddd"
+                      class="comment-section comment-section-bordered d-none d-md-flex"
                     >
                       <img
                         src="/assets/images/user.svg"
@@ -941,7 +889,7 @@
                         <span>View wishlist</span>
                         <img
                           src="/assets/icons/open.svg"
-                          style="width: 1.125rem"
+                          class="open-icon"
                           alt="open"
                         />
                       </button>
@@ -952,7 +900,7 @@
                         <span>RSVP Now</span>
                         <img
                           src="/assets/icons/open-white.svg"
-                          style="width: 1.125rem"
+                          class="open-icon"
                           alt="open"
                         />
                       </button>
@@ -1027,20 +975,12 @@
               >
                 <img
                   src="/assets/images/user.svg"
-                  class="user-avatar"
-                  style="border: 1px solid var(--border-light)"
+                  class="user-avatar right-user-avatar"
                   alt="user"
                 />
                 <div>
-                  <p class="mb-0" style="font-size: 0.8125rem; color: #151515">
-                    Chukwuemeka
-                  </p>
-                  <p
-                    class="mb-0"
-                    style="font-size: 0.8125rem; color: var(--text-gray-light)"
-                  >
-                    @Chuks
-                  </p>
+                  <p class="mb-0 right-user-name">Chukwuemeka</p>
+                  <p class="mb-0 right-user-handle">@Chuks</p>
                 </div>
               </div>
               <h5 class="fw-semibold" style="color: var(--text-gray)">
@@ -1078,7 +1018,6 @@
         <section id="contribute-modal"></section>
         <section id="rsvp-modal"></section>
       </div>
-
       <div
         id="bottomNav"
         class="bottom-nav d-flex d-md-none border-top bg-white"
@@ -1096,7 +1035,6 @@
           <img class="icon" /><span class="nav-label">profile</span>
         </a>
       </div>
-
       <div
         id="createPopup"
         class="create-popup"
@@ -1106,7 +1044,6 @@
         <button class="close-btn" onclick="toggleCreatePopup(false)">
           <img src="/assets/icons/close.svg" alt="close" class="h-4-5" />
         </button>
-
         <div class="popup-inner">
           <button class="popup-btn wishlist-btn" onclick="loadCreateWishlist()">
             <div>
@@ -1118,9 +1055,7 @@
             </div>
             <span class="popup-label">Create wishlist</span>
           </button>
-
           <div class="popup-divider"></div>
-
           <button class="popup-btn wishlist-btn" onclick="loadCreateEvent()">
             <div>
               <img
@@ -1135,6 +1070,5 @@
       </div>
     </div>
   </body>
-
   <script type="module" src="js/home.js"></script>
 </html>
