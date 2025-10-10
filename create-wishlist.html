@@ -7,7 +7,6 @@
     class="bg-white d-flex flex-column create-event-content"
     onclick="event.stopPropagation()"
   >
-    <!-- Success State -->
     <div id="success-state" class="d-none">
       <div
         class="d-flex flex-column flex-fill justify-content-center align-items-center create-event-success"
@@ -41,7 +40,6 @@
       </div>
     </div>
 
-    <!-- Form State -->
     <div id="form-state">
       <div class="create-event-header">
         <button onclick="goBack()">
@@ -66,7 +64,6 @@
       </div>
 
       <div class="create-event-content-scroll">
-        <!-- Step 1: Pre Information -->
         <div id="step-1" class="create-event-step">
           <p class="create-event-section-title">Pre information</p>
           <input
@@ -146,7 +143,6 @@
           </div>
         </div>
 
-        <!-- Step 2: Add Items -->
         <div id="step-2" class="create-event-step d-none">
           <div id="add-item-view">
             <p class="create-event-section-title">Add Items</p>
@@ -224,9 +220,7 @@
                 class="wishlist-description-display"
               ></p>
             </div>
-            <div id="items-container" class="items-container">
-              <!-- Items will be added here -->
-            </div>
+            <div id="items-container" class="items-container"></div>
             <div class="d-flex justify-content-center mt-auto">
               <button
                 class="add-new-item-btn"
@@ -238,7 +232,6 @@
           </div>
         </div>
 
-        <!-- Step 3: Tag Friends -->
         <div id="step-3" class="create-event-step d-none">
           <p class="create-event-section-title mb-2">
             Tag friends
@@ -253,7 +246,6 @@
               oninput="searchFriends(this.value)"
             />
             <div id="friend-dropdown" class="create-event-dropdown d-none">
-              <!-- Friend 1 -->
               <div
                 class="create-event-friend-item"
                 onclick="selectFriend(this, 1, 'Hammed Jude', '@Hajeed', '/assets/images/user-1.svg')"
@@ -273,7 +265,7 @@
                   class="create-event-friend-action"
                 />
               </div>
-              <!-- Friend 2 -->
+
               <div
                 class="create-event-friend-item"
                 onclick="selectFriend(this, 2, 'Samuel Ngene', '@Cermuel', '/assets/images/user-2.svg')"
