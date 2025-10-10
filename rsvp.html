@@ -15,13 +15,13 @@
         </p>
         <div class="d-flex w-100 align-items-center gap-3">
           <button
-            onclick="closeAddToCalendar()"
+            onclick="toggleModal('add-to-calendar-modal')"
             class="btn flex-fill py-2 border rounded-2 text-sm calendar-btn-no"
           >
             No
           </button>
           <button
-            onclick="confirmAddToCalendar()"
+            onclick="toggleModal('add-to-calendar-modal')"
             class="btn flex-fill py-2 border rounded-2 text-white text-sm calendar-btn-yes"
           >
             Yes
@@ -73,7 +73,9 @@
               class="rsvp-clock-icon"
               alt="clock"
             />
-            <span id="event-countdown" class="rsvp-countdown-text">5 days</span>
+            <span id="event-countdown" class="rsvp-countdown-text"
+              >10 days</span
+            >
           </div>
         </section>
         <section class="w-100 p-3 d-flex flex-column rounded-bottom-4">
@@ -85,14 +87,42 @@
               class="rounded-circle rsvp-user-avatar"
             />
             <span id="event-user-name" class="fw-bold rsvp-user-name"
-              >Sarah Johnson</span
+              >Sarah Birthday</span
             >
             <div class="d-flex align-items-center gap-1 ms-auto">
               <span class="rsvp-tagged-text">Tagged</span>
               <div
                 id="tagged-users"
                 class="d-flex align-items-center position-relative"
-              ></div>
+              >
+                <div class="bg-white rounded-circle p-1 rsvp-tagged-user">
+                  <img
+                    src="/assets/images/user-1.svg"
+                    alt="tagged user"
+                    class="rounded-circle rsvp-tagged-avatar"
+                  />
+                </div>
+                <div
+                  class="bg-white rounded-circle p-1 rsvp-tagged-user"
+                  style="margin-left: -0.75rem"
+                >
+                  <img
+                    src="/assets/images/user-2.svg"
+                    alt="tagged user"
+                    class="rounded-circle rsvp-tagged-avatar"
+                  />
+                </div>
+                <div
+                  class="bg-white rounded-circle p-1 rsvp-tagged-user"
+                  style="margin-left: -0.75rem"
+                >
+                  <img
+                    src="/assets/images/user.svg"
+                    alt="tagged user"
+                    class="rounded-circle rsvp-tagged-avatar"
+                  />
+                </div>
+              </div>
             </div>
           </div>
           <div class="d-flex align-items-center gap-2 mb-2">
@@ -105,24 +135,24 @@
               id="event-date"
               class="bg-light py-1 px-2 rounded-2 rsvp-meta-badge"
             >
-              Dec 25, 2024 • 7:00 PM
+              April 1, 2025
             </span>
             <span
               id="event-status"
               class="bg-light py-1 px-2 rounded-2 rsvp-meta-badge d-md-inline d-none"
             >
-              Upcoming
+              Online
             </span>
             <span
               id="event-rsvp-count"
               class="bg-light py-1 px-2 rounded-2 rsvp-meta-badge"
             >
-              RSVP count: 15
+              RSVP count: 10
             </span>
           </div>
           <p id="event-description" class="rsvp-event-description">
-            Join us for an amazing celebration! It's going to be a wonderful
-            evening filled with joy, laughter, and great memories.
+            Sarah's turning another fabulous year older! 🎉 Browse her wishlist,
+            pick a gift she'll love, and help make her day sparkle.
           </p>
         </section>
       </div>
@@ -168,8 +198,9 @@
               id="plus-one-checkbox"
               src="/assets/icons/unchecked.svg"
               alt="checkbox"
-              onclick="togglePlusOne()"
+              onclick="toggleImg(this, '/assets/icons/unchecked.svg', '/assets/icons/checked.svg')"
               class="rsvp-checkbox"
+              style="cursor: pointer"
             />
             <p class="mb-0 rsvp-plus-one-text">I'm bringing +1</p>
           </div>

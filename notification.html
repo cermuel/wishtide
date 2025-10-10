@@ -5,26 +5,242 @@
     </button>
     <h2 class="notification-title">Notifications</h2>
   </div>
-
   <div class="notification-tabs">
-    <button class="notification-tab active" data-tab="all">All</button>
-    <button class="notification-tab" data-tab="rsvp">RSVP Updates</button>
-    <button class="notification-tab" data-tab="wishlist">Wishlist views</button>
-    <button class="notification-tab" data-tab="contribution">
+    <button class="notification-tab active" onclick="filterTab('all')">
+      All
+    </button>
+    <button class="notification-tab" onclick="filterTab('rsvp')">
+      RSVP Updates
+    </button>
+    <button class="notification-tab" onclick="filterTab('wishlist')">
+      Wishlist views
+    </button>
+    <button class="notification-tab" onclick="filterTab('contribution')">
       Contribution alerts
     </button>
   </div>
-
   <div id="notificationEmpty" class="notification-empty" style="display: none">
     <div class="notification-empty-icon">
       <img src="/assets/images/bell.svg" style="height: 4rem" />
     </div>
     <p class="notification-empty-text">No notifications</p>
   </div>
+  <div id="notificationContent" class="notification-content">
+    <!-- Today Group -->
+    <div class="notification-group" data-time="Today">
+      <div class="notification-group-title">
+        <h3>Today</h3>
+      </div>
+      <div class="notification-list">
+        <!-- Contribution -->
+        <div class="notification-item" data-type="contribution">
+          <div class="notification-item-content">
+            <div class="notification-item-header">
+              <img
+                src="/assets/images/user.svg"
+                alt=""
+                class="notification-avatar"
+              />
+              <div class="notification-item-body">
+                <p class="notification-item-title">New Contribution</p>
+              </div>
+              <div class="notification-action">
+                <button class="notification-btn notification-btn-secondary">
+                  View wishlist
+                </button>
+              </div>
+            </div>
+            <div class="notification-divider">
+              <p class="notification-message">Contribution from John</p>
+              <p class="notification-amount">$50.00</p>
+            </div>
+          </div>
+        </div>
 
-  <div id="notificationContent" class="notification-content"></div>
+        <!-- RSVP 1 -->
+        <div class="notification-item" data-type="rsvp">
+          <div class="notification-item-content">
+            <div class="notification-item-header">
+              <img
+                src="/assets/images/user-1.svg"
+                alt=""
+                class="notification-avatar"
+              />
+              <div class="notification-item-body">
+                <p class="notification-item-title">
+                  RSVP - Chuck's Birthday event
+                </p>
+              </div>
+              <div class="notification-action">
+                <button class="notification-btn notification-btn-secondary">
+                  View RSVP list
+                </button>
+              </div>
+            </div>
+            <div class="notification-divider">
+              <p class="notification-message">Tjaey is going</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- RSVP 2 -->
+        <div class="notification-item" data-type="rsvp">
+          <div class="notification-item-content">
+            <div class="notification-item-header">
+              <img
+                src="/assets/images/user-2.svg"
+                alt=""
+                class="notification-avatar"
+              />
+              <div class="notification-item-body">
+                <p class="notification-item-title">RSVP - Birthday event</p>
+              </div>
+              <div class="notification-action">
+                <button class="notification-btn notification-btn-secondary">
+                  View RSVP list
+                </button>
+              </div>
+            </div>
+            <div class="notification-divider">
+              <p class="notification-message">Tjaey is going</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Yesterday Group -->
+    <div class="notification-group" data-time="Yesterday">
+      <div class="notification-group-title">
+        <h3>Yesterday</h3>
+      </div>
+      <div class="notification-list">
+        <!-- RSVP Tomorrow -->
+        <div class="notification-item" data-type="rsvp">
+          <div class="notification-item-content">
+            <div class="notification-item-header">
+              <img
+                src="/assets/images/user.svg"
+                alt=""
+                class="notification-avatar"
+              />
+              <div class="notification-item-body">
+                <p class="notification-item-title">
+                  Hajiz birthday is tomorrow
+                </p>
+              </div>
+              <div class="notification-action">
+                <button class="notification-btn notification-btn-primary">
+                  RSVP
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RSVP Update -->
+        <div class="notification-item" data-type="rsvp">
+          <div class="notification-item-content">
+            <div class="notification-item-header">
+              <img
+                src="/assets/images/friend.svg"
+                alt=""
+                class="notification-avatar"
+              />
+              <div class="notification-item-body">
+                <p class="notification-item-title">Hajiz RSVPd to your event</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Wishlist Like -->
+        <div class="notification-item" data-type="wishlist">
+          <div class="notification-item-content">
+            <div class="notification-item-header">
+              <img
+                src="/assets/images/user-2.svg"
+                alt=""
+                class="notification-avatar"
+              />
+              <div class="notification-item-body">
+                <p class="notification-item-title">
+                  Hajiz liked your "Birthday wishlist"
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Follow -->
+        <div class="notification-item" data-type="follow">
+          <div class="notification-item-content">
+            <div class="notification-item-header">
+              <img
+                src="/assets/images/user-1.svg"
+                alt=""
+                class="notification-avatar"
+              />
+              <div class="notification-item-body">
+                <p class="notification-item-title">
+                  Hajiz started following you
+                </p>
+              </div>
+              <div class="notification-action">
+                <button class="notification-btn notification-btn-primary">
+                  Follow
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Last 7 Days Group -->
+    <div class="notification-group" data-time="Last 7 days">
+      <div class="notification-group-title">
+        <h3>Last 7 days</h3>
+      </div>
+      <div class="notification-list">
+        <!-- Wishlist Views -->
+        <div class="notification-item" data-type="wishlist">
+          <div class="notification-item-content">
+            <div class="notification-item-header">
+              <img
+                src="/assets/images/friend.svg"
+                alt=""
+                class="notification-avatar"
+              />
+              <div class="notification-item-body">
+                <p class="notification-item-title">
+                  "Birthdays wishlist" has 50 views
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gift Milestone -->
+    <div id="giftMilestone" class="gift-milestone">
+      <div class="gift-milestone-header">
+        <h3 class="gift-milestone-title">Gift milestone</h3>
+        <a href="#" class="gift-milestone-link">View list</a>
+      </div>
+      <div class="gift-milestone-progress">
+        <div class="gift-milestone-stats">
+          <span>10 Items listed</span>
+          <span>40% completed</span>
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: 40%"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-<script src="js/notification.js"></script>
-
 <link rel="stylesheet" href="css/notification.css" />
+
+<script type="module" src="js/notification.js"></script>

@@ -39,7 +39,6 @@
         </div>
       </div>
     </div>
-
     <div id="form-state">
       <div class="create-event-header">
         <button onclick="handleBack()">
@@ -62,11 +61,9 @@
           />
         </button>
       </div>
-
       <div class="create-event-content-scroll">
         <div id="step-1" class="create-event-step">
           <p class="create-event-section-title">Pre information</p>
-
           <input
             type="file"
             class="d-none"
@@ -82,7 +79,6 @@
               alt="cover"
             />
           </label>
-
           <div class="create-event-input-group">
             <input
               type="text"
@@ -95,7 +91,6 @@
               Event name
             </label>
           </div>
-
           <div class="create-event-input-group">
             <textarea
               class="create-event-floating-input create-event-textarea"
@@ -107,7 +102,6 @@
               Description
             </label>
           </div>
-
           <div class="create-event-input-group">
             <input
               type="text"
@@ -119,7 +113,6 @@
               Location
             </label>
           </div>
-
           <p class="create-event-visibility-title">Visibility</p>
           <div class="create-event-radio-group">
             <div class="create-event-radio-item">
@@ -151,10 +144,8 @@
             </div>
           </div>
         </div>
-
         <div id="step-2" class="create-event-step d-none">
           <p class="create-event-section-title mb-2">Date & Time</p>
-
           <div class="create-event-input-group">
             <input
               type="date"
@@ -167,7 +158,6 @@
               Date
             </label>
           </div>
-
           <div class="create-event-input-group">
             <input
               type="time"
@@ -180,9 +170,7 @@
               Time
             </label>
           </div>
-
           <p class="create-event-section-title mb-2 mt-2">RSVP deadline</p>
-
           <div class="create-event-input-group">
             <input
               type="date"
@@ -195,7 +183,6 @@
               Deadline
             </label>
           </div>
-
           <div class="create-event-input-group">
             <input
               type="time"
@@ -208,7 +195,6 @@
               Time
             </label>
           </div>
-
           <div class="create-event-comments-toggle">
             <div>
               <p class="create-event-toggle-title">Comments</p>
@@ -222,42 +208,130 @@
               onclick="toggleComments()"
             />
           </div>
-
           <p class="create-event-wishlist-title">
             Assign a wishlist to your event
           </p>
           <select class="create-event-select">
             <option value="">-Select from existing wishlists-</option>
           </select>
-
           <div class="create-event-info-box">
             You can come back to assign an existing wishlist to your event.
             Also, it's optional and can be skipped
           </div>
         </div>
-
         <div id="step-3" class="create-event-step d-none">
           <p class="create-event-section-title mb-2">
             Tag friends <span class="create-event-optional">(optional)</span>
           </p>
-
           <div class="create-event-search-container">
             <input
               type="text"
               id="friend-search"
               placeholder="Search for friends"
               class="create-event-search-input"
-              oninput="handleFriendSearch(event)"
+              oninput="filterFriends(event)"
             />
             <div id="friend-dropdown" class="create-event-dropdown d-none">
-              <div class="create-event-friend-item"></div>
+              <div
+                class="create-event-friend-item"
+                onclick="addFriend(1, 'Hammed Jude', '@Hajeed', '/assets/images/user-1.svg')"
+              >
+                <img
+                  src="/assets/images/user-1.svg"
+                  alt="Hammed Jude"
+                  class="create-event-friend-avatar"
+                />
+                <div class="create-event-friend-info">
+                  <div class="create-event-friend-name">Hammed Jude</div>
+                  <div class="create-event-friend-username">@Hajeed</div>
+                </div>
+                <img
+                  src="/assets/icons/add-friend.svg"
+                  alt="add"
+                  class="create-event-friend-action"
+                />
+              </div>
+              <div
+                class="create-event-friend-item"
+                onclick="addFriend(2, 'Samuel Ngene', '@Cermuel', '/assets/images/user-2.svg')"
+              >
+                <img
+                  src="/assets/images/user-2.svg"
+                  alt="Samuel Ngene"
+                  class="create-event-friend-avatar"
+                />
+                <div class="create-event-friend-info">
+                  <div class="create-event-friend-name">Samuel Ngene</div>
+                  <div class="create-event-friend-username">@Cermuel</div>
+                </div>
+                <img
+                  src="/assets/icons/add-friend.svg"
+                  alt="add"
+                  class="create-event-friend-action"
+                />
+              </div>
+              <div
+                class="create-event-friend-item"
+                onclick="addFriend(3, 'Kevin De Bruyne', '@Shady', '/assets/images/friend.svg')"
+              >
+                <img
+                  src="/assets/images/friend.svg"
+                  alt="Kevin De Bruyne"
+                  class="create-event-friend-avatar"
+                />
+                <div class="create-event-friend-info">
+                  <div class="create-event-friend-name">Kevin De Bruyne</div>
+                  <div class="create-event-friend-username">@Shady</div>
+                </div>
+                <img
+                  src="/assets/icons/add-friend.svg"
+                  alt="add"
+                  class="create-event-friend-action"
+                />
+              </div>
+              <div
+                class="create-event-friend-item"
+                onclick="addFriend(4, 'David Hamilton', '@Dave', '/assets/images/user.svg')"
+              >
+                <img
+                  src="/assets/images/user.svg"
+                  alt="David Hamilton"
+                  class="create-event-friend-avatar"
+                />
+                <div class="create-event-friend-info">
+                  <div class="create-event-friend-name">David Hamilton</div>
+                  <div class="create-event-friend-username">@Dave</div>
+                </div>
+                <img
+                  src="/assets/icons/add-friend.svg"
+                  alt="add"
+                  class="create-event-friend-action"
+                />
+              </div>
+              <div
+                class="create-event-friend-item"
+                onclick="addFriend(5, 'John Doe', '@User', '/assets/images/user-2.svg')"
+              >
+                <img
+                  src="/assets/images/user-2.svg"
+                  alt="John Doe"
+                  class="create-event-friend-avatar"
+                />
+                <div class="create-event-friend-info">
+                  <div class="create-event-friend-name">John Doe</div>
+                  <div class="create-event-friend-username">@User</div>
+                </div>
+                <img
+                  src="/assets/icons/add-friend.svg"
+                  alt="add"
+                  class="create-event-friend-action"
+                />
+              </div>
             </div>
           </div>
-
           <div id="selected-friends"></div>
         </div>
       </div>
-
       <div class="create-event-footer">
         <button
           id="cancel-btn"
@@ -277,5 +351,4 @@
     </div>
   </div>
 </div>
-
 <link rel="stylesheet" href="css/create-event.css" />

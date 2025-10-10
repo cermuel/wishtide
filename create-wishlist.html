@@ -7,6 +7,7 @@
     class="bg-white d-flex flex-column create-event-content"
     onclick="event.stopPropagation()"
   >
+    <!-- Success State -->
     <div id="success-state" class="d-none">
       <div
         class="d-flex flex-column flex-fill justify-content-center align-items-center create-event-success"
@@ -33,15 +34,17 @@
         </div>
         <div class="create-event-success-buttons">
           <button class="create-event-share-btn d-md-none">Share</button>
-          <button class="create-event-home-btn" onclick="closeCreateWishlist()">
+          <button class="create-event-home-btn" onclick="closeModal()">
             Return home
           </button>
         </div>
       </div>
     </div>
+
+    <!-- Form State -->
     <div id="form-state">
       <div class="create-event-header">
-        <button onclick="handleWishlistBack()">
+        <button onclick="goBack()">
           <img
             src="/assets/icons/back-dark.svg"
             alt="back"
@@ -53,7 +56,7 @@
           <div id="progress-2" class="create-event-progress-bar"></div>
           <div id="progress-3" class="create-event-progress-bar"></div>
         </div>
-        <button onclick="closeCreateWishlist()">
+        <button onclick="closeModal()">
           <img
             src="/assets/icons/close-dark.svg"
             alt="close"
@@ -61,7 +64,9 @@
           />
         </button>
       </div>
+
       <div class="create-event-content-scroll">
+        <!-- Step 1: Pre Information -->
         <div id="step-1" class="create-event-step">
           <p class="create-event-section-title">Pre information</p>
           <input
@@ -69,7 +74,7 @@
             class="d-none"
             id="cover-input"
             accept="image/*"
-            onchange="handleWishlistCoverChange(event)"
+            onchange="previewImage(this, 'cover-preview')"
           />
           <label for="cover-input" class="create-event-cover-label">
             <img
@@ -136,10 +141,12 @@
               src="/assets/icons/toggle-off.svg"
               alt="toggle"
               class="create-event-toggle-icon"
-              onclick="toggleContributions()"
+              onclick="toggleIcon(this, '/assets/icons/toggle-on.svg', '/assets/icons/toggle-off.svg')"
             />
           </div>
         </div>
+
+        <!-- Step 2: Add Items -->
         <div id="step-2" class="create-event-step d-none">
           <div id="add-item-view">
             <p class="create-event-section-title">Add Items</p>
@@ -148,7 +155,7 @@
               class="d-none"
               id="item-image-input"
               accept="image/*"
-              onchange="handleItemImageChange(event)"
+              onchange="previewImage(this, 'item-image-preview')"
             />
             <label for="item-image-input" class="create-event-cover-label">
               <img
@@ -217,17 +224,25 @@
                 class="wishlist-description-display"
               ></p>
             </div>
-            <div id="items-container" class="items-container"></div>
+            <div id="items-container" class="items-container">
+              <!-- Items will be added here -->
+            </div>
             <div class="d-flex justify-content-center mt-auto">
-              <button class="add-new-item-btn" onclick="showAddItemView()">
+              <button
+                class="add-new-item-btn"
+                onclick="showView('add-item-view', 'items-list-view')"
+              >
                 Add new item
               </button>
             </div>
           </div>
         </div>
+
+        <!-- Step 3: Tag Friends -->
         <div id="step-3" class="create-event-step d-none">
           <p class="create-event-section-title mb-2">
-            Tag friends <span class="create-event-optional">(optional)</span>
+            Tag friends
+            <span class="create-event-optional">(optional)</span>
           </p>
           <div class="create-event-search-container">
             <input
@@ -235,104 +250,70 @@
               id="friend-search"
               placeholder="Search for friends"
               class="create-event-search-input"
-              oninput="handleWishlistFriendSearch(event)"
+              oninput="searchFriends(this.value)"
             />
             <div id="friend-dropdown" class="create-event-dropdown d-none">
-              <div class="create-event-friend-item"></div>
+              <!-- Friend 1 -->
+              <div
+                class="create-event-friend-item"
+                onclick="selectFriend(this, 1, 'Hammed Jude', '@Hajeed', '/assets/images/user-1.svg')"
+              >
+                <img
+                  src="/assets/images/user-1.svg"
+                  alt="Hammed Jude"
+                  class="create-event-friend-avatar"
+                />
+                <div class="create-event-friend-info">
+                  <div class="create-event-friend-name">Hammed Jude</div>
+                  <div class="create-event-friend-username">@Hajeed</div>
+                </div>
+                <img
+                  src="/assets/icons/add-friend.svg"
+                  alt="add"
+                  class="create-event-friend-action"
+                />
+              </div>
+              <!-- Friend 2 -->
+              <div
+                class="create-event-friend-item"
+                onclick="selectFriend(this, 2, 'Samuel Ngene', '@Cermuel', '/assets/images/user-2.svg')"
+              >
+                <img
+                  src="/assets/images/user-2.svg"
+                  alt="Samuel Ngene"
+                  class="create-event-friend-avatar"
+                />
+                <div class="create-event-friend-info">
+                  <div class="create-event-friend-name">Samuel Ngene</div>
+                  <div class="create-event-friend-username">@Cermuel</div>
+                </div>
+                <img
+                  src="/assets/icons/add-friend.svg"
+                  alt="add"
+                  class="create-event-friend-action"
+                />
+              </div>
             </div>
           </div>
           <div id="selected-friends"></div>
         </div>
       </div>
+
       <div class="create-event-footer">
         <button
           id="cancel-btn"
           class="create-event-cancel-btn"
-          onclick="handleWishlistBack()"
+          onclick="goBack()"
         >
           Cancel
         </button>
-        <button
-          id="next-btn"
-          class="create-event-next-btn"
-          onclick="handleWishlistNext()"
-        >
+        <button id="next-btn" class="create-event-next-btn" onclick="goNext()">
           Next
         </button>
       </div>
     </div>
-
-    <div id="item-edit-modal" class="item-edit-modal d-none">
-      <div class="item-edit-content">
-        <div class="item-edit-header">
-          <p class="item-edit-title">More Information</p>
-          <img
-            src="/assets/icons/close-dark.svg"
-            alt="close"
-            class="item-edit-close"
-            onclick="closeItemEditModal()"
-          />
-        </div>
-        <div class="item-edit-body">
-          <div class="create-event-input-group">
-            <input
-              type="text"
-              class="create-event-floating-input"
-              placeholder=" "
-              id="edit-item-name"
-              required
-            />
-            <label for="edit-item-name" class="create-event-floating-label">
-              Item name
-            </label>
-          </div>
-          <div class="create-event-input-group">
-            <input
-              type="url"
-              class="create-event-floating-input"
-              placeholder=" "
-              id="edit-item-url"
-              required
-            />
-            <label for="edit-item-url" class="create-event-floating-label">
-              Item URL
-            </label>
-          </div>
-          <div class="create-event-input-group">
-            <input
-              type="number"
-              class="create-event-floating-input"
-              placeholder=" "
-              id="edit-item-price"
-              required
-            />
-            <label for="edit-item-price" class="create-event-floating-label">
-              Price
-            </label>
-          </div>
-          <div class="create-event-input-group">
-            <textarea
-              class="create-event-floating-input create-event-textarea"
-              placeholder=" "
-              id="edit-item-note"
-              required
-            ></textarea>
-            <label for="edit-item-note" class="create-event-floating-label">
-              Additional note
-            </label>
-          </div>
-        </div>
-        <div class="create-event-footer">
-          <button class="create-event-cancel-btn" onclick="removeCurrentItem()">
-            Remove
-          </button>
-          <button class="create-event-next-btn" onclick="updateCurrentItem()">
-            Update
-          </button>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
+
 <link rel="stylesheet" href="css/create-event.css" />
 <link rel="stylesheet" href="css/create-wishlist.css" />
